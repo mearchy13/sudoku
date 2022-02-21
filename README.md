@@ -1,5 +1,5 @@
-# sudoku
-Sudoku
+# Sudoku
+By: MPS 
 
 Team:
 Matthew Blair
