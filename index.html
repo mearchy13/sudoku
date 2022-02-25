@@ -13,15 +13,36 @@
 
 <header class="site-header">
     <img src="mpslogo.png" alt="Sudoku logo" />
-    <h1 class="title">UNT SUDOKU</h1>
-    <nav class="site-nav">
+
+    <!--NAV BAR/MENU-->
+    <seciton class="content-wrapper">
+        <nav id="site-navigation" class="site-navigation">
+            <div class="site-navigation-wrapper">
+                <div class="site-navigation-item">
+                    <ul class="site-menu">
+                        <li class="site-menu-home"><a href="index.html">HOME</a></li>
+                        <li class="site-menu-rule-strat"> <a href="rules.html">RULES & STRATEGIES</a></li>
+                    </ul>
+                    <div class="theme-switch">THEME
+                        <input type="checkbox" id="switch" class="checkbox" />
+                        <label for="switch" class="toggle">
+                            <p>OFF</p>
+                            <p>ON</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </seciton>
+
+    <!-- <h1 class="title">UNT SUDOKU</h1> -->
+    <!-- <nav class="site-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="rules.html">Rules & Strategies</a></li>
-            <!--Toggle Switch for Light/Dark theme-->
             <li><label class="switch"><input type ="checkbox"><span class="slider round"></span></label></li>
         </ul>
-    </nav>
+    </nav> -->
 
     <!--Difficulty-->
     <div id="diff">
@@ -29,6 +50,8 @@
         <button id="diff-med" name="diff" type="button">Medium</button>
         <button id="diff-hard" name="diff" type="button">Hard</button>
     </div>
+    <br>
+    <button id="new-game-button" class="button new-game-button">New Game</button>
 
 </header>
 
@@ -36,8 +59,20 @@
     <section class="game">
 
     </section>
-    <section class="numpad">
-
+    <section class="numpad-wrapper">
+        <div id="numpad-container">
+            <ul id="numpad">
+                <li class="letter">1</li>
+                <li class="letter">2</li>
+                <li class="letter">3</li>
+                <li class="letter">4</li>
+                <li class="letter">5</li>
+                <li class="letter">6</li>
+                <li class="letter">7</li>
+                <li class="letter">8</li>
+                <li class="letter">9</li>
+            </ul>
+        </div>
     </section>
 </body>
 
