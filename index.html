@@ -12,27 +12,26 @@
 </head>
 
 <header class="site-header">
-    <img src="mpslogo.png" alt="Sudoku logo" />
-
     <!--NAV BAR/MENU-->
     <seciton class="content-wrapper">
         <nav id="site-navigation" class="site-navigation">
             <div class="site-navigation-wrapper">
                 <div class="site-navigation-item">
                     <ul class="site-menu">
-                        <li class="site-menu-home"><a href="index.html">HOME</a></li>
-                        <li class="site-menu-rule-strat"> <a href="rules.html">RULES & STRATEGIES</a></li>
+                        <li class="site-menu-home"><a href="index.html"><strong>HOME</strong></a></li>
+                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>RULES & STRATEGIES</strong></a></li>
                     </ul>
-                    <div class="theme-switch">THEME
+                    <div class="theme-switch">LIGHTS
                         <input type="checkbox" id="switch" class="checkbox" />
                         <label for="switch" class="toggle">
-                            <p>OFF</p>
-                            <p>ON</p>
+                            <p>OFF  ON</p>
                         </label>
                     </div>
                 </div>
             </div>
         </nav>
+        <br>
+        <img src="mpslogo.png" alt="Sudoku logo" />
     </seciton>
 
     <!-- <h1 class="title">UNT SUDOKU</h1> -->
@@ -43,7 +42,9 @@
             <li><label class="switch"><input type ="checkbox"><span class="slider round"></span></label></li>
         </ul>
     </nav> -->
+</header>
 
+<body>
     <!--Difficulty-->
     <div id="diff">
         <button id="diff-easy" name="diff" type="button">Easy</button>
@@ -53,9 +54,6 @@
     <br>
     <button id="new-game-button" type="button" class="button new-game-button">New Game</button>
 
-</header>
-
-<body>
     <section class="sudoku-wrapper">
         <table class="sudoku-board">
             <tbody>

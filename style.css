@@ -1,7 +1,88 @@
 /*in progress*/
 
+
+/*temp styling*/
+
+html {
+    background-color: #e3f2fc;
+}
+
+.site-navigation {
+    background: #4fb5ff;
+    overflow: hidden;
+}
+
+.site-menu {
+    list-style-type: none;
+    opacity: 1;
+    padding: 0;
+}
+
+.site-menu li {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.site-menu li:hover {
+    background-color: #8aceff;
+}
+
+.theme-switch {
+    padding: 0 15px 0 0;
+    float: right;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 25px;
+    background-color: #77b4f7;
+    border-radius: 30px;
+    border: 2px solid black;
+}
+
+
+/* After slide changes */
+
+.toggle:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 30px;
+    background-color: #313538;
+    top: 3px;
+    left: 1px;
+    transition: all 0.5s;
+}
+
+
+/* Checkbox checked effect */
+
+.checkbox:checked+.toggle::after {
+    left: 40px;
+}
+
+
+/* Checkbox checked toggle label bg color */
+
+.checkbox:checked+.toggle {
+    background-color: #f5faff;
+}
+
+
+/* Checkbox vanished */
+
+.checkbox {
+    display: none;
+}
+
 button {
-    background-color: #04AA6D;
+    background-color: #77b4f7;
     border: none;
     border-radius: 25px;
     color: white;
