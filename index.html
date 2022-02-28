@@ -21,12 +21,22 @@
                         <li class="site-menu-home"><a href="index.html"><strong>HOME</strong></a></li>
                         <li class="site-menu-rule-strat"> <a href="rules.html"><strong>RULES & STRATEGIES</strong></a></li>
                     </ul>
-                    <div class="theme-switch">LIGHTS
+                    <div class="theme-wrapper">
+                        <span class="theme"><strong>LIGHTS</strong></span>
+                        <div class="checkbox-switch">
+                            <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
+                            <div class="checkbox-animate">
+                                <span class="checkbox-off">OFF</span>
+                                <span class="checkbox-on">ON</span>
+                            </div>"
+                        </div>
+                    </div>
+                    <!-- <div class="theme-switch"><span><strong>LIGHTS</strong></span>
                         <input type="checkbox" id="switch" class="checkbox" />
                         <label for="switch" class="toggle">
-                            <p>OFF  ON</p>
+                            <p id="status">OFF  ON</p>
                         </label>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </nav>

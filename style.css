@@ -4,38 +4,6 @@ a {
     color: black;
 }
 
-html {
-    background-color: #e3f2fc;
-}
-
-.site-navigation {
-    background: #4fb5ff;
-    overflow: hidden;
-}
-
-.site-menu {
-    list-style-type: none;
-    opacity: 1;
-    padding: 0;
-}
-
-.site-menu li {
-    float: left;
-    display: block;
-    text-align: center;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.site-menu li:hover {
-    background-color: #8aceff;
-}
-
-.theme-switch {
-    padding: 0 15px 0 0;
-    float: right;
-}
-
 a:link {
     text-decoration: none;
 }
@@ -52,50 +20,150 @@ a:active {
     text-decoration: none;
 }
 
-.toggle {
+html {
+    background-color: #e3f2fc;
+}
+
+.site-navigation {
+    background: #4fb5ff;
+    overflow: hidden;
+}
+
+.site-navigation-item {
+    font-size: 20px;
+    opacity: 1;
+}
+
+.site-menu li {
+    float: left;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+}
+
+.site-menu li:hover {
+    background-color: #8aceff;
+}
+
+.theme-wrapper {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start
+}
+
+.theme {
+    display: block;
+    margin-right: 10px;
+}
+
+
+/*Toggle switch for theme*/
+
+.checkbox-switch {
+    bottom: 5px;
+    cursor: pointer;
+    overflow: hidden;
     position: relative;
-    display: inline-block;
-    width: 65px;
-    height: 25px;
-    background-color: #77b4f7;
+    text-align: left;
+    width: 80px;
+    height: 30px;
     border-radius: 30px;
-    border: 2px solid black;
+    line-height: 1.2;
+    font-size: 14px;
 }
 
 
-/* After slide changes */
+/*The actual checkbox property*/
 
-.toggle:after {
-    content: '';
+.checkbox-switch input.input-checkbox {
     position: absolute;
-    width: 15px;
-    height: 15px;
-    border-radius: 30px;
-    background-color: #313538;
-    top: 3px;
-    left: 1px;
-    transition: all 0.5s;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
 }
 
 
-/* Checkbox checked effect */
+/*Light switch from on to off off*/
 
-.checkbox:checked+.toggle::after {
-    left: 40px;
+.checkbox-switch .checkbox-animate {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    background-color: #95a5a6;
+    transition: 0.25s ease-out 0s;
 }
 
 
-/* Checkbox checked toggle label bg color */
+/*Ball when lights are off*/
 
-.checkbox:checked+.toggle {
-    background-color: #f5faff;
+.checkbox-switch .checkbox-animate:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: cyan;
+    top: 5px;
+    left: 5px;
+    transition: left 0.3s ease-out 0s;
+    z-index: 10;
 }
 
 
-/* Checkbox vanished */
+/*Background when light is on*/
 
-.checkbox {
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate {
+    background-color: #74f3fc;
+}
+
+
+/*Ball color when on*/
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate:before {
+    left: 55px;
+    background-color: lightcyan;
+}
+
+
+/*ON OFF Font*/
+
+.checkbox-switch .checkbox-off,
+.checkbox-switch .checkbox-on {
+    float: left;
+    color: black;
+    font-weight: 700;
+    padding-top: 6px;
+    transition: all 0.3s ease-out 0s;
+}
+
+.checkbox-switch .checkbox-off {
+    margin-left: 30px;
+    opacity: 1;
+}
+
+.checkbox-switch .checkbox-on {
     display: none;
+    float: right;
+    margin-right: 35px;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-off {
+    display: none;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-on {
+    display: block;
+    opacity: 1;
 }
 
 button {
