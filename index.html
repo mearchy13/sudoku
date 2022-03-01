@@ -1,46 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #BEE7F1;
-      }
-      li {
-        float: left;
-      }
-      li a {
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-      li a:hover {
-        background-color: #DAF2F8;
-      }
-      </style>
+    <script src="app.js"></script>
 </head>
+<header class="site-header">
+    <!--NAV BAR/MENU-->
+    <seciton class="content-wrapper">
+        <nav id="site-navigation" class="site-navigation">
+            <div class="site-navigation-wrapper">
+                <div class="site-navigation-item">
+                    <ul class="site-menu">
+                        <li class="site-menu-home"><a href="index.html"><strong>HOME</strong></a></li>
+                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>RULES & STRATEGIES</strong></a></li>
+                    </ul>
+                    <div class="theme-wrapper">
+                        <span class="theme"><strong>LIGHTS</strong></span>
+                        <div class="checkbox-switch">
+                            <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
+                            <div class="checkbox-animate">
+                                <span class="checkbox-off">OFF</span>
+                                <span class="checkbox-on">ON</span>
+                            </div>"
+                        </div>
+                    </div>
+                    <!-- <div class="theme-switch"><span><strong>LIGHTS</strong></span>
+                        <input type="checkbox" id="switch" class="checkbox" />
+                        <label for="switch" class="toggle">
+                            <p id="status">OFF  ON</p>
+                        </label>
+                    </div> -->
+                </div>
+            </div>
+        </nav>
+        <br>
+        <img src="mpslogo.png" alt="Sudoku logo" />
+    </seciton>
+
+    <!-- <h1 class="title">UNT SUDOKU</h1> -->
+    <!-- <nav class="site-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rules.html">Rules & Strategies</a></li>
+            <li><label class="switch"><input type ="checkbox"><span class="slider round"></span></label></li>
+        </ul>
+    </nav> -->
+</header>
+
 <body>
-    <script src="app.js" charset="utf-8"></script>
-    <ul>
-      <li><a href="#home"><b>Home</b></a></li>
-      <li><a href="#rules"><b>Rules</b></a></li>
-      <li><a href="#strategy"><b>Strategy</b></a></li>
+    <!--Difficulty-->
+    <div id="diff">
+        <button id="diff-easy" name="diff" type="button">Easy</button>
+        <button id="diff-med" name="diff" type="button">Medium</button>
+        <button id="diff-hard" name="diff" type="button">Hard</button>
+    </div>
+    <br>
+    <button id="new-game-button" type="button" class="button new-game-button">New Game</button>
+    <section class="sudoku-wrapper"></section>
+        <table class="sudoku">
+        <tbody>
+        <tr class="1">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+            <tr class="2">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="3 thick_bottom">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="4">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="5">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="6 thick_bottom">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="7">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="8">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="9">
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2"><input type="text" maxlength="1" /></td>
+            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5"><input type="text" maxlength="1" /></td>
+            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+            <td class="9"><input type="text" maxlength="1" /></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+ 
+<div id="timer-wrapper" class="timer-wrapper">TIMER
+    <span id="timer" class="timer"></span>
+    <div class="timer-pause">
+        <div class="icon-pause"></div>
+        <div class="icon-play"></div>
+    </div>
+</div>
+
+<section id="numpad-container">
+    <ul id="numpad">
+        <li class="number">1</li>
+        <li class="number">2</li>
+        <li class="number">3</li>
+        <li class="number">4</li>
+        <li class="number">5</li>
+        <li class="number">6</li>
+        <li class="number">7</li>
+        <li class="number">8</li>
+        <li class="number">9</li>
     </ul>
-    <img src="mpslogo2.png" />
-    <br>
-    <br>
-    <button class="button button1"><b>Easy</b></button>
-    <button class="button button2"><b>Medium</b></button>
-    <button class="button button3"><b>Hard</b></button>
-    <br>
-    <button class="button button4"><b>New Game</b></button>
-  </body>
+    </div>
+</section>
+</body>
+
+<footer>
+
+</footer>
+
 </html>
