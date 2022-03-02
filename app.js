@@ -1,4 +1,3 @@
-// in progress
 class Sudoku {
     constructor() {
         this.board = this.empty_array();
@@ -18,16 +17,18 @@ class Sudoku {
         ];
     }
 
-    for (let row = 0; row <= 8; row++) {
-        for (let column = 0; column <= 8; column++) {
-            this.board[row][column] = board_number.charAt(row * 9 + column);
-        }
-    }
+    // Gives Uncaught SyntaxError: Unexpected strict mode reserved word. "use strict"
+    // for (let row = 0; row <= 8; row++) {
+    //     for (let column = 0; column <= 8; column++) {
+    //         this.board[row][column] = board_number.charAt(row * 9 + column);
+    //     }
+    // }
 
     get_board_array() {
         return this.board;
     }
 }
+
 let test = new Sudoku();
 let game = new Sudoku();
 var difficulty_level;
@@ -52,10 +53,17 @@ function print_board(sudoku_game) {
     }
 }
 
+//Set difficulty_level to a value whenever the user clicks a button
+//May or may not have to change.
+function set_Difficulty(diff) {
+    difficulty_level = diff;
+    console.log(difficulty_level);
+}
+
 /* static clear_board(sudoku_cells) {
-		  for ( let row = 0; row <= 8; row++ ) {
-			  for ( let col = 0; col <= 8; col++ ) {
-				  sudoku_cells[row][col].value = "";
-				  sudoku_cells[row][col].classList.remove('imported_square');
-			  }
-  */
+		for ( let row = 0; row <= 8; row++ ) {
+			for ( let col = 0; col <= 8; col++ ) {
+				sudoku_cells[row][col].value = "";
+				sudoku_cells[row][col].classList.remove('imported_square');
+			}
+*/

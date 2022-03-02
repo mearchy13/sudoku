@@ -54,117 +54,121 @@
 
 <body>
     <!--Difficulty-->
-    <div id="diff">
-        <button id="diff-easy" name="diff" type="button">Easy</button>
-        <button id="diff-med" name="diff" type="button">Medium</button>
-        <button id="diff-hard" name="diff" type="button">Hard</button>
-    </div>
-    <br>
-    <button id="new-game-button" type="button" class="button new-game-button">New Game</button>
-    <section class="sudoku-wrapper"></section>
-    <table class="sudoku">
-        <tbody>
-            <tr class="1">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="2">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="3 thick_bottom">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="4">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="5">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="6 thick_bottom">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="7">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="8">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-            <tr class="9">
-                <td class="1"><input type="text" maxlength="1" /></td>
-                <td class="2"><input type="text" maxlength="1" /></td>
-                <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="4"><input type="text" maxlength="1" /></td>
-                <td class="5"><input type="text" maxlength="1" /></td>
-                <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-                <td class="7"><input type="text" maxlength="1" /></td>
-                <td class="8"><input type="text" maxlength="1" /></td>
-                <td class="9"><input type="text" maxlength="1" /></td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="diff-wrapper">
+        <div class="diff">
+            <!-- <button id="diff-easy" name="diff" type="button">Easy</button> -->
+            <input type="button" value="Easy" id="diff-easy" onclick="set_Difficulty(this.value)">
+            <input type="button" value="Medium" id="diff-med" onclick="set_Difficulty(this.value)">
+            <input type="button" value="Hard" id="diff-hard" onclick="set_Difficulty(this.value)">
+
+        </div>
+        <br>
+        <input type="button" id="new-game-button" value="New Game">
+    </section>
+    <section class="sudoku-wrapper">
+        <table class="sudoku">
+            <tbody>
+                <tr class="1">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="2">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="3 thick_bottom">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="4">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="5">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="6 thick_bottom">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="7">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="8">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+                <tr class="9">
+                    <td class="1"><input type="text" maxlength="1" /></td>
+                    <td class="2"><input type="text" maxlength="1" /></td>
+                    <td class="3 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="4"><input type="text" maxlength="1" /></td>
+                    <td class="5"><input type="text" maxlength="1" /></td>
+                    <td class="6 thick_right"><input type="text" maxlength="1" /></td>
+                    <td class="7"><input type="text" maxlength="1" /></td>
+                    <td class="8"><input type="text" maxlength="1" /></td>
+                    <td class="9"><input type="text" maxlength="1" /></td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <div id="timer-wrapper" class="timer-wrapper">TIMER
@@ -177,6 +181,7 @@
 
     <section id="numpad-container">
         <ul id="numpad">
+            <!--Might have to change class to id-->
             <li class="number">1</li>
             <li class="number">2</li>
             <li class="number">3</li>

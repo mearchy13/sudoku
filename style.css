@@ -21,7 +21,7 @@ a:active {
 }
 
 html {
-    background-color: #e3f2fc;
+    background-color: #f9fdff;
 }
 
 .site-navigation {
@@ -175,7 +175,7 @@ html {
     opacity: 1;
 }
 
-button {
+[type="button"] {
     background-color: #77b4f7;
     border: none;
     border-radius: 25px;
