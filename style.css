@@ -1,1 +1,218 @@
 /*in progress*/
+/*in progress*/
+
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+html {
+    background-color: #e3f2fc;
+}
+
+.site-navigation {
+    background: #4fb5ff;
+    overflow: hidden;
+}
+
+.site-navigation-item {
+    font-size: 20px;
+    opacity: 1;
+}
+
+.site-menu li {
+    float: left;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+}
+
+.site-menu li:hover {
+    background-color: #8aceff;
+}
+
+.theme-wrapper {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start
+}
+
+.theme {
+    display: block;
+    margin-right: 10px;
+}
+
+.sudoku {
+    width: 500px;
+  
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    background-color: #F1F1F1;
+   }
+
+/*Toggle switch for theme*/
+
+.checkbox-switch {
+    bottom: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 80px;
+    height: 30px;
+    border-radius: 30px;
+    line-height: 1.2;
+    font-size: 14px;
+}
+
+
+/*The actual checkbox property*/
+
+.checkbox-switch input.input-checkbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+
+/*Light switch from on to off off*/
+
+.checkbox-switch .checkbox-animate {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    background-color: #95a5a6;
+    transition: 0.25s ease-out 0s;
+}
+
+
+/*Ball when lights are off*/
+
+.checkbox-switch .checkbox-animate:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: cyan;
+    top: 5px;
+    left: 5px;
+    transition: left 0.3s ease-out 0s;
+    z-index: 10;
+}
+
+
+/*Background when light is on*/
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate {
+    background-color: #74f3fc;
+}
+
+
+/*Ball color when on*/
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate:before {
+    left: 55px;
+    background-color: lightcyan;
+}
+
+
+/*ON OFF Font*/
+
+.checkbox-switch .checkbox-off,
+.checkbox-switch .checkbox-on {
+    float: left;
+    color: black;
+    font-weight: 700;
+    padding-top: 6px;
+    transition: all 0.3s ease-out 0s;
+}
+
+.checkbox-switch .checkbox-off {
+    margin-left: 30px;
+    opacity: 1;
+}
+
+.checkbox-switch .checkbox-on {
+    display: none;
+    float: right;
+    margin-right: 35px;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-off {
+    display: none;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-on {
+    display: block;
+    opacity: 1;
+}
+
+button {
+    background-color: #77b4f7;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+#numpad-container {
+    margin: 50px auto;
+    width: 250px;
+    float: right;
+}
+
+#numpad li {
+    float: left;
+    list-style: none;
+    margin: 0 5px 5px 0;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    background: #4287f5;
+    border: 1px solid #f9f9f9;
+    border-radius: 5px;
+}
+
+  .sudoku {border:4px solid black; border-collapse: collapse;}
+  .sudoku tr {padding:0;}
+  .sudoku td {padding:0; border:1px solid black; width:1em;}
+  .sudoku input {width:1em; border:0; font-size:25pt; text-align:center;}
+  .sudoku .thick_right {border-right:4px solid black !important;}
+  .sudoku .thick_bottom {border-bottom:4px solid black;}
