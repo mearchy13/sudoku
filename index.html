@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+
 
 </head>
 
@@ -56,13 +56,15 @@
 
 <body>
     <!--Difficulty-->
-    <div id="diff">
-        <button id="diff-easy" name="diff" type="button">Easy</button>
-        <button id="diff-med" name="diff" type="button">Medium</button>
-        <button id="diff-hard" name="diff" type="button">Hard</button>
-    </div>
-    <br>
-    <button id="new-game-button" type="button" class="button new-game-button">New Game</button>
+    <section class="diff-wrapper">
+        <div class="diff">
+            <button id="diff-easy" name="diff" type="button">Easy</button>
+            <button id="diff-med" name="diff" type="button">Medium</button>
+            <button id="diff-hard" name="diff" type="button">Hard</button>
+        </div>
+        <br>
+        <button id="new-game-button" type="button" class="button new-game-button">New Game</button>
+    </section>
 
     <section class="sudoku-wrapper">
         <table class="sudoku-board">
@@ -193,6 +195,7 @@
         </ul>
         </div>
     </section>
+    <script src="app.js"></script>
 </body>
 
 <footer>

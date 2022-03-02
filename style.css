@@ -177,6 +177,7 @@ button {
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    cursor: pointer;
 }
 
 #numpad-container {
@@ -197,4 +198,5 @@ button {
     background: #4287f5;
     border: 1px solid #f9f9f9;
     border-radius: 5px;
+    cursor: pointer;
 }
