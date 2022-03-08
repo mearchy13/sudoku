@@ -68,7 +68,7 @@ html {
 #board{
     height: 480px;
     width: 480px;
-    border: solid white 4px;
+    border: solid black 4px;
     display: flex;
     flex-direction: row;
     margin-left: 30%;
@@ -79,7 +79,7 @@ html {
     width: 50px;
     border: solid white 1px;
     text-align: center;
-    background-color: pink;
+    background-color: black;
     text-align: center;
     font-size: x-large;
     font-weight: bold;
@@ -91,8 +91,8 @@ input{
     text-align: center;
     font-size: x-large;
     font-weight: bold;
-    background-color: grey;
-    color: white;
+    background-color: lightgrey;
+    color: black;
 }
 button{
     height: 70px;
@@ -248,4 +248,5 @@ button{
     background: #4287f5;
     border: 1px solid #f9f9f9;
     border-radius: 5px;
+    
 }
