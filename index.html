@@ -1,11 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<header class="site-header">
+    <!--NAV BAR/MENU-->
+    <seciton class="content-wrapper">
+        <nav id="site-navigation" class="site-navigation">
+            <div class="site-navigation-wrapper">
+                <div class="site-navigation-item">
+                    <ul class="site-menu">
+                        <li class="site-menu-home"><a href="index.html"><strong>HOME</strong></a></li>
+                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>RULES & STRATEGIES</strong></a></li>
+                    </ul>
+                    <div class="theme-wrapper">
+                        <span class="theme"><strong>LIGHTS</strong></span>
+                        <div class="checkbox-switch">
+                            <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
+                            <div class="checkbox-animate">
+                                <span class="checkbox-off">OFF</span>
+                                <span class="checkbox-on">ON</span>
+                            </div>"
+                        </div>
+                    </div>
+                    <!-- <div class="theme-switch"><span><strong>LIGHTS</strong></span>
+                        <input type="checkbox" id="switch" class="checkbox" />
+                        <label for="switch" class="toggle">
+                            <p id="status">OFF  ON</p>
+                        </label>
+                    </div> -->
+                </div>
+            </div>
+        </nav>
+        <br>
+        <img src="mpslogo.png" alt="Sudoku logo" />
+    </seciton>
+
+    <!-- <h1 class="title">UNT SUDOKU</h1> -->
+    <!-- <nav class="site-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rules.html">Rules & Strategies</a></li>
+            <li><label class="switch"><input type ="checkbox"><span class="slider round"></span></label></li>
+        </ul>
+    </nav> -->
+</header>
+
 <body>
-    <script src="app.js" charset="utf-8"></script>
-  </body>
+
+    <h1>TEST</h1>
+    <!--Difficulty-->
+    <button type="button" id="start" onclick="start()">Start Game</button>"
+    
+    <div id="board">
+        <div id="row1">
+            <div id="box1" class="box"></div>
+            <div id="box2" class="box"></div>
+            <div id="box3" class="box"></div>
+        </div>
+        <div id="row2">
+            <div id="box4" class="box"></div>
+            <div id="box5" class="box"></div>
+            <div id="box6" class="box"></div>
+        </div>
+        <div id="row3">
+            <div id="box7" class="box"></div>
+            <div id="box8" class="box"></div>
+            <div id="box9" class="box"></div>
+        </div>
+    </div>
+
+    <div id="game_diff">
+        <h3>Choose Difficulty:</h3>
+        <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
+    </div>
+
+
+
+<div id="timer-wrapper" class="timer-wrapper">TIMER
+    <span id="timer" class="timer"></span>
+    <div class="timer-pause">
+        <div class="icon-pause"></div>
+        <div class="icon-play"></div>
+    </div>
+</div>
+
+<section id="numpad-container">
+    <ul id="numpad">
+        <li class="number">1</li>
+        <li class="number">2</li>
+        <li class="number">3</li>
+        <li class="number">4</li>
+        <li class="number">5</li>
+        <li class="number">6</li>
+        <li class="number">7</li>
+        <li class="number">8</li>
+        <li class="number">9</li>
+    </ul>
+    </div>
+    
+</section>
+<script src="app.js"></script>
+</body>
 </html>
