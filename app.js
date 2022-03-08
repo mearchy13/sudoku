@@ -23,7 +23,7 @@ easy_game=['2-5---7--45---9----2-6-81----9---8567--------2418---2----43-7-1----1
 
 
 // will finish hardcode sol'n later, this is not full sol'n
-// easy=[215986734452869371527648193379124856781543692418937265864357219693172485936521748']
+easy=['215986734452869371527648193379124856781543692418937265864357219693172485936521748'];
 
 
 function start(){
@@ -37,7 +37,7 @@ function start(){
         for(var i=0;i<81;i++){
             if(easy_game[easy_random][i]!='-'){
                 document.getElementById((i+1).toString()).
-                value=easy_board[easy_random][i];
+                value=easy_game[easy_random][i];
                 document.getElementById((i+1).toString()).
                 readOnly=true;
             }
@@ -45,5 +45,4 @@ function start(){
     }
 
     document.getElementById("start").removeAttribute("onclick");
-
 }
