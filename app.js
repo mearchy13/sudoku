@@ -1,69 +1,48 @@
-class Sudoku {
-    constructor() {
-        this.board = this.empty_array();
-    }
-
-    empty_array() {
-        return [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ];
-    }
-
-    // Gives Uncaught SyntaxError: Unexpected strict mode reserved word. "use strict"
-    // for (let row = 0; row <= 8; row++) {
-    //     for (let column = 0; column <= 8; column++) {
-    //         this.board[row][column] = board_number.charAt(row * 9 + column);
-    //     }
-    // }
-
-    get_board_array() {
-        return this.board;
-    }
+count=0
+for (var i=0;i<9;i++){
+    count=9*i;
+    document.getElementsByClassName("box")[i].innerHTML="<div class='cell'><input type='text' id='"+(count+1)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+2)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+3)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+4)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+5)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+6)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+7)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+8)+
+    "'class='input'></div><div class='cell'><input type='text' id='"+(count+9)+"'class='input'></div>"
 }
 
-let test = new Sudoku();
-let game = new Sudoku();
-var difficulty_level;
-let sudoku_cells = createArray(9, 9);
+var level;
+var choice;
 
-for (let row = 0; row <= 8; row++) {
-    for (let col = 0; col <= 8; col++) {
-        sudoku_cells[row][col] = document.getElementsByClassName('sudoku')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[row].getElementsByTagName('td')[col].getElementsByTagName('input')[0];
+// Easy difficulty pre load values hard coded for now
+easy_game=['2-5---7--45---9----2-6-81----9---8567--------2418---2----43-7-1----1---85--6---7-8','----35-86-1-9-7-----269----54------------527-9--75----7-6---3-----2-----56---2-14','3-549-6----396--81-5-2--1494-276-1-39---583-46-1549--7-6-1-824558-7-3-924---7-3-6','47----3-------179--4-93--5----6---7-48---------2716-34-9----6----6--2381---54--1-','-2--18573-31--5-96---16----5--4-26--97--86--------98--1-6--79--2-5---8144-9-7---1'
+];
+
+
+
+
+// will finish hardcode sol'n later, this is not full sol'n
+easy=['215986734452869371527648193379124856781543692418937265864357219693172485936521748'];
+
+
+function start(){
+    for(var i=0;i<6;i++){
+        document.getElementsByClassName("label")[i].setAttribute("onclick","return false;");
     }
-}
-
-function print_board(sudoku_game) {
-    let board = sudoku_game.get_board_array();
-    for (let row = 0; row <= 8; row++) {
-        for (let col = 0; col <= 8; col++) {
-            if (board[row][col] != 0) {
-                let input = sudoku_cells[row][col];
-                input.value = board[row][col];
-                input.classList.add('imported_square');
+    if(document.getElementById("easy").checked){
+        level='easy';
+        var easy_random=Math.floor(Math.random()*5);
+        choice=easy_random;
+        for(var i=0;i<81;i++){
+            if(easy_game[easy_random][i]!='-'){
+                document.getElementById((i+1).toString()).
+                value=easy_game[easy_random][i];
+                document.getElementById((i+1).toString()).
+                readOnly=true;
             }
         }
     }
-}
 
-//Set difficulty_level to a value whenever the user clicks a button
-//May or may not have to change.
-function set_Difficulty(diff) {
-    difficulty_level = diff;
-    console.log(difficulty_level);
+    document.getElementById("start").removeAttribute("onclick");
 }
-
-/* static clear_board(sudoku_cells) {
-		for ( let row = 0; row <= 8; row++ ) {
-			for ( let col = 0; col <= 8; col++ ) {
-				sudoku_cells[row][col].value = "";
-				sudoku_cells[row][col].classList.remove('imported_square');
-			}
-*/
