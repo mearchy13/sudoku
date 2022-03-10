@@ -65,7 +65,7 @@ html {
     display: grid;
     grid-template-columns: auto auto auto;
 }
-#board{
+#main{
     height: 480px;
     width: 480px;
     border: solid black 4px;
@@ -110,8 +110,15 @@ button{
     top: 26%;
     left: 5%;
 }
-
-#game_diff{
+#replay{
+    top: 45%;
+    left: 5%;
+}
+#answer{
+    top: 65%;
+    left: 5%;
+}
+#game_type{
     position: absolute;
     top: 24%;
     left: 75%;
