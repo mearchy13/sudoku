@@ -1,5 +1,5 @@
 count=0
-for (var i=0;i<9;i++){
+for (let i=0;i<9;i++){
     count=9*i;
     document.getElementsByClassName("box")[i].innerHTML="<div class='cell'><input type='text' id='"+(count+1)+
     "'class='input'></div><div class='cell'><input type='text' id='"+(count+2)+
@@ -23,26 +23,67 @@ easy_game=['2-5---7--45---9----2-6-81----9---8567--------2418---2----43-7-1----1
 
 
 // will finish hardcode sol'n later, this is not full sol'n
-easy=['215986734452869371527648193379124856781543692418937265864357219693172485936521748'];
+easy=['215986734452869371527648193379124856781543692418937265864357219693172485936521748', '129735486213967854342691578543869127498315276981654632786421359675248193567832914', '315492678723964581857236149482765193916258374631549827967138245584713692429871356', '476285319523861794148932657123649578481397265952716834895137624976452381763548219', '429618573831245796382164957537492618974186325761259843186537942265793'
+];
+
 
 
 function start(){
-    for(var i=0;i<6;i++){
-        document.getElementsByClassName("label")[i].setAttribute("onclick","return false;");
+    for(let i=0;i<6;i++){
+        document.getElementsByClassName("box")[i].setAttribute("onclick","return false;");
     }
     if(document.getElementById("easy").checked){
         level='easy';
         var easy_random=Math.floor(Math.random()*5);
         choice=easy_random;
-        for(var i=0;i<81;i++){
+        for(let i=0;i<81;i++){
             if(easy_game[easy_random][i]!='-'){
-                document.getElementById((i+1).toString()).
-                value=easy_game[easy_random][i];
-                document.getElementById((i+1).toString()).
-                readOnly=true;
+                document.getElementById((i+1).toString()).value=easy_game[easy_random][i];
+                document.getElementById((i+1).toString()).readOnly=true;
             }
         }
     }
+    //else if(document.getElementById("medium".checked)){
+
+        // medium code here
+    //}
 
     document.getElementById("start").removeAttribute("onclick");
 }
+
+// check answer
+
+var id=setInterval(() => {
+    if (level=="easy"){
+    if(document.activeElement.className=="input"){
+        if((document.getElementById(document.activeElement.id).value==easy[choice][document.activeElement.id-1])|(document.getElementById
+            (document.activeElement.id).value=='')){
+                for(let i=0;i<81;i++){
+                    if(i==80 && document.getElementById((81).toString()).value!='' ){
+                        alert("You win! Congratulations");
+                        clearInterval(id);
+                        window.location.reload();
+                    }
+                    else if(document.getElementById((i+1).toString()).value==''){
+                        break;
+                    }
+                }
+            }
+            else{
+
+                // code
+            }
+        }
+    }
+}, 500);
+
+// answer
+function answer(){
+    if(level=="easy"){
+        for(let i=0;i<81;i++){
+            document.getElementById((i+1).toString()).value=easy[choice][i];
+        }
+     }
+     // else if(level=="medium"){
+         // med code
+     }
