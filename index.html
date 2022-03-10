@@ -9,7 +9,7 @@
 </head>
 <header class="site-header">
     <!--NAV BAR/MENU-->
-    <seciton class="content-wrapper">
+    <section class="content-wrapper">
         <nav id="site-navigation" class="site-navigation">
             <div class="site-navigation-wrapper">
                 <div class="site-navigation-item">
@@ -38,7 +38,7 @@
         </nav>
         <br>
         <img src="mpslogo.png" alt="Sudoku logo" />
-    </seciton>
+    </section>
 
     <!-- <h1 class="title">UNT SUDOKU</h1> -->
     <!-- <nav class="site-nav">
@@ -54,32 +54,33 @@
 
     <h1>TEST</h1>
     <!--Difficulty-->
-    <button type="button" id="start" onclick="start()">Start Game</button>"
+    <button type="button" id="start" onclick="start()">Start Game</button>
+    <button type="button" id="replay" onclick="replay()">New Game</button>
+    <button type="button" id="answer" onclick="answer()">Answer</button>
+
     
-    <div id="board">
-        <div id="row1">
+    <div id="main">
+        <div id="col1">
             <div id="box1" class="box"></div>
             <div id="box2" class="box"></div>
             <div id="box3" class="box"></div>
         </div>
-        <div id="row2">
+        <div id="col2">
             <div id="box4" class="box"></div>
             <div id="box5" class="box"></div>
             <div id="box6" class="box"></div>
         </div>
-        <div id="row3">
+        <div id="col3">
             <div id="box7" class="box"></div>
             <div id="box8" class="box"></div>
             <div id="box9" class="box"></div>
         </div>
     </div>
 
-    <div id="game_diff">
+    <div id="game_type">
         <h3>Choose Difficulty:</h3>
         <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
     </div>
-
-
 
 <div id="timer-wrapper" class="timer-wrapper">TIMER
     <span id="timer" class="timer"></span>
@@ -88,7 +89,7 @@
         <div class="icon-play"></div>
     </div>
 </div>
-
+<script src="app.js"></script>
 <section id="numpad-container">
     <ul id="numpad">
         <li class="number">1</li>
@@ -101,9 +102,7 @@
         <li class="number">8</li>
         <li class="number">9</li>
     </ul>
-    </div>
-    
+    </div>  
 </section>
-<script src="app.js"></script>
 </body>
 </html>
