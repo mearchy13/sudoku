@@ -65,6 +65,7 @@ html {
     display: grid;
     grid-template-columns: auto auto auto;
 }
+
 #main{
     height: 480px;
     width: 480px;
@@ -74,6 +75,7 @@ html {
     margin-left: 30%;
     margin-top: -1%;
 }
+
 .cell{
     height: 50px;
     width: 50px;
@@ -84,6 +86,7 @@ html {
     font-size: x-large;
     font-weight: bold;
 }
+
 input{
     height:45px;
     width:44px;
@@ -94,6 +97,7 @@ input{
     background-color: lightgrey;
     color: black;
 }
+
 button{
     height: 70px;
     width: 200px;
@@ -106,18 +110,22 @@ button{
     position: absolute;
     cursor: pointer;
 }
+
 #start{
     top: 26%;
     left: 5%;
 }
-#replay{
+
+/* #replay{
     top: 45%;
     left: 5%;
-}
+} */
+
 #answer{
     top: 65%;
     left: 5%;
 }
+
 #game_type{
     position: absolute;
     top: 24%;
