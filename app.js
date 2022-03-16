@@ -81,7 +81,7 @@ function start(){
 
 /* Check Answer and Affected Cells code likely will go below, in progress */
 
-/* var id=setInterval(() => {
+var id=setInterval(() => {
     if (level=="easy"){
     if(document.activeElement.className=="input"){
         if((document.getElementById(document.activeElement.id).value==easy[choice][document.activeElement.id-1])|(document.getElementById
@@ -103,7 +103,7 @@ function start(){
             }
         }
     }
-}, 500); */
+}, 500);
 
 /* Answer */ 
 function answer(){
