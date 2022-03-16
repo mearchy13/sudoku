@@ -21,7 +21,7 @@ a:active {
 }
 
 html {
-    background-color: #f9fdff;
+    background-color: #e3f2fc;
 }
 
 .site-navigation {
@@ -57,13 +57,89 @@ html {
     margin-right: 10px;
 }
 
-.sudoku {
-    width: 500px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #F1F1F1;
+.column {
+    display: grid;
+}
+
+.box {
+    height: 156px;
+    width: 156px;
+    border: solid white 2px;
+    background-color: gray;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#main {
+    height: 480px;
+    width: 480px;
+    border: solid black 4px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 30%;
+    margin-top: -1%;
+}
+
+.cell {
+    height: 50px;
+    width: 50px;
+    border: solid white 1px;
+    text-align: center;
+    background-color: black;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+input {
+    height: 45px;
+    width: 44px;
+    border: none;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: lightgrey;
+    color: black;
+}
+
+button {
+    height: 70px;
+    width: 200px;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: blue;
+    border: solid 4px black;
+    border-radius: 30px;
+    color: white;
+    position: absolute;
+    cursor: pointer;
+}
+
+#start {
+    top: 26%;
+    left: 5%;
+}
+
+#replay {
+    top: 45%;
+    left: 5%;
+}
+
+#answer {
+    top: 65%;
+    left: 5%;
+}
+
+#game_type {
+    position: absolute;
+    top: 24%;
+    left: 75%;
+}
+
+.label {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
 }
 
 
@@ -175,20 +251,6 @@ html {
     opacity: 1;
 }
 
-[type="button"] {
-    background-color: #77b4f7;
-    border: none;
-    border-radius: 25px;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
 #numpad-container {
     margin: 50px auto;
     width: 250px;
@@ -207,35 +269,4 @@ html {
     background: #4287f5;
     border: 1px solid #f9f9f9;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-.sudoku {
-    border: 4px solid black;
-    border-collapse: collapse;
-}
-
-.sudoku tr {
-    padding: 0;
-}
-
-.sudoku td {
-    padding: 0;
-    border: 1px solid black;
-    width: 1em;
-}
-
-.sudoku input {
-    width: 1em;
-    border: 0;
-    font-size: 25pt;
-    text-align: center;
-}
-
-.sudoku .thick_right {
-    border-right: 4px solid black !important;
-}
-
-.sudoku .thick_bottom {
-    border-bottom: 4px solid black;
 }
