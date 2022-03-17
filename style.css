@@ -116,10 +116,10 @@ button{
     left: 30%;
 }
 
-/* #replay{
-    top: 45%;
-    left: 5%;
-} */
+#clearBoard{
+    top: 33%;
+    left: 30%;
+}
 
 #answer{
     top: 40%;
