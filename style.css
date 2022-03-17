@@ -57,15 +57,7 @@ html {
     margin-right: 10px;
 }
 
-<<<<<<< HEAD
-.column {
-    display: grid;
-}
-
 .box {
-=======
-.box{
->>>>>>> shane
     height: 156px;
     width: 156px;
     border: solid white 2px;
@@ -74,11 +66,7 @@ html {
     grid-template-columns: auto auto auto;
 }
 
-<<<<<<< HEAD
 #main {
-=======
-#main{
->>>>>>> shane
     height: 480px;
     width: 480px;
     border: solid black 4px;
@@ -88,11 +76,7 @@ html {
     margin-top: -1%;
 }
 
-<<<<<<< HEAD
 .cell {
-=======
-.cell{
->>>>>>> shane
     height: 50px;
     width: 50px;
     border: solid white 1px;
@@ -103,15 +87,9 @@ html {
     font-weight: bold;
 }
 
-<<<<<<< HEAD
 input {
     height: 45px;
     width: 44px;
-=======
-input{
-    height:45px;
-    width:44px;
->>>>>>> shane
     border: none;
     text-align: center;
     font-size: x-large;
@@ -120,19 +98,11 @@ input{
     color: black;
 }
 
-<<<<<<< HEAD
 button {
     height: 70px;
     width: 200px;
     font-size: x-large;
     font-weight: bold;
-=======
-button{
-    height: 70px;
-    width: 200px;
-    font-size: x-large;
-    font-weight:  bold;
->>>>>>> shane
     background-color: blue;
     border: solid 4px black;
     border-radius: 30px;
@@ -141,58 +111,35 @@ button{
     cursor: pointer;
 }
 
-<<<<<<< HEAD
 #start {
-=======
-#start{
->>>>>>> shane
     top: 26%;
     left: 5%;
 }
 
-<<<<<<< HEAD
-#replay {
-    top: 45%;
-    left: 5%;
-}
 
-#answer {
-=======
 /* #replay{
     top: 45%;
     left: 5%;
 } */
 
-#answer{
->>>>>>> shane
+#answer {
     top: 65%;
     left: 5%;
 }
 
-<<<<<<< HEAD
 #game_type {
-=======
-#game_type{
->>>>>>> shane
     position: absolute;
     top: 24%;
     left: 75%;
 }
 
-<<<<<<< HEAD
 .label {
-=======
-.label{
->>>>>>> shane
     height: 15px;
     width: 15px;
     cursor: pointer;
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> shane
 /*Toggle switch for theme*/
 
 .checkbox-switch {
@@ -300,10 +247,7 @@ button{
     display: block;
     opacity: 1;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> shane
 #numpad-container {
     margin: 50px auto;
     width: 250px;
@@ -322,11 +266,8 @@ button{
     background: #4287f5;
     border: 1px solid #f9f9f9;
     border-radius: 5px;
-<<<<<<< HEAD
 }
-=======
-    
-}
+
 
 /* .centeredlogo{
 
@@ -335,4 +276,3 @@ button{
     margin-left: auto;
     margin-right: auto;
 } */
->>>>>>> shane
