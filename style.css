@@ -65,15 +65,17 @@ html {
     display: grid;
     grid-template-columns: auto auto auto;
 }
-#board{
+
+#main{
     height: 480px;
     width: 480px;
     border: solid black 4px;
     display: flex;
     flex-direction: row;
-    margin-left: 30%;
-    margin-top: -1%;
+    margin-left: 40%;
+    margin-top: 2%;
 }
+
 .cell{
     height: 50px;
     width: 50px;
@@ -84,6 +86,7 @@ html {
     font-size: x-large;
     font-weight: bold;
 }
+
 input{
     height:45px;
     width:44px;
@@ -94,6 +97,7 @@ input{
     background-color: lightgrey;
     color: black;
 }
+
 button{
     height: 70px;
     width: 200px;
@@ -106,15 +110,26 @@ button{
     position: absolute;
     cursor: pointer;
 }
+
 #start{
     top: 26%;
-    left: 5%;
+    left: 30%;
 }
 
-#game_diff{
+#clearBoard{
+    top: 33%;
+    left: 30%;
+}
+
+#answer{
+    top: 40%;
+    left: 30%;
+}
+
+#game_type{
     position: absolute;
     top: 24%;
-    left: 75%;
+    left: 60%;
 }
 
 .label{
@@ -233,7 +248,7 @@ button{
 #numpad-container {
     margin: 50px auto;
     width: 250px;
-    float: right;
+    float: center;
 }
 
 #numpad li {
@@ -248,5 +263,12 @@ button{
     background: #4287f5;
     border: 1px solid #f9f9f9;
     border-radius: 5px;
-    
+}
+
+.centeredlogo{
+
+    display: block;
+    width: 60%;
+    margin-left: 42%;
+    margin-top: 1%;
 }
