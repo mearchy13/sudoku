@@ -31,14 +31,14 @@ easy = ['21598673445286937152764819337912485678154369241893726586435721969317248
 ];
 
 /* Medium difficulty, will add rest */
-medium_game = ['--6----9---75-1---1------9-9-7-25-8-3-----4-3-92-1-8-2------7---6-19--5-8----1--'];
+medium_game = ['--6----9---75-1---1------9-9-7-25-8-3-----4-3-92-1-8-2------7---6-19--5-8----1---', '------27----793--892-5-63--5--87-3---34-5-79---3-87--5--63-2-819--614----57------'];
 
-medium = ['876345291982754163417638529493712568135826947359271684251968473746319825682594137'];
+medium = ['876345291982754163417638529493712568135826947359271684251968473746319825682594137', '83461527915279346892154638751287934663425871463987125796342581978614235857123469'];
 
 /* Hard difficulty, will add rest */
-hard_game = ['---789-----75-8-4---38-----8---1---6---7-9---2---7---1-----61---5-3-42-----439---'];
+hard_game = ['---789-----75-8-4---38-----8---1---6---7-9---2---7---1-----61---5-3-42-----439---', '-6------2---9-83----6--3-79----368---2-----4---461----75-8--4----51-7---2------8-'];
 
-hard = ['165789432297518346973821654847312596463729158284675931923546178851364297615439782'];
+hard = ['165789432297518346973821654847312596463729158284675931923546178851364297615439782', '861794532617948325156283479492536871928365147784619253753812496345127968239574681'];
 
 function start() {
     for (let i = 0; i < 6; i++) {
@@ -59,7 +59,7 @@ function start() {
     // if user selects medium difficulty
     if (document.getElementById("medium").checked) {
         level = 'medium';
-        var medium_random = Math.floor(Math.random() * 1);
+        var medium_random = Math.floor(Math.random() * 2);
         choice = medium_random;
         for (let i = 0; i < 81; i++) {
             if (medium_game[medium_random][i] != '-') {
@@ -72,7 +72,7 @@ function start() {
     // if user selects hard difficulty
     if (document.getElementById("hard").checked) {
         level = 'hard';
-        var hard_random = Math.floor(Math.random() * 1);
+        var hard_random = Math.floor(Math.random() * 2);
         choice = hard_random;
         for (let i = 0; i < 81; i++) {
             if (hard_game[hard_random][i] != '-') {
@@ -87,29 +87,51 @@ function start() {
 
 /* Check Answer and Affected Cells code likely will go below, in progress */
 
-/* var id=setInterval(() => {
-    if (level=="easy"){
-    if(document.activeElement.className=="input"){
-        if((document.getElementById(document.activeElement.id).value==easy[choice][document.activeElement.id-1])|(document.getElementById
-            (document.activeElement.id).value=='')){
-                for(let i=0;i<81;i++){
-                    if(i==80 && document.getElementById((81).toString()).value!='' ){
+var id = setInterval(() => {
+    if (level == "easy") {
+        if (document.activeElement.className == "input") {
+            if ((document.getElementById(document.activeElement.id).value == easy[choice][document.activeElement.id - 1]) | (document.getElementById(document.activeElement.id).value == '')) {
+                for (let i = 0; i < 81; i++) {
+                    if (i == 80 && document.getElementById((81).toString()).value != '') {
                         alert("You win! Congratulations");
                         clearInterval(id);
                         window.location.reload();
-                    }
-                    else if(document.getElementById((i+1).toString()).value==''){
-                        break;
+                    } else {
+                        alert("You chose the wrong number.");
                     }
                 }
             }
-            else{
-
-                // code
+        }
+    } else if (level == "medium") {
+        if (document.activeElement.className == "input") {
+            if ((document.getElementById(document.activeElement.id).value == medium[choice][document.activeElement.id - 1]) | (document.getElementById(document.activeElement.id).value == '')) {
+                for (let i = 0; i < 81; i++) {
+                    if (i == 80 && document.getElementById((81).toString()).value != '') {
+                        alert("You win! Congratulations");
+                        clearInterval(id);
+                        window.location.reload();
+                    } else {
+                        alert("You chose the wrong number.");
+                    }
+                }
+            }
+        }
+    } else if (level == "hard") {
+        if (document.activeElement.className == "input") {
+            if ((document.getElementById(document.activeElement.id).value == hard[choice][document.activeElement.id - 1]) | (document.getElementById(document.activeElement.id).value == '')) {
+                for (let i = 0; i < 81; i++) {
+                    if (i == 80 && document.getElementById((81).toString()).value != '') {
+                        alert("You win! Congratulations");
+                        clearInterval(id);
+                        window.location.reload();
+                    } else {
+                        alert("You chose the wrong number.");
+                    }
+                }
             }
         }
     }
-}, 500); */
+}, 500);
 
 /* Answer */
 function answer() {
@@ -130,9 +152,11 @@ function answer() {
     }
 }
 
-
-//Toggle theme (dark mode)
-function themeToggle() {
-    let element = document.getElementById("toolbar-active").value;
-    console.log(element);
+/* Clear Board */
+function clearBoard() {
+    for (let i = 0; i < 81; i++) {
+        document.getElementById((i + 1).toString()).value = '';
+        clearInterval(id);
+        window.location.reload();
+    }
 }

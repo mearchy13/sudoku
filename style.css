@@ -72,8 +72,8 @@ html {
     border: solid black 4px;
     display: flex;
     flex-direction: row;
-    margin-left: 30%;
-    margin-top: -1%;
+    margin-left: 40%;
+    margin-top: 2%;
 }
 
 .cell {
@@ -113,24 +113,23 @@ button {
 
 #start {
     top: 26%;
-    left: 5%;
+    left: 30%;
 }
 
-
-/* #replay{
-    top: 45%;
-    left: 5%;
-} */
+#clearBoard {
+    top: 33%;
+    left: 30%;
+}
 
 #answer {
-    top: 65%;
-    left: 5%;
+    top: 40%;
+    left: 30%;
 }
 
 #game_type {
     position: absolute;
     top: 24%;
-    left: 75%;
+    left: 60%;
 }
 
 .label {
@@ -251,7 +250,7 @@ button {
 #numpad-container {
     margin: 50px auto;
     width: 250px;
-    float: right;
+    float: center;
 }
 
 #numpad li {
@@ -268,11 +267,9 @@ button {
     border-radius: 5px;
 }
 
-
-/* .centeredlogo{
-
+.centeredlogo {
     display: block;
     width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-} */
+    margin-left: 42%;
+    margin-top: 1%;
+}
