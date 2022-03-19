@@ -49,6 +49,7 @@ hard = ['16578943229751834697382165484731259646372915828467593192354617885136429
 ];
 
 function start() {
+    clearBoard()
     for (let i = 0; i < 6; i++) {
         document.getElementsByClassName("box")[i].setAttribute("onclick", "return false;");
     }
@@ -102,7 +103,7 @@ var id = setInterval(() => {
                     if (i == 80 && document.getElementById((81).toString()).value != '') {
                         alert("You win! Congratulations");
                         clearInterval(id);
-                        window.location.reload();
+                        //window.location.reload();
                     } else {
                         alert("You chose the wrong number.");
                     }
@@ -116,7 +117,7 @@ var id = setInterval(() => {
                     if (i == 80 && document.getElementById((81).toString()).value != '') {
                         alert("You win! Congratulations");
                         clearInterval(id);
-                        window.location.reload();
+                        //window.location.reload();
                     } else {
                         alert("You chose the wrong number.");
                     }
@@ -130,7 +131,7 @@ var id = setInterval(() => {
                     if (i == 80 && document.getElementById((81).toString()).value != '') {
                         alert("You win! Congratulations");
                         clearInterval(id);
-                        window.location.reload();
+                        //window.location.reload();
                     } else {
                         alert("You chose the wrong number.");
                     }
@@ -163,7 +164,8 @@ function answer() {
 function clearBoard() {
     for (let i = 0; i < 81; i++) {
         document.getElementById((i + 1).toString()).value = '';
+        document.getElementById((i + 1).toString()).readOnly = false;
         clearInterval(id);
-        window.location.reload();
+        //window.location.reload();
     }
 }

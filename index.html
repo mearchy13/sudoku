@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
 </head>
 <header class="site-header">
     <!--NAV BAR/MENU-->
-    <seciton class="content-wrapper">
+    <div class="content-wrapper">
         <nav id="site-navigation" class="site-navigation">
             <div class="site-navigation-wrapper">
                 <div class="site-navigation-item">
@@ -27,7 +27,7 @@
                                 <span class="checkbox-on">ON</span>
                             </div>"
                         </div>
-                    </div>  
+                    </div>
                     <!-- <div class="theme-switch"><span><strong>LIGHTS</strong></span>
                         <input type="checkbox" id="switch" class="checkbox" />
                         <label for="switch" class="toggle">
@@ -38,160 +38,79 @@
             </div>
         </nav>
         <br>
-        <img src="mpslogo.png" alt="Sudoku logo" />
-    </seciton>
+        <div class="centeredlogo">
+            <img src="mpslogo.png" alt="Sudoku logo" />
+        </div>
+    </div>
 
-    <!-- <h1 class="title">UNT SUDOKU</h1> -->
-    <!-- <nav class="site-nav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="rules.html">Rules & Strategies</a></li>
-            <li><label class="switch"><input type ="checkbox"><span class="slider round"></span></label></li>
-        </ul>
-    </nav> -->
 </header>
 
 <body>
+
     <!--Difficulty-->
-    <div id="diff">
-        <button id="diff-easy" name="diff" type="button">Easy</button>
-        <button id="diff-med" name="diff" type="button">Medium</button>
-        <button id="diff-hard" name="diff" type="button">Hard</button>
-    </div>
-    <br>
-    <button id="new-game-button" type="button" class="button new-game-button">New Game</button>
-    <section class="sudoku-wrapper"></section>
-        <table class="sudoku">
-        <tbody>
-        <tr class="1">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-            <tr class="2">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        <tr class="3 thick_bottom">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        <tr class="4">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        <tr class="5">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        <tr class="6 thick_bottom">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        <tr class="7">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        <tr class="8">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        <tr class="9">
-            <td class="1"><input type="text" maxlength="1" /></td>
-            <td class="2"><input type="text" maxlength="1" /></td>
-            <td class="3 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="4"><input type="text" maxlength="1" /></td>
-            <td class="5"><input type="text" maxlength="1" /></td>
-            <td class="6 thick_right"><input type="text" maxlength="1" /></td>
-            <td class="7"><input type="text" maxlength="1" /></td>
-            <td class="8"><input type="text" maxlength="1" /></td>
-            <td class="9"><input type="text" maxlength="1" /></td>
-        </tr>
-        </tbody>
-    </table>
-</section>
- 
-<div id="timer-wrapper" class="timer-wrapper">TIMER
-    <span id="timer" class="timer"></span>
-    <div class="timer-pause">
-        <div class="icon-pause"></div>
-        <div class="icon-play"></div>
-    </div>
-</div>
+    <!-- <div id="start-menu">
+        <button type="button" id="start" onclick="start()">New Game</button>
+        <button type="button" id="answer" onclick="answer()">Answer</button>
+        <button type="button" id="clearBoard" onclick="clearBoard()">Clear</button>
+    </div> -->
 
-<section id="numpad-container">
-    <ul id="numpad">
-        <li class="number">1</li>
-        <li class="number">2</li>
-        <li class="number">3</li>
-        <li class="number">4</li>
-        <li class="number">5</li>
-        <li class="number">6</li>
-        <li class="number">7</li>
-        <li class="number">8</li>
-        <li class="number">9</li>
-    </ul>
+
+    <div id="main">
+        <!--Difficulty-->
+        <div id="start-menu">
+            <div class="start-menu-item"><button type="button" id="start" onclick="start()">New Game</button></div>
+            <div class="start-menu-item"> <button type="button" id="answer" onclick="answer()">Answer</button></div>
+            <div class="start-menu-item"> <button type="button" id="clearBoard" onclick="clearBoard()">Clear</button></div>
+        </div>
+        <div id="board">
+            <div id="col1">
+                <div id="box1" class="box"></div>
+                <div id="box2" class="box"></div>
+                <div id="box3" class="box"></div>
+            </div>
+            <div id="col2">
+                <div id="box4" class="box"></div>
+                <div id="box5" class="box"></div>
+                <div id="box6" class="box"></div>
+            </div>
+            <div id="col3">
+                <div id="box7" class="box"></div>
+                <div id="box8" class="box"></div>
+                <div id="box9" class="box"></div>
+            </div>
+        </div>
+
+        <div id="game_type">
+            <h3>Choose Difficulty:</h3>
+            <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
+            <label><input type="radio" id="medium" class="label" name="diff_level" checked> Medium</label>
+            <label><input type="radio" id="hard" class="label" name="diff_level" checked> Hard</label>
+        </div>
+
+        <div id="numpad-container">
+            <ul id="numpad">
+                <li class="number">1</li>
+                <li class="number">2</li>
+                <li class="number">3</li>
+                <li class="number">4</li>
+                <li class="number">5</li>
+                <li class="number">6</li>
+                <li class="number">7</li>
+                <li class="number">8</li>
+                <li class="number">9</li>
+            </ul>
+        </div>
     </div>
-</section>
+
+    <div id="timer-wrapper" class="timer-wrapper">
+        <span id="timer" class="timer"></span>
+        <div class="timer-pause">
+            <div class="icon-pause"></div>
+            <div class="icon-play"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
-
-<footer>
-
-</footer>
 
 </html>
