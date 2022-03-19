@@ -39,6 +39,7 @@ html {
     display: flex;
     text-align: center;
     text-decoration: none;
+    padding: 4px;
 }
 
 .site-menu li:hover {
@@ -67,12 +68,19 @@ html {
 }
 
 #main {
+    height: auto;
+    width: auto;
+    display: flex;
+    position: relative;
+}
+
+#board {
     height: 480px;
     width: 480px;
     border: solid black 4px;
     display: flex;
     flex-direction: row;
-    margin-left: 40%;
+    margin-left: 35%;
     margin-top: 2%;
 }
 
@@ -111,7 +119,18 @@ button {
     cursor: pointer;
 }
 
-#start {
+#start-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.start-menu-item {
+    position: relative;
+}
+
+
+/* #start {
     top: 26%;
     left: 30%;
 }
@@ -124,12 +143,13 @@ button {
 #answer {
     top: 40%;
     left: 30%;
-}
+} */
 
 #game_type {
-    position: absolute;
-    top: 24%;
-    left: 60%;
+    float: right;
+    padding: 15px;
+    /* top: 24%;
+    left: 60%; */
 }
 
 .label {
@@ -250,7 +270,10 @@ button {
 #numpad-container {
     margin: 50px auto;
     width: 250px;
-    float: center;
+    position: absolute;
+    flex-wrap: wrap;
+    right: 50px;
+    top: 50px
 }
 
 #numpad li {
