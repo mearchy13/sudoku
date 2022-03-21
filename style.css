@@ -1,3 +1,5 @@
+/*in progress*/
+
 a {
     color: black;
 }
@@ -132,10 +134,12 @@ button {
     top: 26%;
     left: 30%;
 }
+
 #clearBoard {
     top: 33%;
     left: 30%;
 }
+
 #answer {
     top: 40%;
     left: 30%;
