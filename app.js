@@ -181,3 +181,8 @@ function clearBoard() {
         //window.location.reload();
     }
 }
+
+/* How to Play */
+function help() {
+    window.open("https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/", "_blank");
+}
