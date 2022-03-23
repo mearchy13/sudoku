@@ -289,7 +289,27 @@ button {
     border: 1px solid #f9f9f9;
     border-radius: 5px;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
+/*numpad hover change*/
+#numpad li::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    background: rgb(216, 216, 233);
+    z-index: -1;
+    transition: transform 0.1s;
+}
+
+#numpad li:hover::after{
+    transform: scaleY(1);
+} 
 
 .centeredlogo {
     display: block;
