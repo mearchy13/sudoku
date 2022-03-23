@@ -25,7 +25,7 @@ html {
 }
 
 .site-navigation {
-    background: #4fb5ff;
+    background: #5677CE;
     overflow: hidden;
     position: absolute;
     left:0;
@@ -48,7 +48,7 @@ html {
 }
 
 .site-menu li:hover {
-    background-color: #8aceff;
+    background-color: #5677CE;
 }
 
 .theme-wrapper {
@@ -85,7 +85,7 @@ html {
     border: solid black 4px;
     display: flex;
     flex-direction: row;
-    margin-left: 35%;
+    margin-left: 32%;
     margin-top: 2%;
 }
 
@@ -115,12 +115,10 @@ button {
     height: 70px;
     width: 200px;
     font-size: x-large;
-    font-weight: bold;
-    background-color: blue;
-    border: solid 4px black;
+    background-color: #5677CE;
+    border: solid 4px #5677CE;
     border-radius: 30px;
-    color: white;
-    position: absolute;
+    color: black;
     cursor: pointer;
 }
 
@@ -134,27 +132,13 @@ button {
     position: relative;
 }
 
-
-/* #start {
-    top: 26%;
-    left: 30%;
+button.landing {
+    margin-top: 10px;
 }
-
-#clearBoard {
-    top: 33%;
-    left: 30%;
-}
-
-#answer {
-    top: 40%;
-    left: 30%;
-} */
 
 #game_type {
-    float: right;
     padding: 15px;
-    /* top: 24%;
-    left: 60%; */
+    float: right;
 }
 
 .label {
@@ -290,7 +274,7 @@ button {
     font-size: 24px;
     line-height: 60px;
     text-align: center;
-    background: #4287f5;
+    background: #5677CE;
     border: 1px solid #f9f9f9;
     border-radius: 5px;
     cursor: pointer;
@@ -299,6 +283,13 @@ button {
 .centeredlogo {
     display: block;
     width: 60%;
-    margin-left: 41%;
+    margin-left: 43%;
+    margin-top: 3%;
+}
+
+.centeredbiglogo {
+    display: block;
+    width: 60%;
+    margin-left: 38%;
     margin-top: 3%;
 }
