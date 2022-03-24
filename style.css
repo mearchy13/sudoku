@@ -84,9 +84,9 @@ html {
     width: 480px;
     border: solid black 4px;
     display: flex;
-    flex-direction: row;
-    margin-left: 32%;
-    margin-top: 2%;
+    position: absolute;
+    left: 1000px;
+    top: 200px;
 }
 
 .cell {
@@ -123,22 +123,17 @@ button {
 }
 
 #start-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.start-menu-item {
-    position: relative;
-}
-
-button.landing {
-    margin-top: 10px;
+    display: block;
+    position: absolute;
+    left: 750px;
+    top: 350px;
 }
 
 #game_type {
     padding: 15px;
-    float: right;
+    position: absolute;
+    left: 750px;
+    top: 170px;
 }
 
 .label {
@@ -261,8 +256,8 @@ button.landing {
     width: 250px;
     position: absolute;
     flex-wrap: wrap;
-    right: 50px;
-    top: 50px
+    right: 805px;
+    top: 320px;
 }
 
 #numpad li {
@@ -280,16 +275,29 @@ button.landing {
     cursor: pointer;
 }
 
+/* .centeredlogo {
+   position: absolute;
+   right:700px;
+   top: 100px;
+} */ 
+
 .centeredlogo {
     display: block;
     width: 60%;
-    margin-left: 43%;
-    margin-top: 3%;
+    margin-left: 42%;
+    margin-top: 4%;
 }
 
 .centeredbiglogo {
     display: block;
     width: 60%;
-    margin-left: 38%;
-    margin-top: 3%;
+    margin-left: 37%;
+    margin-top: 8%;
+}
+
+#landing-page {
+    display: block;
+    position: absolute;
+    left: 1150px;
+    top: 550px;
 }
