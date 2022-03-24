@@ -46,23 +46,21 @@
 </header>
 
 <body>
-
-    <!--Difficulty-->
-    <!-- <div id="start-menu">
-        <button type="button" id="start" onclick="start()">New Game</button>
-        <button type="button" id="answer" onclick="answer()">Answer</button>
-        <button type="button" id="clearBoard" onclick="clearBoard()">Clear</button>
-    </div> -->
-
-
-    <div id="main">
+    <div class="main-container" id="main">
         <!--Difficulty-->
-        <div id="start-menu">
+        <div class="start-game-menu" id="start-menu">
+            <div class="diff" id="game_type">
+                <h3>Choose Difficulty:</h3>
+                <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
+                <label><input type="radio" id="medium" class="label" name="diff_level" checked> Medium</label>
+                <label><input type="radio" id="hard" class="label" name="diff_level" checked> Hard</label>
+            </div>
             <div class="start-menu-item"><button type="button" id="start" onclick="start()">New Game</button></div>
             <div class="start-menu-item"> <button type="button" id="answer" onclick="answer()">Answer</button></div>
             <div class="start-menu-item"> <button type="button" id="clearBoard" onclick="clearBoard()">Clear</button></div>
         </div>
-        <div id="board">
+
+        <div class="game-board" id="board">
             <div id="col1">
                 <div id="box1" class="box"></div>
                 <div id="box2" class="box"></div>
@@ -80,15 +78,8 @@
             </div>
         </div>
 
-        <div id="game_type">
-            <h3>Choose Difficulty:</h3>
-            <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
-            <label><input type="radio" id="medium" class="label" name="diff_level" checked> Medium</label>
-            <label><input type="radio" id="hard" class="label" name="diff_level" checked> Hard</label>
-        </div>
-
-        <div id="numpad-container">
-            <ul id="numpad">
+        <div class="numpad-container" id="numpad-container">
+            <ul class="numpad" id="numpad">
                 <li class="number">1</li>
                 <li class="number">2</li>
                 <li class="number">3</li>

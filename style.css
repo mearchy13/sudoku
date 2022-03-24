@@ -67,21 +67,26 @@ html {
     grid-template-columns: auto auto auto;
 }
 
-#main {
+.main-container {
     height: auto;
     width: auto;
     display: flex;
+    flex-direction: row;
     position: relative;
 }
 
-#board {
+.game-board {
     height: 480px;
     width: 480px;
-    border: solid black 4px;
+    border: solid black 5px;
     display: flex;
-    flex-direction: row;
-    margin-left: 35%;
-    margin-top: 2%;
+    /* flex-direction: row; */
+    /* margin-left: 35%;
+    margin-top: 2%; */
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .cell {
@@ -119,7 +124,7 @@ button {
     cursor: pointer;
 }
 
-#start-menu {
+.start-game-menu {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -155,6 +160,31 @@ button {
 .label {
     height: 15px;
     width: 15px;
+    cursor: pointer;
+}
+
+#numpad-container {
+    width: auto;
+    height: auto;
+}
+
+.numpad {
+    width: 336px;
+}
+
+#numpad li {
+    float: left;
+    list-style: none;
+    margin: 10px 5px 10px 5px;
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 100px;
+    text-align: center;
+    background: #4287f5;
+    border: 1px solid #f9f9f9;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -265,30 +295,6 @@ button {
 .checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-on {
     display: block;
     opacity: 1;
-}
-
-#numpad-container {
-    margin: 50px auto;
-    width: 250px;
-    position: absolute;
-    flex-wrap: wrap;
-    right: 50px;
-    top: 50px
-}
-
-#numpad li {
-    float: left;
-    list-style: none;
-    margin: 0 5px 5px 0;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    line-height: 60px;
-    text-align: center;
-    background: #4287f5;
-    border: 1px solid #f9f9f9;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .centeredlogo {
