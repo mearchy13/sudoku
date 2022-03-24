@@ -14,12 +14,11 @@
             <div class="site-navigation-wrapper">
                 <div class="site-navigation-item">
                     <ul class="site-menu">
-                        <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
-                        <li class="site-menu-home"><a href="home.html"><strong>Play</strong></a></li>
-                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
+                        <li class="site-menu-home"><a href="index.html"><strong>HOME</strong></a></li>
+                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>RULES & STRATEGIES</strong></a></li>
                     </ul>
                     <div class="theme-wrapper">
-                        <span class="theme">Lights</span>
+                        <span class="theme"><strong>LIGHTS</strong></span>
                         <div class="checkbox-switch">
                             <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
                             <div class="checkbox-animate">
@@ -40,32 +39,15 @@
 </header>
 
 <body>
-    <h1 style="color:black;font-size:60px;">Rules:</h1> <br>
-    <h1 style="color:#5677CE;font-size:50px;">Rule 1:</h1>
-    <p style="color:black;font-size:25px;">Each row must contain the numbers from 1 to 9, without repetitions</p>
-    <h1 style="color:#5677CE;font-size:50px;">Rule 2:</h1>
-    <p style="color:black;font-size:25px;">Each column must contain the numbers from 1 to 9, without repetitions</p>
-    <h1 style="color:#5677CE;font-size:50px;">Rule 3:</h1>
-    <p style="color:black;font-size:25px;">The digits can only occur once per block (nonet)</p>
-    <h1 style="color:#5677CE;font-size:50px;">Rule 4:</h1>
-    <p style="color:black;font-size:25px;">The sum of every single row, column and nonet must equal 45</p><br><br><br>
-    <button class="landing" onclick="help()"><strong>Official Rules</strong></button>
-
-    <div id = "strategy-text">
-        <h1 style="color:black;font-size:60px;">Strategy:</h1> <br>
-        <p style="color:black;font-size:25px;">The most basic strategy to solve a Sudoku puzzle is to first write down,<br>
-                                                 in each empty cell, all possible entries that will not contradict the One Rule<br>
-                                                 with respect to the given cells. If a cell ends up having only one possibly entry, it<br>
-                                                is a "forced" entry that you should fill in.</p><br><br><br>
-
-        <p style="color:black;font-size:25px;">Another way to proceed is to pick a number and a row, column, or block. <br>
-                                                 Note all the cells in the row, column, or block in which the number can be placed<br>
-                                                 without violating the One Rule. If the digit can only be placed in one cell in the <br>
-                                                 neighborhood, you should fill that cell in. Once you've done this, the chosen number <br>
-                                                 can be eliminated from being a possibility for any other cell in the neighborhood. <br> <br> <br>
-
-         <p style="color:#5677CE;font-size:23px;">                          -Cornell</p>                                          
-    </div>
-    <script src="app.js"></script>
+    <h1 style="color:blue;font-size:40px;">Rules:</h1> <br>
+    <h1 style="color:red;font-size:32px;">Rule 1:</h1>
+    <p style="color:blue;font-size:18px;">Each row must contain the numbers from 1 to 9, without repetitions</p>
+    <h1 style="color:red;font-size:32px;">Rule 2:</h1>
+    <p style="color:blue;font-size:18px;">Each column must contain the numbers from 1 to 9, without repetitions</p>
+    <h1 style="color:red;font-size:32px;">Rule 3:</h1>
+    <p style="color:blue;font-size:18px;">The digits can only occur once per block (nonet)</p>
+    <h1 style="color:red;font-size:32px;">Rule 4:</h1>
+    <p style="color:blue;font-size:18px;">The sum of every single row, column and nonet must equal 45</p>
+</section>
 </body>
 </html>
