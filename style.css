@@ -85,13 +85,12 @@ html {
 }
 
 .game-board {
-    height: 480px;
-    width: 480px;
-    border: solid black 5px;
+    height: 250px;
+    width: 250px;
     display: flex;
     position: absolute;
-    left: 1000px;
-    top: 200px;
+    left: 450px;
+    top: 30px;
 }
 
 .cell {
@@ -117,8 +116,8 @@ input {
 }
 
 button {
-    height: 70px;
-    width: 200px;
+    height: 60px;
+    width: 190px;
     font-size: x-large;
     font-weight: bold;
     background-color: #5677CE;
@@ -131,15 +130,15 @@ button {
 #start-menu {
     display: block;
     position: absolute;
-    left: 750px;
-    top: 350px;
+    left: 200px;
+    top: 130px;
 }
 
 #game_type {
     padding: 15px;
     position: absolute;
-    left: 750px;
-    top: 170px;
+    left: 185px;
+    top: 12px;
 }
 
 .label {
@@ -147,14 +146,14 @@ button {
     width: 15px;
     cursor: pointer;
 }
-
+/* 
 #numpad-container {
     width: auto;
     height: auto;
     position: absolute;
     flex-wrap: wrap;
-    right: 650px;
-    top: 250px;
+    right: 250px;
+    top: 150px;
 }
 
 .numpad {
@@ -175,7 +174,7 @@ button {
     border: solid 1px black;
     border-radius: 10px;
     cursor: pointer;
-}
+} */ 
 
 
 /*Toggle switch for theme*/
@@ -289,22 +288,29 @@ button {
 .centeredlogo {
     display: block;
     width: 60%;
-    margin-left: 42%;
+    margin-left: 43%;
+    margin-top: 5%;
+}
+
+.centeredlogo-landing {
+    display: block;
+    width: 60%;
+    margin-left: 35%;
     margin-top: 4%;
 }
 
-.centeredbiglogo {
+/*.centeredbiglogo {
     display: block;
-    width: 60%;
-    margin-left: 37%;
+    width: 40%;
+    margin-left: 33%;
     margin-top: 8%;
-}
+} */
 
 #landing-page {
     display: block;
     position: absolute;
-    left: 1150px;
-    top: 550px;
+    left: 500px;
+    top: 285px;
 }
 
 #strategy-text {
