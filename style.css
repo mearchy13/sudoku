@@ -25,12 +25,17 @@ html {
 }
 
 .site-navigation {
-    background: #4fb5ff;
+    background: #5677CE;
     overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
 }
 
 .site-navigation-item {
-    font-size: 20px;
+    font-size: 23px;
+    font-family: Helvetica, Verdana, sans-serif;
     opacity: 1;
 }
 
@@ -39,11 +44,11 @@ html {
     display: flex;
     text-align: center;
     text-decoration: none;
-    padding: 4px;
+    padding:0px 15px;
 }
 
 .site-menu li:hover {
-    background-color: #8aceff;
+    background-color: #5677CE;
 }
 
 .theme-wrapper {
@@ -80,13 +85,9 @@ html {
     width: 480px;
     border: solid black 5px;
     display: flex;
-    /* flex-direction: row; */
-    /* margin-left: 35%;
-    margin-top: 2%; */
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    position: absolute;
+    left: 1000px;
+    top: 200px;
 }
 
 .cell {
@@ -116,45 +117,25 @@ button {
     width: 200px;
     font-size: x-large;
     font-weight: bold;
-    background-color: blue;
+    background-color: #5677CE;
     border: solid 4px black;
     border-radius: 30px;
-    color: white;
-    position: absolute;
+    color: black;
     cursor: pointer;
 }
 
-.start-game-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+#start-menu {
+    display: block;
+    position: absolute;
+    left: 750px;
+    top: 350px;
 }
-
-.start-menu-item {
-    position: relative;
-}
-
-
-/* #start {
-    top: 26%;
-    left: 30%;
-}
-
-#clearBoard {
-    top: 33%;
-    left: 30%;
-}
-
-#answer {
-    top: 40%;
-    left: 30%;
-} */
 
 #game_type {
-    float: right;
     padding: 15px;
-    /* top: 24%;
-    left: 60%; */
+    position: absolute;
+    left: 750px;
+    top: 170px;
 }
 
 .label {
@@ -166,6 +147,10 @@ button {
 #numpad-container {
     width: auto;
     height: auto;
+    position: absolute;
+    flex-wrap: wrap;
+    right: 650px;
+    top: 250px;
 }
 
 .numpad {
@@ -182,8 +167,8 @@ button {
     font-weight: bold;
     line-height: 100px;
     text-align: center;
-    background: #4287f5;
-    border: 1px solid #f9f9f9;
+    background: #5677CE;
+    border: solid 1px black;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -301,5 +286,36 @@ button {
     display: block;
     width: 60%;
     margin-left: 42%;
-    margin-top: 1%;
+    margin-top: 4%;
 }
+
+.centeredbiglogo {
+    display: block;
+    width: 60%;
+    margin-left: 37%;
+    margin-top: 8%;
+}
+
+#landing-page {
+    display: block;
+    position: absolute;
+    left: 1150px;
+    top: 550px;
+}
+
+#strategy-text {
+    position: absolute;
+    flex-wrap: wrap;
+    right: 85px;
+    top: 250px;
+}
+
+/* Copyright footer in progress 
+#footer {
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:30%;
+    background:#999;
+ } */ 
