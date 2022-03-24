@@ -16,6 +16,7 @@
                 <div class="site-navigation-item">
                     <ul class="site-menu">
                         <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
+                        <li class="site-menu-home"><a href="home.html"><strong>Play</strong></a></li>
                         <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
                     </ul>
                     <div class="theme-wrapper">
@@ -39,6 +40,13 @@
         </nav>
     </div>
 
+    <style>
+        .unite-header
+        {
+            border-bottom: 10px solid black !important;
+        }
+    </style>
+
 </header>
 
 <body>
@@ -46,16 +54,23 @@
     <div class="centeredlogo">
         <img src="mpslogo.png" alt="Sudoku logo" />
     </div>
-    
-    <div id="main">
-        <!--Difficulty-->
-        <div id="start-menu">
-            <div class="start-menu-item"><button type="button" id="start" onclick="start()"><strong>New Game</strong></button><br><br><br></div>
-            <div class="start-menu-item"> <button type="button" id="clearBoard" onclick="clearBoard()"><strong>Clear</strong></button><br><br><br></div>
-            <div class="start-menu-item"> <button type="button" id="answer" onclick="answer()"><strong>Answer</strong></button></div>
 
+    <div class="main-container" id="main">
+        <!--Difficulty-->
+        <div class="start-game-menu" id="start-menu">
+            <div class="start-menu-item"><button type="button" id="start" onclick="start()">New Game</button><br><br><br></div>
+            <div class="start-menu-item"> <button type="button" id="answer" onclick="answer()">Answer</button><br><br><br></div>
+            <div class="start-menu-item"> <button type="button" id="clearBoard" onclick="clearBoard()">Clear</button></div>
         </div>
-        <div id="board">
+
+        <div class="diff" id="game_type">
+            <h3>Choose Difficulty:</h3>
+            <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
+            <label><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
+            <label><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
+        </div>
+
+        <div class="game-board" id="board">
             <div id="col1">
                 <div id="box1" class="box"></div>
                 <div id="box2" class="box"></div>
@@ -73,24 +88,17 @@
             </div>
         </div>
 
-        <div id="game_type">
-            <h3>Choose Difficulty:</h3>
-            <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
-            <label><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
-            <label><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
-        </div>
-
-        <div id="numpad-container">
-            <ul id="numpad">
-                <li class="number"><strong>1</strong></li>
-                <li class="number"><strong>2</strong></li>
-                <li class="number"><strong>3</strong></li>
-                <li class="number"><strong>4</strong></li>
-                <li class="number"><strong>5</strong></li>
-                <li class="number"><strong>6</strong></li>
-                <li class="number"><strong>7</strong></li>
-                <li class="number"><strong>8</strong></li>
-                <li class="number"><strong>9</strong></li>
+        <div class="numpad-container" id="numpad-container">
+            <ul class="numpad" id="numpad">
+                <li class="number">1</li>
+                <li class="number">2</li>
+                <li class="number">3</li>
+                <li class="number">4</li>
+                <li class="number">5</li>
+                <li class="number">6</li>
+                <li class="number">7</li>
+                <li class="number">8</li>
+                <li class="number">9</li>
             </ul>
         </div>
     </div>
@@ -104,5 +112,7 @@
     </div>
 
     <script src="app.js"></script>
+
 </body>
+
 </html>
