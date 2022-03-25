@@ -25,12 +25,17 @@ html {
 }
 
 .site-navigation {
-    background: #4fb5ff;
+    background: #5677CE;
     overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
 }
 
 .site-navigation-item {
-    font-size: 20px;
+    font-size: 23px;
+    font-family: Helvetica, Verdana, sans-serif;
     opacity: 1;
 }
 
@@ -39,11 +44,11 @@ html {
     display: flex;
     text-align: center;
     text-decoration: none;
-    padding: 4px;
+    padding:0px 15px;
 }
 
 .site-menu li:hover {
-    background-color: #8aceff;
+    background-color: #5677CE;
 }
 
 .theme-wrapper {
@@ -51,6 +56,10 @@ html {
     display: flex;
     flex-direction: row;
     align-items: flex-start
+}
+
+.unite-header {
+            border-bottom: 10px solid black !important;
 }
 
 .theme {
@@ -67,21 +76,22 @@ html {
     grid-template-columns: auto auto auto;
 }
 
-#main {
+.main-container {
     height: auto;
     width: auto;
     display: flex;
+    flex-direction: row;
     position: relative;
 }
 
-#board {
+.game-board {
     height: 480px;
     width: 480px;
-    border: solid black 4px;
     display: flex;
-    flex-direction: row;
-    margin-left: 35%;
-    margin-top: 2%;
+    position: absolute;
+    left: 450px;
+    top: 100px;
+    border:solid black 4px;
 }
 
 .cell {
@@ -93,7 +103,6 @@ html {
     text-align: center;
     font-size: x-large;
     font-weight: bold;
-    caret-color: transparent;
 }
 
 input {
@@ -108,67 +117,29 @@ input {
 }
 
 button {
-    height: 70px;
-    width: 200px;
+    height: 45px;
+    width: 170px;
     font-size: x-large;
     font-weight: bold;
-    background-color: blue;
+    background-color: #5677CE;
     border: solid 4px black;
     border-radius: 30px;
-    color: white;
-    position: absolute;
+    color: black;
     cursor: pointer;
-    z-index: 1;
 }
 
 #start-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.start-menu-item {
-    position: relative;
-}
-button::after{
-    content: "";
+    display: block;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleY(0);
-    transform-origin: bottom center;
-    background: rgb(216, 216, 233);
-    z-index: -1;
-    transition: transform 0.1s;
+    left: 250px;
+    top: 270px;
 }
-
-button:hover::after{
-    transform: scaleY(1);
-    border-radius: 30px;
-} 
-
-/* #start {
-    top: 26%;
-    left: 30%;
-}
-
-#clearBoard {
-    top: 33%;
-    left: 30%;
-}
-
-#answer {
-    top: 40%;
-    left: 30%;
-} */
 
 #game_type {
-    float: right;
     padding: 15px;
-    /* top: 24%;
-    left: 60%; */
+    position: absolute;
+    left: 215px;
+    top: 120px;
 }
 
 .label {
@@ -176,6 +147,35 @@ button:hover::after{
     width: 15px;
     cursor: pointer;
 }
+
+#numpad-container {
+    width: auto;
+    height: auto;
+    position: absolute;
+    flex-wrap: wrap;
+    right: 80px;
+    top: 175px;
+}
+
+.numpad {
+    width: 230px;
+}
+
+#numpad li {
+    float: left;
+    list-style: none;
+    margin: 3px 1px 3px 1px;
+    width: 65px;
+    height: 80px;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 100px;
+    text-align: center;
+    background: #5677CE;
+    border: solid 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+} 
 
 
 /*Toggle switch for theme*/
@@ -286,53 +286,47 @@ button:hover::after{
     opacity: 1;
 }
 
-#numpad-container {
-    margin: 50px auto;
-    width: 250px;
-    position: absolute;
-    flex-wrap: wrap;
-    right: 50px;
-    top: 50px
-}
-
-#numpad li {
-    float: left;
-    list-style: none;
-    margin: 0 5px 5px 0;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    line-height: 60px;
-    text-align: center;
-    background: #4287f5;
-    border: 1px solid #f9f9f9;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
-}
-/*numpad hover change*/
-#numpad li::after{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleY(0);
-    transform-origin: bottom center;
-    background: rgb(216, 216, 233);
-    z-index: -1;
-    transition: transform 0.1s;
-}
-
-#numpad li:hover::after{
-    transform: scaleY(1);
-} 
-
 .centeredlogo {
     display: block;
     width: 60%;
-    margin-left: 42%;
-    margin-top: 1%;
+    margin-left: 35%;
+    margin-top: 4%;
 }
+
+.centeredlogo-landing {
+    display: block;
+    width: 60%;
+    margin-left: 35%;
+    margin-top: 4%;
+}
+
+/*.centeredbiglogo {
+    display: block;
+    width: 40%;
+    margin-left: 33%;
+    margin-top: 8%;
+} */
+
+#landing-page {
+    display: block;
+    position: absolute;
+    left: 500px;
+    top: 285px;
+}
+
+#strategy-text {
+    position: absolute;
+    flex-wrap: wrap;
+    right: 45px;
+    top: 75px;
+}
+
+/* Copyright footer in progress 
+#footer {
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:30%;
+    background:#999;
+ } */ 
