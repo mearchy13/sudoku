@@ -12,18 +12,18 @@ for (let i = 0; i < 9; i++) {
         "'class='input'></div><div class='cell'><input type='text' id='" + (count + 9) + "'class='input'></div>"
 }
 
-var level;
+var diff;
 var choice;
 
 /* Easy difficulty */
-easy_game = ['2-5---7--45---9----2-6-81----9---8567--------2418---2----43-7-1----1---85--6---7-8',
+easy_Start = ['2-5---7--45---9----2-6-81----9---8567--------2418---2----43-7-1----1---85--6---7-8',
     '----35-86-1-9-7-----269----54------------527-9--75----7-6---3-----2-----56---2-14',
     '3-549-6----396--81-5-2--1494-276-1-39---583-46-1549--7-6-1-824558-7-3-924---7-3-6',
     '47----3-------179--4-93--5----6---7-48---------2716-34-9----6----6--2381---54--1-',
     '-2--18573-31--5-96---16----5--4-26--97--86--------98--1-6--79--2-5---8144-9-7---1'
 ];
 
-easy = ['215986734452869371527648193379124856781543692418937265864357219693172485936521748',
+easy_Solution = ['215986734452869371527648193379124856781543692418937265864357219693172485936521748',
     '129735486213967854342691578543869127498315276981654632786421359675248193567832914',
     '315492678723964581857236149482765193916258374631549827967138245584713692429871356',
     '476285319523861794148932657123649578481397265952716834895137624976452381763548219',
@@ -67,24 +67,22 @@ function start() {
     }
     // if user selects easy difficulty
     if (document.getElementById("easy").checked) {
-        level = 'easy';
-        var easy_random = Math.floor(Math.random() * 5);
-        choice = easy_random;
+        diff = 'easy';
+        choice = Math.floor(Math.random() * 5);
         for (let i = 0; i < 81; i++) {
-            if (easy_game[easy_random][i] != '-') {
-                document.getElementById((i + 1).toString()).value = easy_game[easy_random][i];
+            if (easy_Start[choice][i] != '-') {
+                document.getElementById((i + 1).toString()).value = easy_Start[choice][i];
                 document.getElementById((i + 1).toString()).readOnly = true;
             }
         }
     }
     // if user selects medium difficulty
     if (document.getElementById("medium").checked) {
-        level = 'medium';
-        var medium_random = Math.floor(Math.random() * 5);
-        choice = medium_random;
+        diff = 'medium';
+        choice = Math.floor(Math.random() * 5);
         for (let i = 0; i < 81; i++) {
-            if (medium_game[medium_random][i] != '-') {
-                document.getElementById((i + 1).toString()).value = medium_game[medium_random][i];
+            if (medium_game[choice][i] != '-') {
+                document.getElementById((i + 1).toString()).value = medium_game[choice][i];
                 document.getElementById((i + 1).toString()).readOnly = true;
             }
         }
@@ -92,7 +90,7 @@ function start() {
 
     // if user selects hard difficulty
     if (document.getElementById("hard").checked) {
-        level = 'hard';
+        diff = 'hard';
         var hard_random = Math.floor(Math.random() * 5);
         choice = hard_random;
         for (let i = 0; i < 81; i++) {
@@ -108,9 +106,9 @@ function start() {
 /* Check Input & Check Answer */
 
 let id = setInterval(() => {
-    if (level == "easy") {
+    if (diff == "easy") {
         if (document.activeElement.className == "input") {
-            if ((document.getElementById(document.activeElement.id).value == easy[choice][document.activeElement.id - 1]) || (document.getElementById(document.activeElement.id).value == '')) {
+            if ((document.getElementById(document.activeElement.id).value == easy_Solution[choice][document.activeElement.id - 1]) || (document.getElementById(document.activeElement.id).value == '')) {
                 for (let i = 0; i < 81; i++) {
                     if (i == 80 && document.getElementById((81).toString()).value != '') {
                         alert("You win! Congratulations");
@@ -124,7 +122,7 @@ let id = setInterval(() => {
                 }
             }
         }
-    } else if (level == "medium") {
+    } else if (diff == "medium") {
         if (document.activeElement.className == "input") {
             if ((document.getElementById(document.activeElement.id).value == medium[choice][document.activeElement.id - 1]) || (document.getElementById(document.activeElement.id).value == '')) {
                 for (let i = 0; i < 81; i++) {
@@ -140,7 +138,7 @@ let id = setInterval(() => {
                 alert("You chose the wrong number.");
             }
         }
-    } else if (level == "hard") {
+    } else if (diff == "hard") {
         if (document.activeElement.className == "input") {
             if ((document.getElementById(document.activeElement.id).value == hard[choice][document.activeElement.id - 1]) || (document.getElementById(document.activeElement.id).value == '')) {
                 for (let i = 0; i < 81; i++) {
@@ -161,17 +159,17 @@ let id = setInterval(() => {
 
 /* Answer */
 function answer() {
-    if (level == "easy") {
+    if (diff == "easy") {
         for (let i = 0; i < 81; i++) {
-            document.getElementById((i + 1).toString()).value = easy[choice][i];
+            document.getElementById((i + 1).toString()).value = easy_Solution[choice][i];
         }
     }
-    if (level == "medium") {
+    if (diff == "medium") {
         for (let i = 0; i < 81; i++) {
             document.getElementById((i + 1).toString()).value = medium[choice][i];
         }
     }
-    if (level == "hard") {
+    if (diff == "hard") {
         for (let i = 0; i < 81; i++) {
             document.getElementById((i + 1).toString()).value = hard[choice][i];
         }
