@@ -1,10 +1,9 @@
-
 var numSelected = null;
 var tileSelected = null;
 
 var errors = 0;
 
-var board = [
+var easy_board = [
     "--74916-5",
     "2---6-3-9",
     "-----7-1-",
@@ -16,7 +15,7 @@ var board = [
     "81--45---"
 ]
 
-var solution = [
+var easy_solution = [
     "387491625",
     "241568379",
     "569327418",
@@ -49,8 +48,8 @@ function setGame() {
         for (let c = 0; c < 9; c++) {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
-            if (board[r][c] != "-") {
-                tile.innerText = board[r][c];
+            if (easy_board[r][c] != "-") {
+                tile.innerText = easy_board[r][c];
                 tile.classList.add("tile-start");
             }
             if (r == 2 || r == 5) {
@@ -85,7 +84,7 @@ function selectTile() {
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
 
-        if (solution[r][c] == numSelected.id) {
+        if (easy_solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
         }
         else {
@@ -94,4 +93,64 @@ function selectTile() {
             alert("This is an invalid placement. One error has been added to your total.");
         }
     }
+}
+/* Working on Buttons ~~ In Progress
+function start() {
+    clearBoard()
+    for (let i = 0; i < 6; i++) {
+        document.getElementsByClassName("box")[i].setAttribute("onclick", "return false;");
+    }
+    // if user selects easy difficulty
+    if (document.getElementById("easy").checked) {
+        level = 'easy';
+        var easy_random = Math.floor(Math.random() * 5);
+        choice = easy_random;
+        for (let i = 0; i < 81; i++) {
+            if (easy_game[easy_random][i] != '-') {
+                document.getElementById((i + 1).toString()).value = easy_game[easy_random][i];
+                document.getElementById((i + 1).toString()).readOnly = true;
+            }
+        }
+    }
+    // if user selects medium difficulty
+    if (document.getElementById("medium").checked) {
+        level = 'medium';
+        var medium_random = Math.floor(Math.random() * 5);
+        choice = medium_random;
+        for (let i = 0; i < 81; i++) {
+            if (medium_game[medium_random][i] != '-') {
+                document.getElementById((i + 1).toString()).value = medium_game[medium_random][i];
+                document.getElementById((i + 1).toString()).readOnly = true;
+            }
+        }
+    }
+
+    // if user selects hard difficulty
+    if (document.getElementById("hard").checked) {
+        level = 'hard';
+        var hard_random = Math.floor(Math.random() * 5);
+        choice = hard_random;
+        for (let i = 0; i < 81; i++) {
+            if (hard_game[hard_random][i] != '-') {
+                document.getElementById((i + 1).toString()).value = hard_game[hard_random][i];
+                document.getElementById((i + 1).toString()).readOnly = true;
+            }
+        }
+    }
+
+} */
+
+/* Clear Board */
+function clearBoard() {
+    for (let i = 0; i < 81; i++) {
+        document.getElementById((i + 1).toString()).value = '';
+        document.getElementById((i + 1).toString()).readOnly = false;
+        clearInterval(id);
+        //window.location.reload();
+    }
+}
+
+/* How to Play */
+function help() {
+    window.open("https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/", "_blank");
 }
