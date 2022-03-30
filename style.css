@@ -5,30 +5,32 @@ body {
     text-align: center;
 }
 
-hr {
-    width: 500px;
-}
-
 #errors {
-    color: coral;
+    color: red;
+    position: absolute;
+    flex-wrap: wrap;
+    right:150px;
+    top: 250px;
 }
 
 #board {
     width: 450px;
-    height: 450px;
+    height: 350px;
 
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 100px;
+    
 }
 
 .tile {
-    width: 48px; 
-    height: 48px;
-    border: 1px solid lightgray;
+    width: 44px; 
+    height: 44px;
+    border: 1px solid black;
 
     /* Text */
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -36,12 +38,13 @@ hr {
 }
 
 #digits {
-    width: 450px;
-    height: 50px;
+    width: 250px;
+    height: 40px;
 
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+    position: absolute;
+    right:130px;
+    top: 90px;
 }
 
 .number {
@@ -51,7 +54,7 @@ hr {
     margin: 2px;
 
     /* Text */
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -59,19 +62,19 @@ hr {
 }
 
 .number-selected {
-    background-color: gray;
+    background-color: #5677CE;
 }
 
 .tile-start {
-    background-color: whitesmoke;
+    background-color: #5677CE;
 }
 
 .horizontal-line {
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
 }
 
 .vertical-line {
-    border-right: 1px solid black;
+    border-right: 3px solid black;
 }
 a {
     color: black;
@@ -107,7 +110,7 @@ html {
 }
 
 .site-navigation-item {
-    font-size: 23px;
+    font-size: 18px;
     font-family: Helvetica, Verdana, sans-serif;
     opacity: 1;
 }
@@ -131,18 +134,14 @@ html {
     align-items: flex-start
 }
 
-.unite-header {
-            border-bottom: 10px solid black !important;
-}
-
 .theme {
     display: block;
     margin-right: 10px;
 }
 
 button {
-    height: 45px;
-    width: 170px;
+    height: 50px;
+    width: 200px;
     font-size: x-large;
     font-weight: bold;
     background-color: #5677CE;
@@ -155,14 +154,14 @@ button {
 #start-menu {
     display: block;
     position: absolute;
-    left: 250px;
+    left: 150px;
     top: 270px;
 }
 
 #game_type {
     padding: 15px;
     position: absolute;
-    left: 215px;
+    left: 110px;
     top: 120px;
 }
 
@@ -287,25 +286,18 @@ button {
     margin-top: 4%;
 }
 
-.centeredlogo-landing {
-    display: block;
-    width: 60%;
-    margin-left: 35%;
-    margin-top: 4%;
-}
-
-/*.centeredbiglogo {
+.centeredbiglogo {
     display: block;
     width: 40%;
-    margin-left: 33%;
+    margin-left: 23%;
     margin-top: 8%;
-} */
+}
 
 #landing-page {
     display: block;
     position: absolute;
     left: 500px;
-    top: 285px;
+    top: 350px;
 }
 
 #strategy-text {
@@ -315,12 +307,9 @@ button {
     top: 75px;
 }
 
-/* Copyright footer in progress 
-#footer {
-    position:absolute;
-    left:0px;
-    bottom:0px;
-    height:30px;
-    width:30%;
-    background:#999;
- } */ 
+#rules-text {
+    position: absolute;
+    flex-wrap: wrap;
+    left:10px;
+    top: 75px;
+}
