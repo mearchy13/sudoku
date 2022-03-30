@@ -1,53 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width initial-scale=1.0 user-scalable=no">
     <title>Sudoku</title>
+
     <link rel="stylesheet" href="style.css">
-</head>
+    <script src="app.js"></script>
+</head>     
 <header class="site-header">
-    <!--NAV BAR/MENU-->
-    <div class="content-wrapper">
-        <nav id="site-navigation" class="site-navigation">
-            <div class="site-navigation-wrapper">
-                <div class="site-navigation-item">
-                    <ul class="site-menu">
-                        <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
-                        <li class="site-menu-home"><a href="home.html"><strong>Play</strong></a></li>
-                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
-                    </ul>
-                    <div class="theme-wrapper">
-                        <span class="theme"><strong>Lights</strong></span>
-                        <div class="checkbox-switch">
-                            <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
-                            <div class="checkbox-animate">
-                                <span class="checkbox-off">OFF</span>
-                                <span class="checkbox-on">ON</span>
-                            </div>"
+        <!--NAV BAR/MENU-->
+        <div class="content-wrapper">
+            <nav id="site-navigation" class="site-navigation">
+                <div class="site-navigation-wrapper">
+                    <div class="site-navigation-item">
+                        <ul class="site-menu">
+                            <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
+                            <li class="site-menu-home"><a href="home.html"><strong>Play</strong></a></li>
+                            <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
+                        </ul>
+                        <div class="theme-wrapper">
+                            <span class="theme"><strong>Lights</strong></span>
+                            <div class="checkbox-switch">
+                                <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
+                                <div class="checkbox-animate">
+                                    <span class="checkbox-off">OFF</span>
+                                    <span class="checkbox-on">ON</span>
+                                </div>"
+                            </div>
                         </div>
                     </div>
-                    <!-- <div class="theme-switch"><span><strong>LIGHTS</strong></span>
-                        <input type="checkbox" id="switch" class="checkbox" />
-                        <label for="switch" class="toggle">
-                            <p id="status">OFF  ON</p>
-                        </label>
-                    </div> -->
                 </div>
-            </div>
-        </nav>
-    </div>
-
-    <style>
-        .unite-header
-        {
-            border-bottom: 10px solid black !important;
-        }
-    </style>
-
-</header>
+            </nav>
+        </div>
+        
+    <h2 id="errors">0</h2>
 
 <body>
 
@@ -58,57 +44,21 @@
             <div class="start-menu-item"> <button type="button" id="answer" onclick="answer()">Answer</button><br><br><br></div>
             <div class="start-menu-item"> <button type="button" id="clearBoard" onclick="clearBoard()">Clear</button></div>
         </div>
-
+        
         <div class="diff" id="game_type">
             <h3>Choose Difficulty:</h3>
             <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
-            <label><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
-            <label><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
+             <label><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
+             <label><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
+         </div>
+
+        <!-- 9x9 board -->
+        <div id="board"></div>
+        <br>
+        <div id="digits">
         </div>
 
-        <div class="game-board" id="board">
-            <div id="col1">
-                <div id="box1" class="box"></div>
-                <div id="box2" class="box"></div>
-                <div id="box3" class="box"></div>
-            </div>
-            <div id="col2">
-                <div id="box4" class="box"></div>
-                <div id="box5" class="box"></div>
-                <div id="box6" class="box"></div>
-            </div>
-            <div id="col3">
-                <div id="box7" class="box"></div>
-                <div id="box8" class="box"></div>
-                <div id="box9" class="box"></div>
-            </div>
-        </div>
+    </body>
 
-        <div class="numpad-container" id="numpad-container">
-            <ul class="numpad" id="numpad">
-                <li class="number">1</li>
-                <li class="number">2</li>
-                <li class="number">3</li>
-                <li class="number">4</li>
-                <li class="number">5</li>
-                <li class="number">6</li>
-                <li class="number">7</li>
-                <li class="number">8</li>
-                <li class="number">9</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="timer-wrapper" class="timer-wrapper">
-        <span id="timer" class="timer"></span>
-        <div class="timer-pause">
-            <div class="icon-pause"></div>
-            <div class="icon-play"></div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-
-</body>
 
 </html>
