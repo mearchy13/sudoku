@@ -1,315 +1,75 @@
-/*in progress*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header class="site-header">
+    <!--NAV BAR/MENU-->
+    <section class="content-wrapper">
+        <nav id="site-navigation" class="site-navigation">
+            <div class="site-navigation-wrapper">
+                <div class="site-navigation-item">
+                    <ul class="site-menu">
+                        <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
+                        <li class="site-menu-home"><a href="home.html"><strong>Play</strong></a></li>
+                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
+                    </ul>
+                    <div class="theme-wrapper">
+                        <span class="theme">Lights</span>
+                        <div class="checkbox-switch">
+                            <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
+                            <div class="checkbox-animate">
+                                <span class="checkbox-off">OFF</span>
+                                <span class="checkbox-on">ON</span>
+                            </div>"
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </nav>
+        <br>
+        <!-- <div class="centeredlogo">
+        <img src="mpslogo.png" alt="Sudoku logo" />
+        </div> -->
+    </section>
+</header>
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-}
+<body> <br><br>
+    <div id = "rules-text">
+    <h1 style="color:black;font-size:35px;">Rules:</h1> <br>
+    <h1 style="color:#5677CE;font-size:25px;">Rule 1:</h1>
+    <p style="color:black;font-size:15px;">Each row must contain the numbers from 1 to 9, without repetitions</p>
+    <h1 style="color:#5677CE;font-size:25px;">Rule 2:</h1>
+    <p style="color:black;font-size:15px;">Each column must contain the numbers from 1 to 9, without repetitions</p>
+    <h1 style="color:#5677CE;font-size:25px;">Rule 3:</h1>
+    <p style="color:black;font-size:15px;">The digits can only occur once per block (nonet)</p>
+    <h1 style="color:#5677CE;font-size:25px;">Rule 4:</h1>
+    <p style="color:black;font-size:15px;">The sum of every single row, column and nonet must equal 45</p><br>
+    <button class="landing" onclick="help()"><strong>Official Rules</strong></button>
+    </div>
 
-#errors {
-    color: red;
-    position: absolute;
-    flex-wrap: wrap;
-    right:150px;
-    top: 250px;
-}
+    <div id = "strategy-text">
+        <h1 style="color:black;font-size:35px;">Strategy:</h1> <br>
+        <p style="color:black;font-size:15px;">The most basic strategy to solve a Sudoku puzzle is to first write down,<br>
+                                                 in each empty cell, all possible entries that will not contradict the One Rule<br>
+                                                 with respect to the given cells. If a cell ends up having only one possibly entry, it<br>
+                                                is a "forced" entry that you should fill in.</p><br><br><br>
 
-#board {
-    width: 450px;
-    height: 350px;
+        <p style="color:black;font-size:15px;">Another way to proceed is to pick a number and a row, column, or block. <br>
+                                                 Note all the cells in the row, column, or block in which the number can be placed<br>
+                                                 without violating the One Rule. If the digit can only be placed in one cell in the <br>
+                                                 neighborhood, you should fill that cell in. Once you've done this, the chosen number <br>
+                                                 can be eliminated from being a possibility for any other cell in the neighborhood. <br> <br> <br>
 
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 100px;
-    
-}
+         <p style="color:#5677CE;font-size:13px;">                          -Cornell</p>                                          
+    </div>
 
-.tile {
-    width: 44px; 
-    height: 44px;
-    border: 1px solid black;
+    <script src="app.js"></script>
 
-    /* Text */
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#digits {
-    width: 250px;
-    height: 40px;
-
-    margin: 0 auto;
-    position: absolute;
-    right:130px;
-    top: 90px;
-}
-
-.number {
-    width: 44px; 
-    height: 44px;
-    border: 1px solid black;
-    margin: 2px;
-
-    /* Text */
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.number-selected {
-    background-color: #5677CE;
-}
-
-.tile-start {
-    background-color: #5677CE;
-}
-
-.horizontal-line {
-    border-bottom: 3px solid black;
-}
-
-.vertical-line {
-    border-right: 3px solid black;
-}
-a {
-    color: black;
-}
-
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none;
-}
-
-html {
-    background-color: #e3f2fc;
-}
-
-.site-navigation {
-    background: #5677CE;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-}
-
-.site-navigation-item {
-    font-size: 18px;
-    font-family: Helvetica, Verdana, sans-serif;
-    opacity: 1;
-}
-
-.site-menu li {
-    float: left;
-    display: flex;
-    text-align: center;
-    text-decoration: none;
-    padding:0px 15px;
-}
-
-.site-menu li:hover {
-    background-color: #5677CE;
-}
-
-.theme-wrapper {
-    float: right;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start
-}
-
-.theme {
-    display: block;
-    margin-right: 10px;
-}
-
-button {
-    height: 50px;
-    width: 200px;
-    font-size: x-large;
-    font-weight: bold;
-    background-color: #5677CE;
-    border: solid 4px black;
-    border-radius: 30px;
-    color: black;
-    cursor: pointer;
-}
-
-#start-menu {
-    display: block;
-    position: absolute;
-    left: 150px;
-    top: 270px;
-}
-
-#game_type {
-    padding: 15px;
-    position: absolute;
-    left: 110px;
-    top: 120px;
-}
-
-.label {
-    height: 15px;
-    width: 15px;
-    cursor: pointer;
-}
-
-/*Toggle switch for theme*/
-
-.checkbox-switch {
-    bottom: 5px;
-    cursor: pointer;
-    overflow: hidden;
-    position: relative;
-    text-align: left;
-    width: 80px;
-    height: 30px;
-    border-radius: 30px;
-    line-height: 1.2;
-    font-size: 14px;
-}
-
-
-/*The actual checkbox property*/
-
-.checkbox-switch input.input-checkbox {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 80px;
-    height: 30px;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
-    z-index: 2;
-    cursor: pointer;
-}
-
-
-/*Light switch from on to off off*/
-
-.checkbox-switch .checkbox-animate {
-    position: relative;
-    width: 80px;
-    height: 30px;
-    background-color: #95a5a6;
-    transition: 0.25s ease-out 0s;
-}
-
-
-/*Ball when lights are off*/
-
-.checkbox-switch .checkbox-animate:before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    background-color: cyan;
-    top: 5px;
-    left: 5px;
-    transition: left 0.3s ease-out 0s;
-    z-index: 10;
-}
-
-
-/*Background when light is on*/
-
-.checkbox-switch input.input-checkbox:checked+.checkbox-animate {
-    background-color: #74f3fc;
-}
-
-
-/*Ball color when on*/
-
-.checkbox-switch input.input-checkbox:checked+.checkbox-animate:before {
-    left: 55px;
-    background-color: lightcyan;
-}
-
-
-/*ON OFF Font*/
-
-.checkbox-switch .checkbox-off,
-.checkbox-switch .checkbox-on {
-    float: left;
-    color: black;
-    font-weight: 700;
-    padding-top: 6px;
-    transition: all 0.3s ease-out 0s;
-}
-
-.checkbox-switch .checkbox-off {
-    margin-left: 30px;
-    opacity: 1;
-}
-
-.checkbox-switch .checkbox-on {
-    display: none;
-    float: right;
-    margin-right: 35px;
-    opacity: 0;
-}
-
-.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-off {
-    display: none;
-    opacity: 0;
-}
-
-.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-on {
-    display: block;
-    opacity: 1;
-}
-
-.centeredlogo {
-    display: block;
-    width: 60%;
-    margin-left: 35%;
-    margin-top: 4%;
-}
-
-.centeredbiglogo {
-    display: block;
-    width: 40%;
-    margin-left: 23%;
-    margin-top: 8%;
-}
-
-#landing-page {
-    display: block;
-    position: absolute;
-    left: 500px;
-    top: 350px;
-}
-
-#strategy-text {
-    position: absolute;
-    flex-wrap: wrap;
-    right: 45px;
-    top: 75px;
-}
-
-#rules-text {
-    position: absolute;
-    flex-wrap: wrap;
-    left:10px;
-    top: 75px;
-}
+</body>
+</html>
