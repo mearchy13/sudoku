@@ -33,7 +33,7 @@ body {
 }
 
 .site-header {
-    height: 100px;
+    height: 80px;
     display: block;
     flex: 0 0 auto;
     box-sizing: border-box;
@@ -57,7 +57,6 @@ body {
     opacity: 1;
     float: left;
     pointer-events: auto;
-    top: 10px;
     text-align: left;
 }
 
@@ -98,7 +97,6 @@ body {
     float: right;
     position: relative;
     height: 42px;
-    top: 10px;
 }
 
 .theme {
@@ -378,3 +376,82 @@ button {
     width:30%;
     background:#999;
  } */
+
+#errors {
+    color: red;
+    position: absolute;
+    flex-wrap: wrap;
+    right: 150px;
+    top: 250px;
+}
+
+#board {
+    width: 450px;
+    height: 350px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+.tile {
+    width: 44px;
+    height: 44px;
+    border: 1px solid black;
+    /* Text */
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#digits {
+    width: 150px;
+    height: 40px;
+    margin: 0 auto;
+    position: absolute;
+    right: 130px;
+    top: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    float: right;
+}
+
+.number {
+    width: 44px;
+    height: 44px;
+    border: 1px solid black;
+    margin: 2px;
+    /* Text */
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-selected {
+    background-color: #5677CE;
+}
+
+.tile-start {
+    background-color: #5677CE;
+}
+
+.horizontal-line {
+    border-bottom: 3px solid black;
+}
+
+.vertical-line {
+    border-right: 3px solid black;
+}
+
+.highlight-rows {
+    background-color: lightyellow;
+}
+
+.highlight-cols {
+    background-color: lightyellow;
+}
