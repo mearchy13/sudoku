@@ -1,7 +1,7 @@
 var numSelected = null;
 var tileSelected = null;
-
 var errors = 0;
+
 
 var easy_board = [
     "--74916-5",
@@ -54,7 +54,6 @@ function setGame() {
                 tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
             } else {
                 tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
-
             }
             if (r == 2 || r == 5) {
                 tile.classList.add("horizontal-line");
@@ -72,10 +71,14 @@ function setGame() {
     }
 }
 
+
 function inputTile() {
     let input = this.innerText;
-    if (input != "")
-        console.log(input);
+    if (!input.match(/^[1-9]$/m)) {
+        console.log("false");
+        return false;
+    }
+
 }
 
 function selectNumber() {
@@ -89,15 +92,15 @@ function selectNumber() {
 function selectTile() {
     console.log(numSelected);
     console.log(this);
+    // "0-0" "0-1" .. "3-1"
+    let coords = this.id.split("-"); //["0", "0"]
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+
     if (numSelected) {
         if (this.innerText != "") {
             return;
         }
-        // "0-0" "0-1" .. "3-1"
-        let coords = this.id.split("-"); //["0", "0"]
-        let r = parseInt(coords[0]);
-        let c = parseInt(coords[1]);
-
         if (easy_solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
         } else {
@@ -124,6 +127,20 @@ function selectTile() {
             } else {
                 element.classList.add("highlight-cols");
             }
+        }
+    } else {
+        //Highlight columns and rows when numpad is not selected.
+        for (let k = 0; k < 9; k++) {
+            console.log(easy_board[k][c]);
+            //this.classList.add(highlight-cols);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //console.log(element);
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-cols");
+
         }
     }
 }
