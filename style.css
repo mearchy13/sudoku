@@ -326,14 +326,17 @@ button {
 	text-align: center;
 	width: 100%;
 	max-width: 360px;
-	margin: 4rem auto;
+	margin: 3rem auto;
 	padding: 1rem 2rem;
 	border-radius: 1rem;
+    position: absolute;
+    right: 50px;
+    top: 200px;
 }
 
 .watch .time {
-	font-size: 5rem;
-	font-weight: 300;
+	font-size: 2rem;
+	font-weight: 200;
 	margin-bottom: 1rem;
 }
 
