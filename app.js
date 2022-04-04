@@ -112,21 +112,22 @@ function selectTile() {
         //     console.log(easy_board[r][k]);
         // }
         console.log("num selcted " + numSelected.id);
+        //Highlight columns and rows when numpad is selected.
 
         for (let k = 0; k < 9; k++) {
             console.log(easy_board[k][c]);
             //this.classList.add(highlight-cols);
-            let element = document.getElementById(k + '-' + c)
-            console.log(element);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //console.log(element);
             if (numSelected.id === easy_board[k][c]) {
-                alert("This is an invalid placement.");
+                //alert("This is an invalid placement.");
                 console.log("invalid");
             }
-            if (element.classList.contains("tile-start")) {
-                continue;
-            } else {
-                element.classList.add("highlight-cols");
-            }
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-cols");
         }
     } else {
         //Highlight columns and rows when numpad is not selected.
