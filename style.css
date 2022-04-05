@@ -9,7 +9,7 @@ hr {
     width: 500px;
 }
 
-#errors {
+errors {
     color: coral;
 }
 
@@ -62,7 +62,7 @@ hr {
 }
 
 .number-selected {
-    background-color: #5677CE;
+    background-color: whitesmoke;
 }
 
 .tile-start {
@@ -128,10 +128,6 @@ html {
     text-align: center;
     text-decoration: none;
     padding:0px 15px;
-}
-
-.site-menu li:hover {
-    background-color: #5677CE;
 }
 
 .theme-wrapper {
