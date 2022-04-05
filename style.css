@@ -228,7 +228,7 @@ button {
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    background-color: cyan;
+    background-color: grey;
     top: 5px;
     left: 5px;
     transition: left 0.3s ease-out 0s;
@@ -247,7 +247,7 @@ button {
 
 .checkbox-switch input.input-checkbox:checked+.checkbox-animate:before {
     left: 55px;
-    background-color: lightcyan;
+    background-color: lightgrey;
 }
 
 
