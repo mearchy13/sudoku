@@ -155,58 +155,10 @@ function selectTile() {
 }
 
 function start() {
-    clearBoard()
-    for (let i = 0; i < 6; i++) {
-        document.getElementsByClassName("box")[i].setAttribute("onclick", "return false;");
-    }
-    // if user selects easy difficulty
-    if (document.getElementById("easy").checked) {
-        level = 'easy';
-        var easy_random = Math.floor(Math.random() * 5);
-        choice = easy_random;
-        for (let i = 0; i < 81; i++) {
-            if (easy_game[easy_random][i] != '-') {
-                document.getElementById((i + 1).toString()).value = easy_game[easy_random][i];
-                document.getElementById((i + 1).toString()).readOnly = true;
-            }
-        }
-    }
-    // if user selects medium difficulty
-    if (document.getElementById("medium").checked) {
-        level = 'medium';
-        var medium_random = Math.floor(Math.random() * 5);
-        choice = medium_random;
-        for (let i = 0; i < 81; i++) {
-            if (medium_game[medium_random][i] != '-') {
-                document.getElementById((i + 1).toString()).value = medium_game[medium_random][i];
-                document.getElementById((i + 1).toString()).readOnly = true;
-            }
-        }
-    }
-
-    // if user selects hard difficulty
-    if (document.getElementById("hard").checked) {
-        level = 'hard';
-        var hard_random = Math.floor(Math.random() * 5);
-        choice = hard_random;
-        for (let i = 0; i < 81; i++) {
-            if (hard_game[hard_random][i] != '-') {
-                document.getElementById((i + 1).toString()).value = hard_game[hard_random][i];
-                document.getElementById((i + 1).toString()).readOnly = true;
-            }
-        }
-    }
-
 }
 
 /* Clear Board */
 function clearBoard() {
-    for (let i = 0; i < 81; i++) {
-        document.getElementById((i + 1).toString()).value = '';
-        document.getElementById((i + 1).toString()).readOnly = false;
-        clearInterval(id);
-        //window.location.reload();
-    }
 }
 
 /* How to Play */
