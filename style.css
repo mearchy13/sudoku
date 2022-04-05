@@ -62,7 +62,7 @@ errors {
 }
 
 .number-selected {
-    background-color: whitesmoke;
+    background-color: lightgrey;
 }
 
 .tile-start {
@@ -239,7 +239,7 @@ button {
 /*Background when light is on*/
 
 .checkbox-switch input.input-checkbox:checked+.checkbox-animate {
-    background-color: #74f3fc;
+    background-color: grey;
 }
 
 
@@ -320,7 +320,7 @@ button {
 }
 
 :root {
-	--primary: #DC143C;
+	--primary: black;
 	--dark: #1F2937;
 	--darkdark: #111827;
 	--light: #F3F4F6;
