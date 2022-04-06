@@ -34,12 +34,60 @@ var easy_solution = [
     "812945763"
 ]
 
+var medium_board = [
+    "-2-6-8---",
+    "58---97--",
+    "----4----",
+    "37----5--",
+    "6-------4",
+    "--8----13",
+    "----2----",
+    "--98---36",
+    "---3-6-9-"
+]
+
+var medium_solution = [
+    "123678945",
+    "584239761",
+    "967145328",
+    "372461589",
+    "691583274",
+    "458792613",
+    "836924157",
+    "219857436",
+    "745316892"
+]
+
+var hard_board = [
+    "---6--4--",
+    "7----36--",
+    "----91-8-",
+    "---------",
+    "-5-18---3",
+    "---3-6-45",
+    "-4-2---6-",
+    "9-3------",
+    "-2----1--"
+]
+
+var hard_solution = [
+    "581672439",
+    "792843651",
+    "364591782",
+    "438957216",
+    "256184973",
+    "179326845",
+    "845219367",
+    "913768524",
+    "627435198"
+]
+
 // Event listeners
 startWatch_btn.addEventListener('click', startWatch);
 stopWatch_btn.addEventListener("click", stopWatch);
 resetWatch_btn.addEventListener("click", resetWatch);
 
-function setGame() {
+function setNumpad() {
     // Digits 1-9
     for (let i = 1; i <= 9; i++) {
         //<div id="1" class="number">1</div>
@@ -50,35 +98,89 @@ function setGame() {
         number.classList.add("number");
         document.getElementById("digits").appendChild(number);
     }
-
-    // Board 9x9
-    for (let r = 0; r < 9; r++) {
-        for (let c = 0; c < 9; c++) {
-            let tile = document.createElement("div");
-            tile.id = r.toString() + "-" + c.toString();
-            if (easy_board[r][c] != "-") {
-                tile.innerText = easy_board[r][c];
-                tile.classList.add("tile-start");
-                tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
-            } else {
-                tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
-            }
-            if (r == 2 || r == 5) {
-                tile.classList.add("horizontal-line");
-            }
-            if (c == 2 || c == 5) {
-                tile.classList.add("vertical-line");
-            }
-            tile.addEventListener("click", selectTile);
-            tile.addEventListener("input", inputTile);
-
-            tile.classList.add("tile");
-            document.getElementById("board").append(tile);
-
-        }
-    }
 }
 
+function setGame() {
+    // Board 9x9
+    if(document.getElementById("easy").checked){
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let tile = document.createElement("div");
+                tile.id = r.toString() + "-" + c.toString();
+                if (easy_board[r][c] != "-") {
+                    tile.innerText = easy_board[r][c];
+                    tile.classList.add("tile-start");
+                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+                } else {
+                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
+                }
+                if (r == 2 || r == 5) {
+                tile.classList.add("horizontal-line");
+                }
+                if (c == 2 || c == 5) {
+                    tile.classList.add("vertical-line");
+                }
+                    tile.addEventListener("click", selectTileEasy);
+                    tile.addEventListener("input", inputTile);
+
+                tile.classList.add("tile");
+                document.getElementById("board").append(tile);
+                }
+            }
+        }
+    else if(document.getElementById("medium").checked){
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let tile = document.createElement("div");
+                tile.id = r.toString() + "-" + c.toString();
+                if (medium_board[r][c] != "-") {
+                    tile.innerText = medium_board[r][c];
+                    tile.classList.add("tile-start");
+                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+                } else {
+                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
+                }
+                if (r == 2 || r == 5) {
+                tile.classList.add("horizontal-line");
+                }
+                if (c == 2 || c == 5) {
+                    tile.classList.add("vertical-line");
+                }
+                    tile.addEventListener("click", selectTileMedium);
+                    tile.addEventListener("input", inputTile);
+
+                tile.classList.add("tile");
+                document.getElementById("board").append(tile);
+                }
+            }
+        }
+    else if(document.getElementById("hard").checked){
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let tile = document.createElement("div");
+                tile.id = r.toString() + "-" + c.toString();
+                if (hard_board[r][c] != "-") {
+                    tile.innerText = hard_board[r][c];
+                    tile.classList.add("tile-start");
+                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+                } else {
+                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
+                }
+                if (r == 2 || r == 5) {
+                tile.classList.add("horizontal-line");
+                }
+                if (c == 2 || c == 5) {
+                    tile.classList.add("vertical-line");
+                }
+                    tile.addEventListener("click", selectTileHard);
+                    tile.addEventListener("input", inputTile);
+
+                tile.classList.add("tile");
+                document.getElementById("board").append(tile);
+                }
+            }
+        }
+    }
 
 function inputTile() {
     let input = this.innerText;
@@ -97,7 +199,7 @@ function selectNumber() {
     numSelected.classList.add("number-selected");
 }
 
-function selectTile() {
+function selectTileEasy() {
     console.log(numSelected);
     console.log(this);
     // "0-0" "0-1" .. "3-1"
@@ -154,11 +256,124 @@ function selectTile() {
     }
 }
 
-function start() {
+function selectTileMedium() {
+    console.log(numSelected);
+    console.log(this);
+    // "0-0" "0-1" .. "3-1"
+    let coords = this.id.split("-"); //["0", "0"]
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+
+    if (numSelected) {
+        if (this.innerText != "") {
+            return;
+        }
+        if (medium_solution[r][c] == numSelected.id) {
+            this.innerText = numSelected.id;
+        } else {
+            errors += 1;
+            document.getElementById("errors").innerText = errors;
+            //alert("This is an invalid placement. One error has been added to your total.");
+        }
+        // for (let k = 0; k < 9; k++) {
+        //     console.log(easy_board[r][k]);
+        // }
+        console.log("num selcted " + numSelected.id);
+        //Highlight columns and rows when numpad is selected.
+
+        for (let k = 0; k < 9; k++) {
+            console.log(medium_board[k][c]);
+            //this.classList.add(highlight-cols);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //console.log(element);
+            if (numSelected.id === medium_board[k][c]) {
+                //alert("This is an invalid placement.");
+                console.log("invalid");
+            }
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-cols");
+        }
+    } else {
+        //Highlight columns and rows when numpad is not selected.
+        for (let k = 0; k < 9; k++) {
+            console.log(medium_board[k][c]);
+            //this.classList.add(highlight-cols);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //console.log(element);
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-cols");
+
+        }
+    }
+}
+
+function selectTileHard() {
+    console.log(numSelected);
+    console.log(this);
+    // "0-0" "0-1" .. "3-1"
+    let coords = this.id.split("-"); //["0", "0"]
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+
+    if (numSelected) {
+        if (this.innerText != "") {
+            return;
+        }
+        if (hard_solution[r][c] == numSelected.id) {
+            this.innerText = numSelected.id;
+        } else {
+            errors += 1;
+            document.getElementById("errors").innerText = errors;
+            //alert("This is an invalid placement. One error has been added to your total.");
+        }
+        // for (let k = 0; k < 9; k++) {
+        //     console.log(easy_board[r][k]);
+        // }
+        console.log("num selcted " + numSelected.id);
+        //Highlight columns and rows when numpad is selected.
+
+        for (let k = 0; k < 9; k++) {
+            console.log(hard_board[k][c]);
+            //this.classList.add(highlight-cols);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //console.log(element);
+            if (numSelected.id === hard_board[k][c]) {
+                //alert("This is an invalid placement.");
+                console.log("invalid");
+            }
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-cols");
+        }
+    } else {
+        //Highlight columns and rows when numpad is not selected.
+        for (let k = 0; k < 9; k++) {
+            console.log(hard_board[k][c]);
+            //this.classList.add(highlight-cols);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //console.log(element);
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-cols");
+
+        }
+    }
 }
 
 /* Clear Board */
-function clearBoard() {
+function clearBoard(board)
+{
+    document.getElementById(board).innerHTML = "";
 }
 
 /* How to Play */
@@ -201,5 +416,6 @@ function resetWatch () {
 }
 
 window.onload = function() {
+    setNumpad();
     setGame();
 }
