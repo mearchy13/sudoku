@@ -1,161 +1,352 @@
-count=0
-for (let i=0;i<9;i++){
-    count=9*i;
-    document.getElementsByClassName("box")[i].innerHTML="<div class='cell'><input type='text' id='"+(count+1)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+2)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+3)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+4)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+5)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+6)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+7)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+8)+
-    "'class='input'></div><div class='cell'><input type='text' id='"+(count+9)+"'class='input'></div>"
+var numSelected = null;
+var tileSelected = null;
+var errors = 0;
+
+const time_el = document.querySelector('.watch .time');
+const startWatch_btn = document.getElementById('startWatch');
+const stopWatch_btn = document.getElementById("stopWatch");
+const resetWatch_btn = document.getElementById("resetWatch");
+
+var seconds = 0;
+var interval = null;
+
+var easy_board = [
+    "--74916-5",
+    "2---6-3-9",
+    "-----7-1-",
+    "-586----4",
+    "--3----9-",
+    "--62--187",
+    "9-4-7---2",
+    "67-83----",
+    "81--45---"
+]
+
+var easy_solution = [
+    "387491625",
+    "241568379",
+    "569327418",
+    "758619234",
+    "123784596",
+    "496253187",
+    "934176852",
+    "675832941",
+    "812945763"
+]
+
+var medium_board = [
+    "-2-6-8---",
+    "58---97--",
+    "----4----",
+    "37----5--",
+    "6-------4",
+    "--8----13",
+    "----2----",
+    "--98---36",
+    "---3-6-9-"
+]
+
+var medium_solution = [
+    "123678945",
+    "584239761",
+    "967145328",
+    "372461589",
+    "691583274",
+    "458792613",
+    "836924157",
+    "219857436",
+    "745316892"
+]
+
+var hard_board = [
+    "---6--4--",
+    "7----36--",
+    "----91-8-",
+    "---------",
+    "-5-18---3",
+    "---3-6-45",
+    "-4-2---6-",
+    "9-3------",
+    "-2----1--"
+]
+
+var hard_solution = [
+    "581672439",
+    "792843651",
+    "364591782",
+    "438957216",
+    "256184973",
+    "179326845",
+    "845219367",
+    "913768524",
+    "627435198"
+]
+
+// Event listeners
+startWatch_btn.addEventListener('click', startWatch);
+stopWatch_btn.addEventListener("click", stopWatch);
+resetWatch_btn.addEventListener("click", resetWatch);
+
+window.onload = function() {
+    setNumpad();
+    setGame();
 }
 
-var level;
-var choice;
-
-/* Easy difficulty */
-easy_game=['2-5---7--45---9----2-6-81----9---8567--------2418---2----43-7-1----1---85--6---7-8','----35-86-1-9-7-----269----54------------527-9--75----7-6---3-----2-----56---2-14','3-549-6----396--81-5-2--1494-276-1-39---583-46-1549--7-6-1-824558-7-3-924---7-3-6','47----3-------179--4-93--5----6---7-48---------2716-34-9----6----6--2381---54--1-','-2--18573-31--5-96---16----5--4-26--97--86--------98--1-6--79--2-5---8144-9-7---1'
-];
-
-easy=['215986734452869371527648193379124856781543692418937265864357219693172485936521748', '129735486213967854342691578543869127498315276981654632786421359675248193567832914', '315492678723964581857236149482765193916258374631549827967138245584713692429871356', '476285319523861794148932657123649578481397265952716834895137624976452381763548219', '429618573831245796382164957537492618974186325761259843186537942265793814459378621'
-];
-
-/* Medium difficulty, will add rest */
-medium_game=['--6----9---75-1---1------9-9-7-25-8-3-----4-3-92-1-8-2------7---6-19--5-8----1---', '------27----793--892-5-63--5--87-3---34-5-79---3-87--5--63-2-819--614----57------'
-];
-
-medium=['876345291982754163417638529493712568135826947359271684251968473746319825682594137', '83461527915279346892154638751287934663425871463987125796342581978614235857123469'
-];
-
-/* Hard difficulty, will add rest */
-hard_game=['---789-----75-8-4---38-----8---1---6---7-9---2---7---1-----61---5-3-42-----439---', '-6------2---9-83----6--3-79----368---2-----4---461----75-8--4----51-7---2------8-'
-];
-
-hard=['165789432297518346973821654847312596463729158284675931923546178851364297615439782', '861794532617948325156283479492536871928365147784619253753812496345127968239574681'
-];
-
-function start(){
-    for(let i=0;i<6;i++){
-        document.getElementsByClassName("box")[i].setAttribute("onclick","return false;");
+function setNumpad() {
+    // Digits 1-9
+    for (let i = 1; i <= 9; i++) {
+        let number = document.createElement("div");
+        number.id = i
+        number.innerText = i;
+        number.addEventListener("click", selectNumber);
+        number.classList.add("number");
+        document.getElementById("digits").appendChild(number);
     }
-    // if user selects easy difficulty
+}
+
+function setGame() {
+    // Board 9x9
     if(document.getElementById("easy").checked){
-        level='easy';
-        var easy_random=Math.floor(Math.random()*5);
-        choice=easy_random;
-        for(let i=0;i<81;i++){
-            if(easy_game[easy_random][i]!='-'){
-                document.getElementById((i+1).toString()).value=easy_game[easy_random][i];
-                document.getElementById((i+1).toString()).readOnly=true;
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let tile = document.createElement("div");
+                tile.id = r.toString() + "-" + c.toString();
+                if (easy_board[r][c] != "-") {
+                    tile.innerText = easy_board[r][c];
+                    tile.classList.add("tile-start");
+                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+    
+                } else {
+                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
+                }
+                if (r == 2 || r == 5) {
+                    tile.classList.add("horizontal-line");
+                }
+                if (c == 2 || c == 5) {
+                    tile.classList.add("vertical-line");
+                }
+                tile.addEventListener("click", selectTile);
+                tile.addEventListener("input", inputTile);
+    
+                tile.classList.add("tile");
+                document.getElementById("board").append(tile);
+                }
             }
         }
-    }
-    // if user selects medium difficulty
-    if(document.getElementById("medium").checked){
-        level='medium';
-        var medium_random=Math.floor(Math.random()*2);
-        choice=medium_random;
-        for(let i=0;i<81;i++){
-            if(medium_game[medium_random][i]!='-'){
-                document.getElementById((i+1).toString()).value=medium_game[medium_random][i];
-                document.getElementById((i+1).toString()).readOnly=true;
+    else if(document.getElementById("medium").checked){
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let tile = document.createElement("div");
+                tile.id = r.toString() + "-" + c.toString();
+                if (medium_board[r][c] != "-") {
+                    tile.innerText = medium_board[r][c];
+                    tile.classList.add("tile-start");
+                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+    
+                } else {
+                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
+                }
+                if (r == 2 || r == 5) {
+                    tile.classList.add("horizontal-line");
+                }
+                if (c == 2 || c == 5) {
+                    tile.classList.add("vertical-line");
+                }
+                tile.addEventListener("click", selectTile);
+                tile.addEventListener("input", inputTile);
+    
+                tile.classList.add("tile");
+                document.getElementById("board").append(tile);
+                }
+            }
+        }
+    else if(document.getElementById("hard").checked){
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let tile = document.createElement("div");
+                tile.id = r.toString() + "-" + c.toString();
+                if (hard_board[r][c] != "-") {
+                    tile.innerText = hard_board[r][c];
+                    tile.classList.add("tile-start");
+                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+    
+                } else {
+                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
+                }
+                if (r == 2 || r == 5) {
+                    tile.classList.add("horizontal-line");
+                }
+                if (c == 2 || c == 5) {
+                    tile.classList.add("vertical-line");
+                }
+                tile.addEventListener("click", selectTile);
+                tile.addEventListener("input", inputTile);
+    
+                tile.classList.add("tile");
+                document.getElementById("board").append(tile);
+                }
             }
         }
     }
 
-    // if user selects hard difficulty
-    if(document.getElementById("hard").checked){
-        level='hard';
-        var hard_random=Math.floor(Math.random()*2);
-        choice=hard_random;
-        for(let i=0;i<81;i++){
-            if(hard_game[hard_random][i]!='-'){
-                document.getElementById((i+1).toString()).value=hard_game[hard_random][i];
-                document.getElementById((i+1).toString()).readOnly=true;
+function inputTile() {
+    let input = this.innerText;
+    if (!input.match(/^[1-9]$/m)) {
+        console.log("false");
+        return false;
+    }
+}
+
+function selectNumber() {
+    if (numSelected != null) {
+        numSelected.classList.remove("number-selected");
+    }
+    numSelected = this;
+    numSelected.classList.add("number-selected");
+}
+
+var prevHighlightRow = 0,
+    prevHighlightCol = 0;
+var isAffected = false; //If row/col has same value as user input, set to true
+
+
+function selectTile() {
+    console.log(this);
+    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
+    for (let k = 0; k < 9; k++) {
+        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
+        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
+        if (prevCol.classList.contains("highlight-cols"))
+            prevCol.classList.remove("highlight-cols");
+        if (prevRow.classList.contains("highlight-rows"))
+            prevRow.classList.remove("highlight-rows");
+    }
+    // console.log(numSelected);
+    // console.log(this);
+    // "0-0" "0-1" .. "3-1"
+    let coords = this.id.split("-"); //["0", "0"]
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+    prevHighlightRow = r;
+    prevHighlightCol = c;
+
+    if (numSelected) {
+        if (this.classList.contains("tile-start")) {
+            return;
+        }
+        //this.innerText = numSelected.id;
+        //this.classList.add("valid");
+
+        // if (easy_solution[r][c] == numSelected.id) {
+        //     this.innerText = numSelected.id;
+        // } else {
+        //     errors += 1;
+        //     document.getElementById("errors").innerText = errors;
+        //     //alert("This is an invalid placement. One error has been added to your total.");
+        // }
+        // for (let k = 0; k < 9; k++) {
+        //     console.log(easy_board[r][k]);
+        // }
+        //isAffected
+        console.log("num selcted " + numSelected.id);
+        let seen = ["false", "false", "false", "false", "false", "false", "false", "false", "false", ];
+        //BOARD FUNCTIONS WHEN numpad is selected.
+        for (let k = 0; k < 9; k++) {
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //HIGHLIGHT ROW/COL
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-rows");
+            //console.log(easy_board[k][c]);
+
+            console.log(row);
+            seen[row.innerHTML] = true;
+            //AFFECTED CELLS IN CURRENT ROW
+            if (numSelected.id === row.innerHTML) {
+                //this.innerText = numSelected.id;
+                //this.classList.add("invalid");
+                if (this != row) {
+                    row.classList.add("invalid");
+                    this.innerText = numSelected.id;
+                    this.classList.add("invalid");
+                }
+                //console.log("invalid");
+            } else if (numSelected.id != row.innerHTML) {
+                if (row.classList.contains("invalid") && !seen[row.innerHTML]) {
+                    row.classList.remove("invalid");
+                }
+                if (this.classList.contains("invalid") && !seen[numSelected.id]) {
+                    this.innerText = numSelected.id;
+                    this.classList.remove("invalid");
+                } else {
+                    this.innerText = numSelected.id;
+                }
+                //this.classList.remove("invalid");
+                //this.classList.remove("invalid");
+                //document.getElementById(r + '-' + k).classList.remove("invalid");
+            } else {
+                this.innerText = numSelected.id;
+
             }
+            // if (numSelected.id != row.innerHTML && !row.classList.contains("invalid")) {
+            //     this.classList.remove("invalid");
+            //     document.getElementById(r + '-' + k).classList.remove("invalid");
+            // }
+
+        }
+
+
+    } else {
+        //Highlight columns and rows when numpad is not selected.
+        for (let k = 0; k < 9; k++) {
+            //console.log(easy_board[k][c]);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-rows");
         }
     }
 }
 
-/* Check Answer and Affected Cells code likely will go below, in progress */
+// Update timer
+function timer () {
+	seconds++;
 
-var id=setInterval(() => {
-    if (level=="easy"){
-    if(document.activeElement.className=="input"){
-        if((document.getElementById(document.activeElement.id).value==easy[choice][document.activeElement.id-1])|(document.getElementById(document.activeElement.id).value=='')){
-                for(let i=0;i<81;i++){
-                    if(i==80 && document.getElementById((81).toString()).value!='' ){
-                        alert("You win! Congratulations");
-                        clearInterval(id);
-                        window.location.reload();
-                    }
-                    else{
-                        alert("You chose the wrong number.");
-                    }
-                }
-            }
-        }
-    }
-    else if(level=="medium"){
-            if(document.activeElement.className=="input"){
-                if((document.getElementById(document.activeElement.id).value==medium[choice][document.activeElement.id-1])|(document.getElementById(document.activeElement.id).value=='')){
-                        for(let i=0;i<81;i++){
-                            if(i==80 && document.getElementById((81).toString()).value!='' ){
-                                alert("You win! Congratulations");
-                                clearInterval(id);
-                                window.location.reload();
-                            }
-                            else{
-                                alert("You chose the wrong number.");
-                            }
-                        }
-                    }
-                }
-    }
-    else if(level=="hard"){
-            if(document.activeElement.className=="input"){
-                if((document.getElementById(document.activeElement.id).value==hard[choice][document.activeElement.id-1])|(document.getElementById(document.activeElement.id).value=='')){
-                        for(let i=0;i<81;i++){
-                            if(i==80 && document.getElementById((81).toString()).value!='' ){
-                                alert("You win! Congratulations");
-                                clearInterval(id);
-                                window.location.reload();
-                            }
-                            else{
-                                alert("You chose the wrong number.");
-                            }
-                        }
-                    }
-                }
-    }
-}, 500);
+	// Format our time
+	let hrs = Math.floor(seconds / 3600);
+	let mins = Math.floor((seconds - (hrs * 3600)) / 60);
+	let secs = seconds % 60;
 
-/* Answer */ 
-function answer(){
-    if(level=="easy"){
-        for(let i=0;i<81;i++){
-            document.getElementById((i+1).toString()).value=easy[choice][i];
-        }
-     }
-     if(level=="medium"){
-        for(let i=0;i<81;i++){
-            document.getElementById((i+1).toString()).value=medium[choice][i];
-        }
-     }
-     if(level=="hard"){
-        for(let i=0;i<81;i++){
-            document.getElementById((i+1).toString()).value=hard[choice][i];
-        }
-     }
+	if (secs < 10) secs = '0' + secs;
+	if (mins < 10) mins = "0" + mins;
+	if (hrs < 10) hrs = "0" + hrs;
+
+	time_el.innerText = `${hrs}:${mins}:${secs}`;
 }
 
-/* Clear Board */
-function clearBoard(){
-    for(let i=0;i<81;i++){
-        document.getElementById((i+1).toString()).value='';
-        clearInterval(id);
-        window.location.reload();
-    }   
+function startWatch () {
+	if (interval) {
+		return
+	}
+	interval = setInterval(timer, 1000);
+}
+
+function stopWatch () {
+	clearInterval(interval);
+	interval = null;
+}
+
+function resetWatch () {
+	stopWatch();
+	seconds = 0;
+	time_el.innerText = '00:00:00';
+}
+
+/* How to Play */
+function help() {
+    window.open("https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/", "_blank");
 }
