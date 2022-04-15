@@ -7,8 +7,8 @@ const startWatch_btn = document.getElementById('startWatch');
 const stopWatch_btn = document.getElementById("stopWatch");
 const resetWatch_btn = document.getElementById("resetWatch");
 
-let seconds = 0;
-let interval = null;
+var seconds = 0;
+var interval = null;
 
 var easy_board = [
     "--74916-5",
@@ -87,10 +87,14 @@ startWatch_btn.addEventListener('click', startWatch);
 stopWatch_btn.addEventListener("click", stopWatch);
 resetWatch_btn.addEventListener("click", resetWatch);
 
+window.onload = function() {
+    setNumpad();
+    setGame();
+}
+
 function setNumpad() {
     // Digits 1-9
     for (let i = 1; i <= 9; i++) {
-        //<div id="1" class="number">1</div>
         let number = document.createElement("div");
         number.id = i
         number.innerText = i;
@@ -111,18 +115,19 @@ function setGame() {
                     tile.innerText = easy_board[r][c];
                     tile.classList.add("tile-start");
                     tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+    
                 } else {
                     tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
                 }
                 if (r == 2 || r == 5) {
-                tile.classList.add("horizontal-line");
+                    tile.classList.add("horizontal-line");
                 }
                 if (c == 2 || c == 5) {
                     tile.classList.add("vertical-line");
                 }
-                    tile.addEventListener("click", selectTileEasy);
-                    tile.addEventListener("input", inputTile);
-
+                tile.addEventListener("click", selectTile);
+                tile.addEventListener("input", inputTile);
+    
                 tile.classList.add("tile");
                 document.getElementById("board").append(tile);
                 }
@@ -137,18 +142,19 @@ function setGame() {
                     tile.innerText = medium_board[r][c];
                     tile.classList.add("tile-start");
                     tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+    
                 } else {
                     tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
                 }
                 if (r == 2 || r == 5) {
-                tile.classList.add("horizontal-line");
+                    tile.classList.add("horizontal-line");
                 }
                 if (c == 2 || c == 5) {
                     tile.classList.add("vertical-line");
                 }
-                    tile.addEventListener("click", selectTileMedium);
-                    tile.addEventListener("input", inputTile);
-
+                tile.addEventListener("click", selectTile);
+                tile.addEventListener("input", inputTile);
+    
                 tile.classList.add("tile");
                 document.getElementById("board").append(tile);
                 }
@@ -163,18 +169,19 @@ function setGame() {
                     tile.innerText = hard_board[r][c];
                     tile.classList.add("tile-start");
                     tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
+    
                 } else {
                     tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
                 }
                 if (r == 2 || r == 5) {
-                tile.classList.add("horizontal-line");
+                    tile.classList.add("horizontal-line");
                 }
                 if (c == 2 || c == 5) {
                     tile.classList.add("vertical-line");
                 }
-                    tile.addEventListener("click", selectTileHard);
-                    tile.addEventListener("input", inputTile);
-
+                tile.addEventListener("click", selectTile);
+                tile.addEventListener("input", inputTile);
+    
                 tile.classList.add("tile");
                 document.getElementById("board").append(tile);
                 }
@@ -188,7 +195,6 @@ function inputTile() {
         console.log("false");
         return false;
     }
-
 }
 
 function selectNumber() {
@@ -199,188 +205,114 @@ function selectNumber() {
     numSelected.classList.add("number-selected");
 }
 
-function selectTileEasy() {
-    console.log(numSelected);
+var prevHighlightRow = 0,
+    prevHighlightCol = 0;
+var isAffected = false; //If row/col has same value as user input, set to true
+
+
+function selectTile() {
     console.log(this);
+    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
+    for (let k = 0; k < 9; k++) {
+        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
+        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
+        if (prevCol.classList.contains("highlight-cols"))
+            prevCol.classList.remove("highlight-cols");
+        if (prevRow.classList.contains("highlight-rows"))
+            prevRow.classList.remove("highlight-rows");
+    }
+    // console.log(numSelected);
+    // console.log(this);
     // "0-0" "0-1" .. "3-1"
     let coords = this.id.split("-"); //["0", "0"]
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
+    prevHighlightRow = r;
+    prevHighlightCol = c;
 
     if (numSelected) {
-        if (this.innerText != "") {
+        if (this.classList.contains("tile-start")) {
             return;
         }
-        if (easy_solution[r][c] == numSelected.id) {
-            this.innerText = numSelected.id;
-        } else {
-            errors += 1;
-            document.getElementById("errors").innerText = errors;
-            //alert("This is an invalid placement. One error has been added to your total.");
-        }
+        //this.innerText = numSelected.id;
+        //this.classList.add("valid");
+
+        // if (easy_solution[r][c] == numSelected.id) {
+        //     this.innerText = numSelected.id;
+        // } else {
+        //     errors += 1;
+        //     document.getElementById("errors").innerText = errors;
+        //     //alert("This is an invalid placement. One error has been added to your total.");
+        // }
         // for (let k = 0; k < 9; k++) {
         //     console.log(easy_board[r][k]);
         // }
+        //isAffected
         console.log("num selcted " + numSelected.id);
-        //Highlight columns and rows when numpad is selected.
-
+        let seen = ["false", "false", "false", "false", "false", "false", "false", "false", "false", ];
+        //BOARD FUNCTIONS WHEN numpad is selected.
         for (let k = 0; k < 9; k++) {
-            console.log(easy_board[k][c]);
-            //this.classList.add(highlight-cols);
             let col = document.getElementById(k + '-' + c)
             let row = document.getElementById(r + '-' + k);
-            //console.log(element);
-            if (numSelected.id === easy_board[k][c]) {
-                //alert("This is an invalid placement.");
-                console.log("invalid");
-            }
+            //HIGHLIGHT ROW/COL
             if ((!col.classList.contains("tile-start")))
                 col.classList.add("highlight-cols");
             if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-cols");
+                row.classList.add("highlight-rows");
+            //console.log(easy_board[k][c]);
+
+            console.log(row);
+            seen[row.innerHTML] = true;
+            //AFFECTED CELLS IN CURRENT ROW
+            if (numSelected.id === row.innerHTML) {
+                //this.innerText = numSelected.id;
+                //this.classList.add("invalid");
+                if (this != row) {
+                    row.classList.add("invalid");
+                    this.innerText = numSelected.id;
+                    this.classList.add("invalid");
+                }
+                //console.log("invalid");
+            } else if (numSelected.id != row.innerHTML) {
+                if (row.classList.contains("invalid") && !seen[row.innerHTML]) {
+                    row.classList.remove("invalid");
+                }
+                if (this.classList.contains("invalid") && !seen[numSelected.id]) {
+                    this.innerText = numSelected.id;
+                    this.classList.remove("invalid");
+                } else {
+                    this.innerText = numSelected.id;
+                }
+                //this.classList.remove("invalid");
+                //this.classList.remove("invalid");
+                //document.getElementById(r + '-' + k).classList.remove("invalid");
+            } else {
+                this.innerText = numSelected.id;
+
+            }
+            // if (numSelected.id != row.innerHTML && !row.classList.contains("invalid")) {
+            //     this.classList.remove("invalid");
+            //     document.getElementById(r + '-' + k).classList.remove("invalid");
+            // }
+
         }
+
+
     } else {
         //Highlight columns and rows when numpad is not selected.
         for (let k = 0; k < 9; k++) {
-            console.log(easy_board[k][c]);
-            //this.classList.add(highlight-cols);
+            //console.log(easy_board[k][c]);
             let col = document.getElementById(k + '-' + c)
             let row = document.getElementById(r + '-' + k);
-            //console.log(element);
             if ((!col.classList.contains("tile-start")))
                 col.classList.add("highlight-cols");
             if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-cols");
-
+                row.classList.add("highlight-rows");
         }
     }
 }
 
-function selectTileMedium() {
-    console.log(numSelected);
-    console.log(this);
-    // "0-0" "0-1" .. "3-1"
-    let coords = this.id.split("-"); //["0", "0"]
-    let r = parseInt(coords[0]);
-    let c = parseInt(coords[1]);
-
-    if (numSelected) {
-        if (this.innerText != "") {
-            return;
-        }
-        if (medium_solution[r][c] == numSelected.id) {
-            this.innerText = numSelected.id;
-        } else {
-            errors += 1;
-            document.getElementById("errors").innerText = errors;
-            //alert("This is an invalid placement. One error has been added to your total.");
-        }
-        // for (let k = 0; k < 9; k++) {
-        //     console.log(easy_board[r][k]);
-        // }
-        console.log("num selcted " + numSelected.id);
-        //Highlight columns and rows when numpad is selected.
-
-        for (let k = 0; k < 9; k++) {
-            console.log(medium_board[k][c]);
-            //this.classList.add(highlight-cols);
-            let col = document.getElementById(k + '-' + c)
-            let row = document.getElementById(r + '-' + k);
-            //console.log(element);
-            if (numSelected.id === medium_board[k][c]) {
-                //alert("This is an invalid placement.");
-                console.log("invalid");
-            }
-            if ((!col.classList.contains("tile-start")))
-                col.classList.add("highlight-cols");
-            if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-cols");
-        }
-    } else {
-        //Highlight columns and rows when numpad is not selected.
-        for (let k = 0; k < 9; k++) {
-            console.log(medium_board[k][c]);
-            //this.classList.add(highlight-cols);
-            let col = document.getElementById(k + '-' + c)
-            let row = document.getElementById(r + '-' + k);
-            //console.log(element);
-            if ((!col.classList.contains("tile-start")))
-                col.classList.add("highlight-cols");
-            if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-cols");
-
-        }
-    }
-}
-
-function selectTileHard() {
-    console.log(numSelected);
-    console.log(this);
-    // "0-0" "0-1" .. "3-1"
-    let coords = this.id.split("-"); //["0", "0"]
-    let r = parseInt(coords[0]);
-    let c = parseInt(coords[1]);
-
-    if (numSelected) {
-        if (this.innerText != "") {
-            return;
-        }
-        if (hard_solution[r][c] == numSelected.id) {
-            this.innerText = numSelected.id;
-        } else {
-            errors += 1;
-            document.getElementById("errors").innerText = errors;
-            //alert("This is an invalid placement. One error has been added to your total.");
-        }
-        // for (let k = 0; k < 9; k++) {
-        //     console.log(easy_board[r][k]);
-        // }
-        console.log("num selcted " + numSelected.id);
-        //Highlight columns and rows when numpad is selected.
-
-        for (let k = 0; k < 9; k++) {
-            console.log(hard_board[k][c]);
-            //this.classList.add(highlight-cols);
-            let col = document.getElementById(k + '-' + c)
-            let row = document.getElementById(r + '-' + k);
-            //console.log(element);
-            if (numSelected.id === hard_board[k][c]) {
-                //alert("This is an invalid placement.");
-                console.log("invalid");
-            }
-            if ((!col.classList.contains("tile-start")))
-                col.classList.add("highlight-cols");
-            if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-cols");
-        }
-    } else {
-        //Highlight columns and rows when numpad is not selected.
-        for (let k = 0; k < 9; k++) {
-            console.log(hard_board[k][c]);
-            //this.classList.add(highlight-cols);
-            let col = document.getElementById(k + '-' + c)
-            let row = document.getElementById(r + '-' + k);
-            //console.log(element);
-            if ((!col.classList.contains("tile-start")))
-                col.classList.add("highlight-cols");
-            if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-cols");
-
-        }
-    }
-}
-
-/* Clear Board */
-function clearBoard(board)
-{
-    document.getElementById(board).innerHTML = "";
-}
-
-/* How to Play */
-function help() {
-    window.open("https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/", "_blank");
-}
-// Update the timer
+// Update timer
 function timer () {
 	seconds++;
 
@@ -400,7 +332,6 @@ function startWatch () {
 	if (interval) {
 		return
 	}
-
 	interval = setInterval(timer, 1000);
 }
 
@@ -415,7 +346,7 @@ function resetWatch () {
 	time_el.innerText = '00:00:00';
 }
 
-window.onload = function() {
-    setNumpad();
-    setGame();
+/* How to Play */
+function help() {
+    window.open("https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/", "_blank");
 }
