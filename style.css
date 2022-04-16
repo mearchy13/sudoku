@@ -219,14 +219,14 @@ body {
 .centeredlogo {
     display: block;
     width: 60%;
-    margin-left: 35%;
+    margin-left: 10%;
     margin-top: 4%;
 }
 
 .centeredlogo-landing {
     display: block;
     width: 60%;
-    margin-left: 35%;
+    margin-left: 18%;
     margin-top: 4%;
 }
 
@@ -297,8 +297,8 @@ button {
 #start-menu {
     display: block;
     position: absolute;
-    left: 250px;
-    top: 270px;
+    left: 180px;
+    top: 125px;
 }
 
 
