@@ -350,3 +350,8 @@ function resetWatch () {
 function help() {
     window.open("https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/", "_blank");
 }
+
+/* Placeholder until I add some more difficulties */ 
+function alertMsg() {
+alert("New games for each difficulty to be added shortly.")
+}
