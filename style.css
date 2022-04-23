@@ -368,6 +368,13 @@ button {
     top: 75px;
 }
 
+#rules-text {
+    position: absolute;
+    flex-wrap: wrap;
+    left: 10px;
+    top: 75px;
+}
+
 
 /* Copyright footer in progress 
 #footer {
