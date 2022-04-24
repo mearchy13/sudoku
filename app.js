@@ -1,357 +1,76 @@
-var numSelected = null;
-var tileSelected = null;
-var errors = 0;
+<!DOCTYPE html>
+<html lang="en">
 
-const time_el = document.querySelector('.watch .time');
-const startWatch_btn = document.getElementById('startWatch');
-const stopWatch_btn = document.getElementById("stopWatch");
-const resetWatch_btn = document.getElementById("resetWatch");
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header class="site-header">
+    <!--NAV BAR/MENU-->
+    <div class="content-wrapper">
+        <nav id="site-navigation" class="site-navigation">
+            <div class="site-navigation-item">
+                <ul class="site-menu">
+                    <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
+                    <li class="site-menu-play"><a href="home.html"><strong>Play</strong></a></li>
+                    <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="theme-wrapper">
+            <span class="theme"><strong>Lights</strong></span>
+            <div class="checkbox-switch">
+                <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
+                <div class="checkbox-animate">
+                    <span class="checkbox-off">OFF</span>
+                    <span class="checkbox-on">ON</span>
+                </div>"
+            </div>
+        </div>
+        <!-- <div class="theme-switch"><span><strong>LIGHTS</strong></span>
+                        <input type="checkbox" id="switch" class="checkbox" />
+                        <label for="switch" class="toggle">
+                            <p id="status">OFF  ON</p>
+                        </label>
+                    </div> -->
 
-var seconds = 0;
-var interval = null;
+    </div>
+</header>
 
-var easy_board = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83----",
-    "81--45---"
-]
+<body>
+    <!--Difficulty-->
+    <div class="start-game-menu" id="start-menu">
+        <div class="diff" id="game_type">
+            <h3>Choose Difficulty:</h3>
+            <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
+            <label><input type="radio" id="medium" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/medium.html'" > Medium</label>
+            <label><input type="radio" id="hard" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/hard.html'" > Hard</label>
+        </div><br><br>
 
-var easy_solution = [
-    "387491625",
-    "241568379",
-    "569327418",
-    "758619234",
-    "123784596",
-    "496253187",
-    "934176852",
-    "675832941",
-    "812945763"
-]
+        <div class="start-menu-items">
+            <div class="start-menu-item"><button type="button" id="start" onclick="alertMsg()">New Game</button></div><br>
+            <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
+        </div>
+        </div>
+        <!-- 9x9 board -->
+        <div id="board"></div>
+        <div id="digits"></div>
 
-var medium_board = [
-    "-2-6-8---",
-    "58---97--",
-    "----4----",
-    "37----5--",
-    "6-------4",
-    "--8----13",
-    "----2----",
-    "--98---36",
-    "---3-6-9-"
-]
+         <!-- Timer / Stopwatch -->
+         <div class="watch">
+            <div class="time">
+                00:00:00
+            </div>
+            <div class="controls">
+                <button class="button-controls" id="startWatch">Start</button>
+                <button class="button-controls" id="stopWatch">Stop</button>
+                <button class="button-controls" id="resetWatch">Reset</button>
+            </div>
+        </div>
 
-var medium_solution = [
-    "123678945",
-    "584239761",
-    "967145328",
-    "372461589",
-    "691583274",
-    "458792613",
-    "836924157",
-    "219857436",
-    "745316892"
-]
-
-var hard_board = [
-    "---6--4--",
-    "7----36--",
-    "----91-8-",
-    "---------",
-    "-5-18---3",
-    "---3-6-45",
-    "-4-2---6-",
-    "9-3------",
-    "-2----1--"
-]
-
-var hard_solution = [
-    "581672439",
-    "792843651",
-    "364591782",
-    "438957216",
-    "256184973",
-    "179326845",
-    "845219367",
-    "913768524",
-    "627435198"
-]
-
-// Event listeners
-startWatch_btn.addEventListener('click', startWatch);
-stopWatch_btn.addEventListener("click", stopWatch);
-resetWatch_btn.addEventListener("click", resetWatch);
-
-window.onload = function() {
-    setNumpad();
-    setGame();
-}
-
-function setNumpad() {
-    // Digits 1-9
-    for (let i = 1; i <= 9; i++) {
-        let number = document.createElement("div");
-        number.id = i
-        number.innerText = i;
-        number.addEventListener("click", selectNumber);
-        number.classList.add("number");
-        document.getElementById("digits").appendChild(number);
-    }
-}
-
-function setGame() {
-    // Board 9x9
-    if(document.getElementById("easy").checked){
-        for (let r = 0; r < 9; r++) {
-            for (let c = 0; c < 9; c++) {
-                let tile = document.createElement("div");
-                tile.id = r.toString() + "-" + c.toString();
-                if (easy_board[r][c] != "-") {
-                    tile.innerText = easy_board[r][c];
-                    tile.classList.add("tile-start");
-                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
-    
-                } else {
-                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
-                }
-                if (r == 2 || r == 5) {
-                    tile.classList.add("horizontal-line");
-                }
-                if (c == 2 || c == 5) {
-                    tile.classList.add("vertical-line");
-                }
-                tile.addEventListener("click", selectTile);
-                tile.addEventListener("input", inputTile);
-    
-                tile.classList.add("tile");
-                document.getElementById("board").append(tile);
-                }
-            }
-        }
-    else if(document.getElementById("medium").checked){
-        for (let r = 0; r < 9; r++) {
-            for (let c = 0; c < 9; c++) {
-                let tile = document.createElement("div");
-                tile.id = r.toString() + "-" + c.toString();
-                if (medium_board[r][c] != "-") {
-                    tile.innerText = medium_board[r][c];
-                    tile.classList.add("tile-start");
-                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
-    
-                } else {
-                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
-                }
-                if (r == 2 || r == 5) {
-                    tile.classList.add("horizontal-line");
-                }
-                if (c == 2 || c == 5) {
-                    tile.classList.add("vertical-line");
-                }
-                tile.addEventListener("click", selectTile);
-                tile.addEventListener("input", inputTile);
-    
-                tile.classList.add("tile");
-                document.getElementById("board").append(tile);
-                }
-            }
-        }
-    else if(document.getElementById("hard").checked){
-        for (let r = 0; r < 9; r++) {
-            for (let c = 0; c < 9; c++) {
-                let tile = document.createElement("div");
-                tile.id = r.toString() + "-" + c.toString();
-                if (hard_board[r][c] != "-") {
-                    tile.innerText = hard_board[r][c];
-                    tile.classList.add("tile-start");
-                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
-    
-                } else {
-                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
-                }
-                if (r == 2 || r == 5) {
-                    tile.classList.add("horizontal-line");
-                }
-                if (c == 2 || c == 5) {
-                    tile.classList.add("vertical-line");
-                }
-                tile.addEventListener("click", selectTile);
-                tile.addEventListener("input", inputTile);
-    
-                tile.classList.add("tile");
-                document.getElementById("board").append(tile);
-                }
-            }
-        }
-    }
-
-function inputTile() {
-    let input = this.innerText;
-    if (!input.match(/^[1-9]$/m)) {
-        console.log("false");
-        return false;
-    }
-}
-
-function selectNumber() {
-    if (numSelected != null) {
-        numSelected.classList.remove("number-selected");
-    }
-    numSelected = this;
-    numSelected.classList.add("number-selected");
-}
-
-var prevHighlightRow = 0,
-    prevHighlightCol = 0;
-var isAffected = false; //If row/col has same value as user input, set to true
-
-
-function selectTile() {
-    console.log(this);
-    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
-    for (let k = 0; k < 9; k++) {
-        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
-        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
-        if (prevCol.classList.contains("highlight-cols"))
-            prevCol.classList.remove("highlight-cols");
-        if (prevRow.classList.contains("highlight-rows"))
-            prevRow.classList.remove("highlight-rows");
-    }
-    // console.log(numSelected);
-    // console.log(this);
-    // "0-0" "0-1" .. "3-1"
-    let coords = this.id.split("-"); //["0", "0"]
-    let r = parseInt(coords[0]);
-    let c = parseInt(coords[1]);
-    prevHighlightRow = r;
-    prevHighlightCol = c;
-
-    if (numSelected) {
-        if (this.classList.contains("tile-start")) {
-            return;
-        }
-        //this.innerText = numSelected.id;
-        //this.classList.add("valid");
-
-        // if (easy_solution[r][c] == numSelected.id) {
-        //     this.innerText = numSelected.id;
-        // } else {
-        //     errors += 1;
-        //     document.getElementById("errors").innerText = errors;
-        //     //alert("This is an invalid placement. One error has been added to your total.");
-        // }
-        // for (let k = 0; k < 9; k++) {
-        //     console.log(easy_board[r][k]);
-        // }
-        //isAffected
-        console.log("num selcted " + numSelected.id);
-        let seen = ["false", "false", "false", "false", "false", "false", "false", "false", "false", ];
-        //BOARD FUNCTIONS WHEN numpad is selected.
-        for (let k = 0; k < 9; k++) {
-            let col = document.getElementById(k + '-' + c)
-            let row = document.getElementById(r + '-' + k);
-            //HIGHLIGHT ROW/COL
-            if ((!col.classList.contains("tile-start")))
-                col.classList.add("highlight-cols");
-            if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-rows");
-            //console.log(easy_board[k][c]);
-
-            console.log(row);
-            seen[row.innerHTML] = true;
-            //AFFECTED CELLS IN CURRENT ROW
-            if (numSelected.id === row.innerHTML) {
-                //this.innerText = numSelected.id;
-                //this.classList.add("invalid");
-                if (this != row) {
-                    row.classList.add("invalid");
-                    this.innerText = numSelected.id;
-                    this.classList.add("invalid");
-                }
-                //console.log("invalid");
-            } else if (numSelected.id != row.innerHTML) {
-                if (row.classList.contains("invalid") && !seen[row.innerHTML]) {
-                    row.classList.remove("invalid");
-                }
-                if (this.classList.contains("invalid") && !seen[numSelected.id]) {
-                    this.innerText = numSelected.id;
-                    this.classList.remove("invalid");
-                } else {
-                    this.innerText = numSelected.id;
-                }
-                //this.classList.remove("invalid");
-                //this.classList.remove("invalid");
-                //document.getElementById(r + '-' + k).classList.remove("invalid");
-            } else {
-                this.innerText = numSelected.id;
-
-            }
-            // if (numSelected.id != row.innerHTML && !row.classList.contains("invalid")) {
-            //     this.classList.remove("invalid");
-            //     document.getElementById(r + '-' + k).classList.remove("invalid");
-            // }
-
-        }
-
-
-    } else {
-        //Highlight columns and rows when numpad is not selected.
-        for (let k = 0; k < 9; k++) {
-            //console.log(easy_board[k][c]);
-            let col = document.getElementById(k + '-' + c)
-            let row = document.getElementById(r + '-' + k);
-            if ((!col.classList.contains("tile-start")))
-                col.classList.add("highlight-cols");
-            if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-rows");
-        }
-    }
-}
-
-// Update timer
-function timer () {
-	seconds++;
-
-	// Format our time
-	let hrs = Math.floor(seconds / 3600);
-	let mins = Math.floor((seconds - (hrs * 3600)) / 60);
-	let secs = seconds % 60;
-
-	if (secs < 10) secs = '0' + secs;
-	if (mins < 10) mins = "0" + mins;
-	if (hrs < 10) hrs = "0" + hrs;
-
-	time_el.innerText = `${hrs}:${mins}:${secs}`;
-}
-
-function startWatch () {
-	if (interval) {
-		return
-	}
-	interval = setInterval(timer, 1000);
-}
-
-function stopWatch () {
-	clearInterval(interval);
-	interval = null;
-}
-
-function resetWatch () {
-	stopWatch();
-	seconds = 0;
-	time_el.innerText = '00:00:00';
-}
-
-/* How to Play */
-function help() {
-    window.open("https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/", "_blank");
-}
-
-/* Placeholder until I add some more difficulties */ 
-function alertMsg() {
-alert("New games for each difficulty to be added shortly.")
-}
+    <script src="app.js"></script>
+</body>
+</html>
