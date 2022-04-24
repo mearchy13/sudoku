@@ -234,17 +234,6 @@ body {
     border-bottom: 10px solid black !important;
 }
 
-.board {
-    width: 300px;
-    height: 300px;
-    /* margin: 0 auto; */
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 50px;
-    justify-content: center;
-    align-content: flex-start;
-}
-
 /* .main-container {
     height: auto;
     width: auto;
@@ -253,7 +242,7 @@ body {
     position: relative;
 } */
 
-.tile {
+/* .tile {
     width: 30px;
     height: 30px;
     border: 1px solid gray;
@@ -262,7 +251,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 input {
     height: 45px;
