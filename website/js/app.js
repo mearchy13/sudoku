@@ -438,7 +438,7 @@ function clearBoard() {
 function newGame() {
     console.log("New Game");
     if (document.getElementById("easy").checked) {
-        location.href = "home.html";
+        location.href = "easy.html";
     }else if (document.getElementById("medium").checked) {
         location.href = "medium.html";
     }else if (document.getElementById("hard").checked) {
