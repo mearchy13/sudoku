@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<body class="light-theme">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,40 +12,41 @@
     <!--NAV BAR/MENU-->
     <div class="content-wrapper">
         <nav id="site-navigation" class="site-navigation">
-            <div class="site-navigation-wrapper">
-                <div class="site-navigation-item">
-                    <ul class="site-menu">
-                        <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
-                        <li class="site-menu-home"><a href="home.html"><strong>Play</strong></a></li>
-                        <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
-                    </ul>
-                        <div class = "theme-wrapper">
-                        <span class="theme"><strong>Lights</strong></span>
-                        <div class="checkbox-switch">
-                            <input type="checkbox" class="input-checkbox" checked="" >
-                            <div class="checkbox-animate">
-                                <span class="checkbox-off">OFF</span>
-                                <span class="checkbox-on">ON</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="site-navigation-item">
+                <ul class="site-menu">
+                    <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
+                    <li class="site-menu-play"><a href="home.html"><strong>Play</strong></a></li>
+                    <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="theme-wrapper">
+            <span class="theme"><strong>Lights</strong></span>
+            <div class="checkbox-switch">
+                <input type="checkbox" class="input-checkbox" checked="" onchange="toggleFunction()">
+                <div class="checkbox-animate">
+                    <span class="checkbox-off">OFF</span>
+                    <span class="checkbox-on">ON</span>
+                </div>"
             </div>
         </div>
-        </nav>
+    </div>
+    <br>
+    <div class="centeredlogo-landing">
+        <img src="mpslogo.png" alt="Sudoku logo" />
     </div>
 </header>
 
+<body>
 
-    
     <script src="app.js"></script>
-
-    <div class="centeredbiglogo">
-        <img src="mpslogoresized.png" alt="Sudoku logo" />
-    </div>
+    <script src="app2.js"></script>
     
     <div id="landing-page">
-        <button class="landing" onclick="window.location.href='home.html'"><strong>Start</strong></button><br><br><br><br><br>
-        <button class="landing" onclick="window.location.href='rules.html'"><strong>Rules</strong></button><br><br><br><br><br>
+        <button class="landing" id="home_button" onclick="window.location.href='home.html'"><strong>Start</strong></button><br><br><br><br><br>
+        <button class="landing" id="rules_button" onclick="window.location.href='rules.html'"><strong>Rules</strong></button><br><br><br><br><br>
     </div>
+
 </body>
+
 </html>
