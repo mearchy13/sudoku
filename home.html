@@ -41,36 +41,43 @@
 </header>
 
 <body>
-    <!--Difficulty-->
-    <div class="start-game-menu" id="start-menu">
-        <div class="diff" id="game_type">
-            <h3>Choose Difficulty:</h3>
-            <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
-            <label><input type="radio" id="medium" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/medium.html'" > Medium</label>
-            <label><input type="radio" id="hard" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/hard.html'" > Hard</label>
-        </div><br><br>
 
-        <div class="start-menu-items">
-            <div class="start-menu-item"><button type="button" id="start" onclick="alertMsg()">New Game</button></div><br>
+    <!-- GAME MENU -->
+    <div class="sudoku-game">
+        <div class="start-game-menu" id="start-menu">
+            <div class="diff" id="game_type">
+                <h3>Choose Difficulty:</h3>
+                <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
+                <label><input type="radio" id="medium" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/medium.html'" > Medium</label>
+                <label><input type="radio" id="hard" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/hard.html'" > Hard</label>
+            </div>
+
+            <div class="start-menu-item"><button type="button" id="start" onclick="setGame()">New Game</button></div>
             <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
         </div>
-        </div>
+
         <!-- 9x9 board -->
         <div id="board"></div>
-        <div id="digits"></div>
 
-         <!-- Timer / Stopwatch -->
-         <div class="watch">
-            <div class="time">
-                00:00:00
+        <div class="additional-menu">
+            <!-- Timer / Stopwatch -->
+            <div class="watch">
+                <div class="time">
+                    00:00:00
+                </div>
+                <div class="controls">
+                    <button class="button-controls" id="startWatch">Start</button>
+                    <button class="button-controls" id="stopWatch">Stop</button>
+                    <button class="button-controls" id="resetWatch">Reset</button>
+                </div>
             </div>
-            <div class="controls">
-                <button class="button-controls" id="startWatch">Start</button>
-                <button class="button-controls" id="stopWatch">Stop</button>
-                <button class="button-controls" id="resetWatch">Reset</button>
-            </div>
+
+            <div id="digits"></div>
         </div>
+    </div>
+
 
     <script src="app.js"></script>
 </body>
+
 </html>
