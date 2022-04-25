@@ -425,13 +425,13 @@ function help() {
 /* Clear Board (except for pre-import values) */
 function clearBoard() {
     if(document.getElementById("easy").checked){
-        location.href = "easy.html";
+        location.reload();
     }
     else if(document.getElementById("medium").checked){
-        location.href = "medium.html";
+        location.reload();
     }
     else if(document.getElementById("hard").checked){
-        location.href = "hard.html";
+        location.reload();
     }
 }
 
