@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <header class="site-header">
     <!--NAV BAR/MENU-->
@@ -14,8 +14,8 @@
         <nav id="site-navigation" class="site-navigation">
             <div class="site-navigation-item">
                 <ul class="site-menu">
-                    <li class="site-menu-home"><a href="index.html"><strong>Home</strong></a></li>
-                    <li class="site-menu-play"><a href="home.html"><strong>Play</strong></a></li>
+                    <li class="site-menu-home"><a href="../index.html"><strong>Home</strong></a></li>
+                    <li class="site-menu-play"><a href="easy.html"><strong>Play</strong></a></li>
                     <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
                 </ul>
             </div>
@@ -48,11 +48,11 @@
             <div class="diff" id="game_type">
                 <h3>Choose Difficulty:</h3>
                 <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
-                <label><input type="radio" id="medium" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/medium.html'" > Medium</label>
-                <label><input type="radio" id="hard" class="label" name="diff_level" onclick="window.location='https://mearchy13.github.io/sudoku/hard.html'" > Hard</label>
+                <label><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
+                <label><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
             </div>
 
-            <div class="start-menu-item"><button type="button" id="start" onclick="setTwo()">New Game</button></div>
+            <div class="start-menu-item"><button type="button" id="start" onclick="newGame()">New Game</button></div>
             <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
         </div>
 
@@ -77,8 +77,7 @@
     </div>
 
 
-    <script src="app.js"></script>
-    <script src="app2.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
