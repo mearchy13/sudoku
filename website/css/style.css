@@ -397,13 +397,15 @@ button {
 }
 
 .highlight-rows,
-.highlight-cols {
+.highlight-cols,
+.highlight-grid {
     background-color: #bbdefb;
 }
 
 .invalid {
     color: red;
 }
+
 
 /* .valid {
     color: blue;
