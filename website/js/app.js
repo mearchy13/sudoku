@@ -196,7 +196,7 @@ function setGame() {
                 if (c == 2 || c == 5) {
                     tile.classList.add("vertical-line");
                 }
-                tile.addEventListener("click", selectTile);
+                tile.addEventListener("click", selectTileEasy);
                 tile.addEventListener("input", inputTile);
     
                 tile.classList.add("tile");
@@ -223,7 +223,7 @@ function setGame() {
                 if (c == 2 || c == 5) {
                     tile.classList.add("vertical-line");
                 }
-                tile.addEventListener("click", selectTile);
+                tile.addEventListener("click", selectTileMedium);
                 tile.addEventListener("input", inputTile);
     
                 tile.classList.add("tile");
@@ -250,7 +250,7 @@ function setGame() {
                 if (c == 2 || c == 5) {
                     tile.classList.add("vertical-line");
                 }
-                tile.addEventListener("click", selectTile);
+                tile.addEventListener("click", selectTileHard);
                 tile.addEventListener("input", inputTile);
     
                 tile.classList.add("tile");
@@ -281,7 +281,7 @@ var prevHighlightRow = 0,
 var isAffected = false; //If row/col has same value as user input, set to true
 
 
-function selectTile() {
+function selectTileEasy() {
     console.log(this);
     //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
     for (let k = 0; k < 9; k++) {
@@ -300,6 +300,13 @@ function selectTile() {
     let c = parseInt(coords[1]);
     prevHighlightRow = r;
     prevHighlightCol = c;
+
+    if (easy_solution[r][c] == numSelected.id) {
+        this.innerText = numSelected.id;
+    }
+    if (easy_solution[r][c] != numSelected.id) {
+        this.classList.add("invalid");
+    }
 
     if (numSelected) {
         if (this.classList.contains("tile-start")) {
@@ -339,9 +346,227 @@ function selectTile() {
                 //this.innerText = numSelected.id;
                 //this.classList.add("invalid");
                 if (this != row) {
-                    row.classList.add("invalid");
+                    //row.classList.add("invalid");
                     this.innerText = numSelected.id;
-                    this.classList.add("invalid");
+                    //this.classList.add("invalid");
+                }
+                //console.log("invalid");
+            } else if (numSelected.id != row.innerHTML) {
+                if (row.classList.contains("invalid") && !seen[row.innerHTML]) {
+                    row.classList.remove("invalid");
+                }
+                if (this.classList.contains("invalid") && !seen[numSelected.id]) {
+                    this.innerText = numSelected.id;
+                    this.classList.remove("invalid");
+                } else {
+                    this.innerText = numSelected.id;
+                }
+                //this.classList.remove("invalid");
+                //this.classList.remove("invalid");
+                //document.getElementById(r + '-' + k).classList.remove("invalid");
+            } else {
+                this.innerText = numSelected.id;
+
+            }
+            // if (numSelected.id != row.innerHTML && !row.classList.contains("invalid")) {
+            //     this.classList.remove("invalid");
+            //     document.getElementById(r + '-' + k).classList.remove("invalid");
+            // }
+
+        }
+
+
+    } else {
+        //Highlight columns and rows when numpad is not selected.
+        for (let k = 0; k < 9; k++) {
+            //console.log(easy_board[k][c]);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-rows");
+        }
+    }
+}
+
+function selectTileMedium() {
+    console.log(this);
+    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
+    for (let k = 0; k < 9; k++) {
+        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
+        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
+        if (prevCol.classList.contains("highlight-cols"))
+            prevCol.classList.remove("highlight-cols");
+        if (prevRow.classList.contains("highlight-rows"))
+            prevRow.classList.remove("highlight-rows");
+    }
+    // console.log(numSelected);
+    // console.log(this);
+    // "0-0" "0-1" .. "3-1"
+    let coords = this.id.split("-"); //["0", "0"]
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+    prevHighlightRow = r;
+    prevHighlightCol = c;
+
+    if (medium_solution[r][c] == numSelected.id) {
+        this.innerText = numSelected.id;
+    }
+    if (medium_solution[r][c] != numSelected.id) {
+        this.classList.add("invalid");
+    }
+
+    if (numSelected) {
+        if (this.classList.contains("tile-start")) {
+            return;
+        }
+        //this.innerText = numSelected.id;
+        //this.classList.add("valid");
+
+        // if (easy_solution[r][c] == numSelected.id) {
+        //     this.innerText = numSelected.id;
+        // } else {
+        //     errors += 1;
+        //     document.getElementById("errors").innerText = errors;
+        //     //alert("This is an invalid placement. One error has been added to your total.");
+        // }
+        // for (let k = 0; k < 9; k++) {
+        //     console.log(easy_board[r][k]);
+        // }
+        //isAffected
+        console.log("num selcted " + numSelected.id);
+        let seen = ["false", "false", "false", "false", "false", "false", "false", "false", "false", ];
+        //BOARD FUNCTIONS WHEN numpad is selected.
+        for (let k = 0; k < 9; k++) {
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //HIGHLIGHT ROW/COL
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-rows");
+            //console.log(easy_board[k][c]);
+
+            console.log(row);
+            seen[row.innerHTML] = true;
+            //AFFECTED CELLS IN CURRENT ROW
+            if (numSelected.id === row.innerHTML) {
+                //this.innerText = numSelected.id;
+                //this.classList.add("invalid");
+                if (this != row) {
+                    //row.classList.add("invalid");
+                    this.innerText = numSelected.id;
+                    //this.classList.add("invalid");
+                }
+                //console.log("invalid");
+            } else if (numSelected.id != row.innerHTML) {
+                if (row.classList.contains("invalid") && !seen[row.innerHTML]) {
+                    row.classList.remove("invalid");
+                }
+                if (this.classList.contains("invalid") && !seen[numSelected.id]) {
+                    this.innerText = numSelected.id;
+                    this.classList.remove("invalid");
+                } else {
+                    this.innerText = numSelected.id;
+                }
+                //this.classList.remove("invalid");
+                //this.classList.remove("invalid");
+                //document.getElementById(r + '-' + k).classList.remove("invalid");
+            } else {
+                this.innerText = numSelected.id;
+
+            }
+            // if (numSelected.id != row.innerHTML && !row.classList.contains("invalid")) {
+            //     this.classList.remove("invalid");
+            //     document.getElementById(r + '-' + k).classList.remove("invalid");
+            // }
+
+        }
+
+
+    } else {
+        //Highlight columns and rows when numpad is not selected.
+        for (let k = 0; k < 9; k++) {
+            //console.log(easy_board[k][c]);
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-rows");
+        }
+    }
+}
+
+function selectTileHard() {
+    console.log(this);
+    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
+    for (let k = 0; k < 9; k++) {
+        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
+        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
+        if (prevCol.classList.contains("highlight-cols"))
+            prevCol.classList.remove("highlight-cols");
+        if (prevRow.classList.contains("highlight-rows"))
+            prevRow.classList.remove("highlight-rows");
+    }
+    // console.log(numSelected);
+    // console.log(this);
+    // "0-0" "0-1" .. "3-1"
+    let coords = this.id.split("-"); //["0", "0"]
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+    prevHighlightRow = r;
+    prevHighlightCol = c;
+
+    if (hard_solution[r][c] == numSelected.id) {
+        this.innerText = numSelected.id;
+    }
+    if (hard_solution[r][c] != numSelected.id) {
+        this.classList.add("invalid");
+    }
+
+    if (numSelected) {
+        if (this.classList.contains("tile-start")) {
+            return;
+        }
+        //this.innerText = numSelected.id;
+        //this.classList.add("valid");
+
+        // if (easy_solution[r][c] == numSelected.id) {
+        //     this.innerText = numSelected.id;
+        // } else {
+        //     errors += 1;
+        //     document.getElementById("errors").innerText = errors;
+        //     //alert("This is an invalid placement. One error has been added to your total.");
+        // }
+        // for (let k = 0; k < 9; k++) {
+        //     console.log(easy_board[r][k]);
+        // }
+        //isAffected
+        console.log("num selcted " + numSelected.id);
+        let seen = ["false", "false", "false", "false", "false", "false", "false", "false", "false", ];
+        //BOARD FUNCTIONS WHEN numpad is selected.
+        for (let k = 0; k < 9; k++) {
+            let col = document.getElementById(k + '-' + c)
+            let row = document.getElementById(r + '-' + k);
+            //HIGHLIGHT ROW/COL
+            if ((!col.classList.contains("tile-start")))
+                col.classList.add("highlight-cols");
+            if ((!row.classList.contains("tile-start")))
+                row.classList.add("highlight-rows");
+            //console.log(easy_board[k][c]);
+
+            console.log(row);
+            seen[row.innerHTML] = true;
+            //AFFECTED CELLS IN CURRENT ROW
+            if (numSelected.id === row.innerHTML) {
+                //this.innerText = numSelected.id;
+                //this.classList.add("invalid");
+                if (this != row) {
+                    //row.classList.add("invalid");
+                    this.innerText = numSelected.id;
+                    //this.classList.add("invalid");
                 }
                 //console.log("invalid");
             } else if (numSelected.id != row.innerHTML) {
