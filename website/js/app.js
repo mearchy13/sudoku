@@ -1,3 +1,7 @@
+document.querySelector('.input-checkbox').addEventListener('change',()=>{
+    document.body.classList.toggle('dark-theme');
+});
+
 var numSelected = null;
 var tileSelected = null;
 
