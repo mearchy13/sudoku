@@ -286,18 +286,8 @@ var isAffected = false; //If row/col has same value as user input, set to true
 
 
 function selectTileEasy() {
-    console.log(this);
-    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
-    for (let k = 0; k < 9; k++) {
-        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
-        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
-        if (prevCol.classList.contains("highlight-cols"))
-            prevCol.classList.remove("highlight-cols");
-        if (prevRow.classList.contains("highlight-rows"))
-            prevRow.classList.remove("highlight-rows");
-    }
-    // console.log(numSelected);
-    // console.log(this);
+    //console.log(this);
+    removePrev()
     // "0-0" "0-1" .. "3-1"
     let coords = this.id.split("-"); //["0", "0"]
     let r = parseInt(coords[0]);
@@ -305,16 +295,15 @@ function selectTileEasy() {
     prevHighlightRow = r;
     prevHighlightCol = c;
 
-    if (easy_solution[r][c] == numSelected.id) {
-        this.innerText = numSelected.id;
-    }
-    if (easy_solution[r][c] != numSelected.id) {
-        this.classList.add("invalid");
-    }
-
     if (numSelected) {
         if (this.classList.contains("tile-start")) {
             return;
+        }
+        if (easy_solution[r][c] == numSelected.id) {
+            this.innerText = numSelected.id;
+        }
+        if (easy_solution[r][c] != numSelected.id) {
+            this.classList.add("invalid");
         }
         //this.innerText = numSelected.id;
         //this.classList.add("valid");
@@ -378,8 +367,6 @@ function selectTileEasy() {
             // }
 
         }
-
-
     } else {
         //Highlight columns and rows when numpad is not selected.
         for (let k = 0; k < 9; k++) {
@@ -390,23 +377,26 @@ function selectTileEasy() {
                 col.classList.add("highlight-cols");
             if ((!row.classList.contains("tile-start")))
                 row.classList.add("highlight-rows");
+        }
+        //HIGHLIGHT 3X3 GRIDE
+        let r_offset = Math.floor(r / 3) * 3;
+        let c_offset = Math.floor(c / 3) * 3;
+        for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+            for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+                console.log(document.getElementById(i + '-' + j));
+                if ((!document.getElementById(i + '-' + j).classList.contains("tile-start"))) {
+                    document.getElementById(i + '-' + j).classList.add("highlight-grid");
+                }
+            }
         }
     }
 }
 
 function selectTileMedium() {
-    console.log(this);
+    //console.log(this);
     //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
-    for (let k = 0; k < 9; k++) {
-        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
-        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
-        if (prevCol.classList.contains("highlight-cols"))
-            prevCol.classList.remove("highlight-cols");
-        if (prevRow.classList.contains("highlight-rows"))
-            prevRow.classList.remove("highlight-rows");
-    }
-    // console.log(numSelected);
-    // console.log(this);
+    removePrev()
+
     // "0-0" "0-1" .. "3-1"
     let coords = this.id.split("-"); //["0", "0"]
     let r = parseInt(coords[0]);
@@ -414,16 +404,15 @@ function selectTileMedium() {
     prevHighlightRow = r;
     prevHighlightCol = c;
 
-    if (medium_solution[r][c] == numSelected.id) {
-        this.innerText = numSelected.id;
-    }
-    if (medium_solution[r][c] != numSelected.id) {
-        this.classList.add("invalid");
-    }
-
     if (numSelected) {
         if (this.classList.contains("tile-start")) {
             return;
+        }
+        if (medium_solution[r][c] == numSelected.id) {
+            this.innerText = numSelected.id;
+        }
+        if (medium_solution[r][c] != numSelected.id) {
+            this.classList.add("invalid");
         }
         //this.innerText = numSelected.id;
         //this.classList.add("valid");
@@ -450,7 +439,18 @@ function selectTileMedium() {
                 col.classList.add("highlight-cols");
             if ((!row.classList.contains("tile-start")))
                 row.classList.add("highlight-rows");
-            //console.log(easy_board[k][c]);
+
+            //HIGHLIGHT 3X3 GRIDE
+            let r_offset = Math.floor(r / 3) * 3;
+            let c_offset = Math.floor(c / 3) * 3;
+            for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+                for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+                    console.log(document.getElementById(i + '-' + j));
+                    if ((!document.getElementById(i + '-' + j).classList.contains("tile-start"))) {
+                        document.getElementById(i + '-' + j).classList.add("highlight-grid");
+                    }
+                }
+            }
 
             console.log(row);
             seen[row.innerHTML] = true;
@@ -499,6 +499,17 @@ function selectTileMedium() {
                 col.classList.add("highlight-cols");
             if ((!row.classList.contains("tile-start")))
                 row.classList.add("highlight-rows");
+        }
+        //HIGHLIGHT 3X3 GRID 
+        let r_offset = Math.floor(r / 3) * 3;
+        let c_offset = Math.floor(c / 3) * 3;
+        for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+            for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+                console.log(document.getElementById(i + '-' + j));
+                if ((!document.getElementById(i + '-' + j).classList.contains("tile-start"))) {
+                    document.getElementById(i + '-' + j).classList.add("highlight-grid");
+                }
+            }
         }
     }
 }
@@ -506,14 +517,8 @@ function selectTileMedium() {
 function selectTileHard() {
     console.log(this);
     //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
-    for (let k = 0; k < 9; k++) {
-        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
-        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
-        if (prevCol.classList.contains("highlight-cols"))
-            prevCol.classList.remove("highlight-cols");
-        if (prevRow.classList.contains("highlight-rows"))
-            prevRow.classList.remove("highlight-rows");
-    }
+    removePrev()
+
     // console.log(numSelected);
     // console.log(this);
     // "0-0" "0-1" .. "3-1"
@@ -523,16 +528,15 @@ function selectTileHard() {
     prevHighlightRow = r;
     prevHighlightCol = c;
 
-    if (hard_solution[r][c] == numSelected.id) {
-        this.innerText = numSelected.id;
-    }
-    if (hard_solution[r][c] != numSelected.id) {
-        this.classList.add("invalid");
-    }
-
     if (numSelected) {
         if (this.classList.contains("tile-start")) {
             return;
+        }
+        if (hard_solution[r][c] == numSelected.id) {
+            this.innerText = numSelected.id;
+        }
+        if (hard_solution[r][c] != numSelected.id) {
+            this.classList.add("invalid");
         }
         //this.innerText = numSelected.id;
         //this.classList.add("valid");
@@ -559,7 +563,17 @@ function selectTileHard() {
                 col.classList.add("highlight-cols");
             if ((!row.classList.contains("tile-start")))
                 row.classList.add("highlight-rows");
-            //console.log(easy_board[k][c]);
+            //HIGHLIGHT 3X3 GRID
+            let r_offset = Math.floor(r / 3) * 3;
+            let c_offset = Math.floor(c / 3) * 3;
+            for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+                for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+                    console.log(document.getElementById(i + '-' + j));
+                    if ((!document.getElementById(i + '-' + j).classList.contains("tile-start"))) {
+                        document.getElementById(i + '-' + j).classList.add("highlight-grid");
+                    }
+                }
+            }
 
             console.log(row);
             seen[row.innerHTML] = true;
@@ -599,15 +613,26 @@ function selectTileHard() {
 
 
     } else {
-        //Highlight columns and rows when numpad is not selected.
-        for (let k = 0; k < 9; k++) {
-            //console.log(easy_board[k][c]);
-            let col = document.getElementById(k + '-' + c)
-            let row = document.getElementById(r + '-' + k);
-            if ((!col.classList.contains("tile-start")))
-                col.classList.add("highlight-cols");
-            if ((!row.classList.contains("tile-start")))
-                row.classList.add("highlight-rows");
+       //Highlight columns and rows when numpad is not selected.
+       for (let k = 0; k < 9; k++) {
+        //console.log(easy_board[k][c]);
+        let col = document.getElementById(k + '-' + c)
+        let row = document.getElementById(r + '-' + k);
+        if ((!col.classList.contains("tile-start")))
+            col.classList.add("highlight-cols");
+        if ((!row.classList.contains("tile-start")))
+            row.classList.add("highlight-rows");
+        }
+        //HIGHLIGHT 3X3 GRID
+        let r_offset = Math.floor(r / 3) * 3;
+        let c_offset = Math.floor(c / 3) * 3;
+        for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+            for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+                console.log(document.getElementById(i + '-' + j));
+                if ((!document.getElementById(i + '-' + j).classList.contains("tile-start"))) {
+                    document.getElementById(i + '-' + j).classList.add("highlight-grid");
+                }
+            }
         }
     }
 }
@@ -672,5 +697,25 @@ function newGame() {
         location.href = "medium.html";
     }else if (document.getElementById("hard").checked) {
         location.href = "hard.html";
+    }
+}
+
+function removePrev() {
+    for (let k = 0; k < 9; k++) {
+        let prevCol = document.getElementById(k + '-' + prevHighlightCol)
+        let prevRow = document.getElementById(prevHighlightRow + '-' + k);
+        if (prevCol.classList.contains("highlight-cols"))
+            prevCol.classList.remove("highlight-cols");
+        if (prevRow.classList.contains("highlight-rows"))
+            prevRow.classList.remove("highlight-rows");
+    }
+    let r_offset = Math.floor(prevHighlightRow / 3) * 3;
+    let c_offset = Math.floor(prevHighlightCol / 3) * 3;
+    for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+        for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+            if (document.getElementById(i + '-' + j).classList.contains("highlight-grid")) {
+                document.getElementById(i + '-' + j).classList.remove("highlight-grid");
+            }
+        }
     }
 }
