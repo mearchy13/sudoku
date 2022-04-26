@@ -1,6 +1,9 @@
+document.querySelector('.input-checkbox').addEventListener('change',()=>{
+    document.body.classList.toggle('dark-theme');
+});
+
 var numSelected = null;
 var tileSelected = null;
-var errors = 0;
 
 const time_el = document.querySelector('.watch .time');
 const startWatch_btn = document.getElementById('startWatch');
@@ -9,6 +12,78 @@ const resetWatch_btn = document.getElementById("resetWatch");
 
 var seconds = 0;
 var interval = null;
+
+var easy_board = [
+    "--74916-5",
+    "2---6-3-9",
+    "-----7-1-",
+    "-586----4",
+    "--3----9-",
+    "--62--187",
+    "9-4-7---2",
+    "67-83----",
+    "81--45---"
+]
+
+var easy_solution = [
+    "387491625",
+    "241568379",
+    "569327418",
+    "758619234",
+    "123784596",
+    "496253187",
+    "934176852",
+    "675832941",
+    "812945763"
+]
+
+var medium_board = [
+    "-2-6-8---",
+    "58---97--",
+    "----4----",
+    "37----5--",
+    "6-------4",
+    "--8----13",
+    "----2----",
+    "--98---36",
+    "---3-6-9-"
+]
+
+var medium_solution = [
+    "123678945",
+    "584239761",
+    "967145328",
+    "372461589",
+    "691583274",
+    "458792613",
+    "836924157",
+    "219857436",
+    "745316892"
+]
+
+var hard_board = [
+    "---6--4--",
+    "7----36--",
+    "----91-8-",
+    "---------",
+    "-5-18---3",
+    "---3-6-45",
+    "-4-2---6-",
+    "9-3------",
+    "-2----1--"
+]
+
+var hard_solution = [
+    "581672439",
+    "792843651",
+    "364591782",
+    "438957216",
+    "256184973",
+    "179326845",
+    "845219367",
+    "913768524",
+    "627435198"
+]
 
 var easy_board_2 = [
     "----14--3",
@@ -111,8 +186,8 @@ function setGame() {
             for (let c = 0; c < 9; c++) {
                 let tile = document.createElement("div");
                 tile.id = r.toString() + "-" + c.toString();
-                if (easy_board_2[r][c] != "-") {
-                    tile.innerText = easy_board_2[r][c];
+                if (easy_board[r][c] != "-") {
+                    tile.innerText = easy_board[r][c];
                     tile.classList.add("tile-start");
                     tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
     
@@ -138,8 +213,8 @@ function setGame() {
             for (let c = 0; c < 9; c++) {
                 let tile = document.createElement("div");
                 tile.id = r.toString() + "-" + c.toString();
-                if (medium_board_2[r][c] != "-") {
-                    tile.innerText = medium_board_2[r][c];
+                if (medium_board[r][c] != "-") {
+                    tile.innerText = medium_board[r][c];
                     tile.classList.add("tile-start");
                     tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
     
@@ -165,8 +240,8 @@ function setGame() {
             for (let c = 0; c < 9; c++) {
                 let tile = document.createElement("div");
                 tile.id = r.toString() + "-" + c.toString();
-                if (hard_board_2[r][c] != "-") {
-                    tile.innerText = hard_board_2[r][c];
+                if (hard_board[r][c] != "-") {
+                    tile.innerText = hard_board[r][c];
                     tile.classList.add("tile-start");
                     tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
     
@@ -354,25 +429,23 @@ function help() {
 /* Clear Board (except for pre-import values) */
 function clearBoard() {
     if(document.getElementById("easy").checked){
-        window.location.replace("https://mearchy13.github.io/sudoku/easy2.html");
+        location.reload();
     }
     else if(document.getElementById("medium").checked){
-        window.location.replace("https://mearchy13.github.io/sudoku/medium2.html");
+        location.reload();
     }
     else if(document.getElementById("hard").checked){
-        window.location.replace("https://mearchy13.github.io/sudoku/hard2.html");
+        location.reload();
     }
 }
 
-/* If New Game is clicked, send player to the first set of difficulties */
-function setTwo() {
-    if(document.getElementById("easy").checked){
-        window.location.replace("https://mearchy13.github.io/sudoku/home.html");
-    }
-    else if(document.getElementById("medium").checked){
-        window.location.replace("https://mearchy13.github.io/sudoku/medium.html");
-    }
-    else if(document.getElementById("hard").checked){
-        window.location.replace("https://mearchy13.github.io/sudoku/hard.html");
+function newGame() {
+    console.log("New Game");
+    if (document.getElementById("easy").checked) {
+        location.href = "easy.html";
+    }else if (document.getElementById("medium").checked) {
+        location.href = "medium.html";
+    }else if (document.getElementById("hard").checked) {
+        location.href = "hard.html";
     }
 }

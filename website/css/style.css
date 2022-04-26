@@ -1,5 +1,9 @@
 /*in progress*/
 
+html,body {
+    height:100%
+}
+
 a {
     color: black;
 }
@@ -331,6 +335,14 @@ button {
     top: 75px;
 }
 
+.dark-theme #rules-text{
+    color: white;
+}
+
+.dark-theme #strategy-text{
+    color: white;
+}
+
 #board {
     width: 540px;
     height: 540px;
@@ -378,6 +390,10 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dark-theme .number{
+    color: white;
 }
 
 .number-selected {
@@ -451,4 +467,39 @@ button {
 *:after,
 *:before {
     box-sizing: border-box;
+}
+
+.dark-theme .number{
+    border-color: white;
+}
+
+.dark-theme #numpad{
+    border-color: white;
+}
+
+.dark-theme #startWatch{
+    background-color: grey;
+}
+.dark-theme #stopWatch{
+    background-color: grey;
+}
+
+.dark-theme #resetWatch{
+    background-color: grey;
+}
+
+.dark-theme .time{
+    color: white;
+}
+
+.dark-theme .diff{
+    color: white;
+}
+
+.light-theme{
+    background-color: antiquewhite;
+}
+
+.dark-theme{
+    background-color: #1F2937;
 }
