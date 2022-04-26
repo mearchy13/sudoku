@@ -312,7 +312,7 @@ button {
 
 #landing-page {
     text-align: center;
-    margin-top: 350px;
+    margin-top: 400px;
 }
 
 #strategy-text {
@@ -449,4 +449,39 @@ button {
 *:after,
 *:before {
     box-sizing: border-box;
+}
+
+.dark-theme .number{
+    border-color: white;
+}
+
+.dark-theme #numpad{
+    border-color: white;
+}
+
+.dark-theme #startWatch{
+    background-color: grey;
+}
+.dark-theme #stopWatch{
+    background-color: grey;
+}
+
+.dark-theme #resetWatch{
+    background-color: grey;
+}
+
+.dark-theme .time{
+    color: white;
+}
+
+.dark-theme .diff{
+    color: white;
+}
+
+.light-theme{
+    background-color: white;
+}
+
+.dark-theme{
+    background-color: #1F2937;
 }
