@@ -311,10 +311,8 @@ button {
 }
 
 #landing-page {
-    display: block;
-    position: absolute;
-    left: 500px;
-    top: 285px;
+    text-align: center;
+    margin-top: 350px;
 }
 
 #strategy-text {
