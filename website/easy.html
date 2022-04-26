@@ -48,10 +48,15 @@
         <div class="start-game-menu" id="start-menu">
             <div class="diff" id="game_type">
                 <h3>Choose Difficulty:</h3>
-                <label><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
-                <label><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
-                <label><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
+                <label for="easy"><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
+                <label for="medium"><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
+                <label for="hard"><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
             </div>
+
+            <div class="start-menu-item"><button type="button" id="start" onclick="newGame()">New Game</button></div>
+            <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
+        </div>
+        <h3> TESTING </h3>
 
             <div class="start-menu-item"><button type="button" id="start" onclick="newGame()">New Game</button></div>
             <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
