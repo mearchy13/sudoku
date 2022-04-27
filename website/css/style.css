@@ -499,10 +499,11 @@ button {
 
 
 .dropbtn {
-    background-color: #04AA6D;
-    color: white;
+    background-color: lightgray;
     padding: 16px;
     font-size: 16px;
+    border: solid 3px black;
+    border-radius: 60px;
     border: none;
   }
   
@@ -531,4 +532,4 @@ button {
   
   .dropdown:hover .dropdown-content {display: block;}
   
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  .dropdown:hover .dropbtn {background-color: grey;}
