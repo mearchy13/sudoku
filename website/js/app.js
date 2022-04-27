@@ -145,7 +145,7 @@ function setNumpad() {
 
     let number = document.createElement("div");
     number.id = ""
-    number.innerText = "Clear";
+    number.innerText = "Delete";
     number.addEventListener("click", selectNumber);
     number.classList.add("number");
     document.getElementById("digits").appendChild(number);
