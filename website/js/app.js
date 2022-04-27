@@ -18,7 +18,17 @@ console.log("Init darkmode status", isDarkMode)
 
 if(isDarkMode == true || isDarkMode == "true" || isDarkMode == null || isDarkMode == undefined){
     document.body.classList.toggle('dark-theme');
+}else{
+    // Enable the checkbox for darkmode
+    document.querySelector(".input-checkbox").checked = true
 }
+
+if(document.querySelector(".game-type")){
+    document.querySelector(".game-type").addEventListener('change', (...a) => {
+        console.log(this,a)
+    })
+}
+
 
 
 var numSelected = null;
@@ -63,14 +73,16 @@ var hardSolution = ["581672439,792843651,364591782,438957216,256184973,179326845
 var currentBoard = [];
 var currentSoluton = [];
 
+let mode = window.location.href.split("/").pop();
+document.querySelector(".dropbtn").innerText = `${mode.replace(".html","").toUpperCase()}`
 function getCurrentBoard() {
     let temp = Math.floor(Math.random() * 3) // 0 1 2
     let b;
-    if (document.getElementById("easy").checked) {
+    if (mode== "easy.html") {
         b = easyBoard[temp].split(',');
-    } else if (document.getElementById("medium").checked) {
+    } else if( mode=="medium.html") {
         b = mediumBoard[temp].split(',');
-    } else if (document.getElementById("hard").checked) {
+    } else if (mode=="hard.html") {
         b = hardBoard[temp].split(',');
     }
     while (b[0]) {
@@ -81,11 +93,12 @@ function getCurrentBoard() {
 
 function getCurrentSolution(index) {
     let s;
-    if (document.getElementById("easy").checked) {
+   
+    if (mode=="easy.html") {
         s = easySolution[index].split(',');
-    } else if (document.getElementById("medium").checked) {
+    } else if (mode=="medium.html") {
         s = mediumSolution[index].split(',');
-    } else if (document.getElementById("hard").checked) {
+    } else if (mode=="hard.html") {
         s = hardSolution[index].split(',');
     }
     let tempArr = [];
@@ -129,11 +142,18 @@ function setNumpad() {
         number.classList.add("number");
         document.getElementById("digits").appendChild(number);
     }
+
+    let number = document.createElement("div");
+    number.id = ""
+    number.innerText = "Clear";
+    number.addEventListener("click", selectNumber);
+    number.classList.add("number");
+    document.getElementById("digits").appendChild(number);
 }
 
 function setGame() {
     // Board 9x9
-    if (document.getElementById("easy").checked) {
+    if (mode=="easy.html") {
         getCurrentBoard();
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
@@ -162,7 +182,7 @@ function setGame() {
                 document.getElementById("board").append(tile);
             }
         }
-    } else if (document.getElementById("medium").checked) {
+    } else if (mode=="medium.html") {
         getCurrentBoard();
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
@@ -189,7 +209,7 @@ function setGame() {
                 document.getElementById("board").append(tile);
             }
         }
-    } else if (document.getElementById("hard").checked) {
+    } else if (mode=="hard.html") {
         getCurrentBoard();
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
@@ -392,24 +412,17 @@ function help() {
 
 /* Clear Board (except for pre-import values) */
 function clearBoard() {
-    if (document.getElementById("easy").checked) {
-        location.reload();
-    } else if (document.getElementById("medium").checked) {
-        location.reload();
-    } else if (document.getElementById("hard").checked) {
-        location.reload();
-    }
+    // if (document.getElementById("easy").checked) {
+    //     location.reload();
+    // } else if (document.getElementById("medium").checked) {
+    //     location.reload();
+    // } else if (document.getElementById("hard").checked) {
+    //     location.reload();
+    // }
 }
 
 function newGame() {
-    console.log("New Game");
-    if (document.getElementById("easy").checked) {
-        location.href = "easy.html";
-    } else if (document.getElementById("medium").checked) {
-        location.href = "medium.html";
-    } else if (document.getElementById("hard").checked) {
-        location.href = "hard.html";
-    }
+    location.reload()
 }
 
 
@@ -458,3 +471,6 @@ function removePrev() {
         }
     }
 }
+
+
+startWatch()

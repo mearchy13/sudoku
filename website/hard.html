@@ -15,7 +15,7 @@
             <div class="site-navigation-item">
                 <ul class="site-menu">
                     <li class="site-menu-home"><a href="../index.html"><strong>Home</strong></a></li>
-                    <li class="site-menu-play"><a href="home.html"><strong>Play</strong></a></li>
+                    <li class="site-menu-play"><a href="easy.html"><strong>Play</strong></a></li>
                     <li class="site-menu-rule-strat"> <a href="rules.html"><strong>Rules & Strategies</strong></a></li>
                 </ul>
             </div>
@@ -24,7 +24,7 @@
             <span class="theme"><strong>Lights</strong></span>
             <div class="checkbox-switch">
                 <label for="themeSwitch"></label>
-                <input type="checkbox" id="themeSwitch" class="input-checkbox" checked="">
+                <input type="checkbox" id="themeSwitch" class="input-checkbox">
                 <div class="checkbox-animate">
                     <span class="checkbox-off">OFF</span>
                     <span class="checkbox-on">ON</span>
@@ -46,13 +46,14 @@
     <!-- GAME MENU -->
     <div class="sudoku-game">
         <div class="start-game-menu">
-            <div class="diff" id="game_type">
-                <h3>Choose Difficulty:</h3>
-                <label for="easy"><input type="radio" id="easy" class="label" name="diff_level" > Easy</label>
-                <label for="medium"><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
-                <label for="hard"><input type="radio" id="hard" class="label" name="diff_level" checked> Hard</label>
-            </div>
-
+            <div class="dropdown game_type">
+                <button class="dropbtn">Game Type</button>
+                <div class="dropdown-content">
+                  <a href="easy.html">Easy</a>
+                  <a href="medium.html">Medium</a>
+                  <a href="hard.html">Hard</a>
+                </div>
+              </div>
             <div class="start-menu-item"><button type="button" id="start" onclick="newGame()">New Game</button></div>
             <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
         </div>
