@@ -461,14 +461,14 @@ button {
 }
 
 .dark-theme #startWatch{
-    background-color: grey;
+    background-color: white;
 }
 .dark-theme #stopWatch{
-    background-color: grey;
+    background-color: white;
 }
 
 .dark-theme #resetWatch{
-    background-color: grey;
+    background-color: white;
 }
 
 .dark-theme .time{
@@ -479,6 +479,7 @@ button {
     color: white;
 }
 
+.dark-theme #chooseDifficulty h3,
 .dark-theme #rules-text p,
 .dark-theme #rules-text h1,
 .dark-theme #strategy-text h1,
@@ -532,11 +533,3 @@ button {
   .dropdown:hover .dropdown-content {display: block;}
   
   .dropdown:hover .dropbtn {background-color: grey;}
-
-  #landing-background {
-    background: url(img/SudBackground.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
