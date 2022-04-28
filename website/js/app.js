@@ -3,12 +3,12 @@ document.querySelector('.input-checkbox').addEventListener('change', () => {
     let currentMode = localStorage.getItem('darktheme')
 
     console.log(currentMode)
-    if(currentMode == false || currentMode == "false" || currentMode == null || currentMode == undefined){
+    if (currentMode == false || currentMode == "false" || currentMode == null || currentMode == undefined) {
         console.log("Setting darkmode to on")
-        localStorage.setItem('darktheme',true)
-    }else{
+        localStorage.setItem('darktheme', true)
+    } else {
         console.log("Setting darkmode to off")
-        localStorage.setItem('darktheme',false)
+        localStorage.setItem('darktheme', false)
     }
 });
 
@@ -16,16 +16,16 @@ document.querySelector('.input-checkbox').addEventListener('change', () => {
 let isDarkMode = localStorage.getItem('darktheme')
 console.log("Init darkmode status", isDarkMode)
 
-if(isDarkMode == true || isDarkMode == "true" || isDarkMode == null || isDarkMode == undefined){
+if (isDarkMode == true || isDarkMode == "true" || isDarkMode == null || isDarkMode == undefined) {
     document.body.classList.toggle('dark-theme');
-}else{
+} else {
     // Enable the checkbox for darkmode
     document.querySelector(".input-checkbox").checked = true
 }
 
-if(document.querySelector(".game-type")){
+if (document.querySelector(".game-type")) {
     document.querySelector(".game-type").addEventListener('change', (...a) => {
-        console.log(this,a)
+        console.log(this, a)
     })
 }
 
@@ -79,11 +79,11 @@ document.querySelector(".dropbtn").innerText = `${mode.replace(".html","").toUpp
 function getCurrentBoard() {
     let temp = Math.floor(Math.random() * 3) // 0 1 2
     let b;
-    if (mode== "easy.html") {
+    if (mode == "easy.html") {
         b = easyBoard[temp].split(',');
-    } else if( mode=="medium.html") {
+    } else if (mode == "medium.html") {
         b = mediumBoard[temp].split(',');
-    } else if (mode=="hard.html") {
+    } else if (mode == "hard.html") {
         b = hardBoard[temp].split(',');
     }
     while (b[0]) {
@@ -94,12 +94,12 @@ function getCurrentBoard() {
 
 function getCurrentSolution(index) {
     let s;
-   
-    if (mode=="easy.html") {
+
+    if (mode == "easy.html") {
         s = easySolution[index].split(',');
-    } else if (mode=="medium.html") {
+    } else if (mode == "medium.html") {
         s = mediumSolution[index].split(',');
-    } else if (mode=="hard.html") {
+    } else if (mode == "hard.html") {
         s = hardSolution[index].split(',');
     }
     let tempArr = [];
@@ -147,7 +147,7 @@ function setNumpad() {
 
 function setGame() {
     // Board 9x9
-    if (mode=="easy.html") {
+    if (mode == "easy.html") {
         getCurrentBoard();
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
@@ -176,7 +176,7 @@ function setGame() {
                 document.getElementById("board").append(tile);
             }
         }
-    } else if (mode=="medium.html") {
+    } else if (mode == "medium.html") {
         getCurrentBoard();
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
@@ -203,7 +203,7 @@ function setGame() {
                 document.getElementById("board").append(tile);
             }
         }
-    } else if (mode=="hard.html") {
+    } else if (mode == "hard.html") {
         getCurrentBoard();
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
@@ -265,24 +265,22 @@ function selectTileEasy() {
 
     if (numSelected) {
         highlightCells(r, c);
-        console.log("current: " + currentSoluton[0][r][c])
+        //console.log("current: " + currentSoluton[0][r][c])
         if (this.classList.contains("tile-start")) {
             return;
         }
 
-        if (currentSoluton[0][r][c] == numSelected.id) {
-            this.innerText = numSelected.id;
-        }
-        if (currentSoluton[0][r][c] != numSelected.id) {
-            currentCell.innerText = numSelected.id
-            currentCell.classList.add("invalid");
-
-            //IF INPUT VALUE != SOLUTION VALUE, TURN VALUE RED FOR 1 SECOND AND CLEAR CELL
-            setTimeout(function() {
-                console.log("test");
+        if (numSelected.id == currentSoluton[0][r][c]) {
+            if (currentCell.classList.contains("invalid"))
                 currentCell.classList.remove("invalid");
-                currentCell.innerHTML = "";
-            }, 1000);
+            currentCell.innerHTML = numSelected.id;
+            currentCell.classList.add("valid");
+        } else {
+            if (currentCell.classList.contains("valid")) {
+                currentCell.classList.remove("valid");
+            }
+            currentCell.innerHTML = numSelected.id;
+            currentCell.classList.add("invalid");
         }
         //console.log("num selcted " + numSelected.id);
         // let col = document.getElementById(k + '-' + c)
@@ -310,18 +308,17 @@ function selectTileMedium() {
         if (this.classList.contains("tile-start")) {
             return;
         }
-        if (currentSoluton[0][r][c] == numSelected.id) {
-            this.innerText = numSelected.id;
-        }
-        if (currentSoluton[0][r][c] != numSelected.id) {
-            currentCell.innerText = numSelected.id
-            currentCell.classList.add("invalid");
-            //IF INPUT VALUE != SOLUTION VALUE, TURN VALUE RED FOR 1 SECOND AND CLEAR CELL
-            setTimeout(function() {
-                console.log("test");
+        if (numSelected.id == currentSoluton[0][r][c]) {
+            if (currentCell.classList.contains("invalid"))
                 currentCell.classList.remove("invalid");
-                currentCell.innerHTML = "";
-            }, 1000);
+            currentCell.innerHTML = numSelected.id;
+            currentCell.classList.add("valid");
+        } else {
+            if (currentCell.classList.contains("valid")) {
+                currentCell.classList.remove("valid");
+            }
+            currentCell.innerHTML = numSelected.id;
+            currentCell.classList.add("invalid");
         }
 
     } else {
@@ -346,19 +343,17 @@ function selectTileHard() {
         if (this.classList.contains("tile-start")) {
             return;
         }
-        if (currentSoluton[0][r][c] == numSelected.id) {
-            this.innerText = numSelected.id;
-        }
-        if (currentSoluton[0][r][c] != numSelected.id) {
-            currentCell.innerText = numSelected.id
-            currentCell.classList.add("invalid");
-
-            //IF INPUT VALUE != SOLUTION VALUE, TURN VALUE RED FOR 1 SECOND AND CLEAR CELL
-            setTimeout(function() {
-                console.log("test");
+        if (numSelected.id == currentSoluton[0][r][c]) {
+            if (currentCell.classList.contains("invalid"))
                 currentCell.classList.remove("invalid");
-                currentCell.innerHTML = "";
-            }, 1000);
+            currentCell.innerHTML = numSelected.id;
+            currentCell.classList.add("valid");
+        } else {
+            if (currentCell.classList.contains("valid")) {
+                currentCell.classList.remove("valid");
+            }
+            currentCell.innerHTML = numSelected.id;
+            currentCell.classList.add("invalid");
         }
     } else {
         highlightCells(r, c);
@@ -458,41 +453,41 @@ function removePrev() {
 startWatch()
 
 function clearBoard() {
-    if (mode=="easy.html") {
+    if (mode == "easy.html") {
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
                 let current = document.getElementById(r + '-' + c)
-                //console.log("current: " + currentBoard[0][r][c]);
-                //console.log("current: " + current.innerHTML);
-                if(!current.classList.contains("tile-start")){
+                    //console.log("current: " + currentBoard[0][r][c]);
+                    //console.log("current: " + current.innerHTML);
+                if (!current.classList.contains("tile-start")) {
                     console.log("current: " + current.innerHTML);
                     current.innerHTML = "";
-                    }
                 }
             }
         }
-    if (mode=="medium.html") {
+    }
+    if (mode == "medium.html") {
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
                 let current = document.getElementById(r + '-' + c)
-                //console.log("current: " + currentBoard[0][r][c]);
-                //console.log("current: " + current.innerHTML);
-                if(!current.classList.contains("tile-start")){
+                    //console.log("current: " + currentBoard[0][r][c]);
+                    //console.log("current: " + current.innerHTML);
+                if (!current.classList.contains("tile-start")) {
                     console.log("current: " + current.innerHTML);
                     current.innerHTML = "";
-                    }
                 }
             }
-         }
-    if (mode=="hard.html") {
+        }
+    }
+    if (mode == "hard.html") {
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
                 let current = document.getElementById(r + '-' + c)
-                //console.log("current: " + currentBoard[0][r][c]);
-                //console.log("current: " + current.innerHTML);
-                if(!current.classList.contains("tile-start")){
-                console.log("current: " + current.innerHTML);
-                current.innerHTML = "";
+                    //console.log("current: " + currentBoard[0][r][c]);
+                    //console.log("current: " + current.innerHTML);
+                if (!current.classList.contains("tile-start")) {
+                    console.log("current: " + current.innerHTML);
+                    current.innerHTML = "";
                 }
             }
         }

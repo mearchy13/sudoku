@@ -20,6 +20,7 @@ a:active {
     text-decoration: none;
 }
 
+
 /* html {
     background-color: white;
 } */
@@ -379,19 +380,31 @@ button {
 }
 
 .number-selected {
-    background-color: lightgrey;
+    background-color: Gray;
 }
 
 .tile-start {
-    background-color: gainsboro;
+    background-color: #A9A9A9;
+}
+
+.dark-theme .tile-start {
+    background-color: white;
 }
 
 .horizontal-line {
     border-bottom: 3px solid black;
 }
 
+.dark-theme .horizontal-line {
+    border-bottom: 3px solid DarkGray
+}
+
 .vertical-line {
     border-right: 3px solid black;
+}
+
+.dark-theme .vertical-line {
+    border-right: 3px solid DarkGray
 }
 
 .highlight-rows,
@@ -400,8 +413,22 @@ button {
     background-color: #bbdefb;
 }
 
+.dark-theme .highlight-rows,
+.dark-theme .highlight-cols,
+.dark-theme .highlight-grid {
+    background-color: Silver;
+}
+
 .invalid {
     color: red;
+}
+
+.valid {
+    color: black;
+}
+
+.dark-theme .valid {
+    color: DimGray;
 }
 
 
@@ -451,35 +478,36 @@ button {
     box-sizing: border-box;
 }
 
-.dark-theme .number{
+.dark-theme .number {
     border-color: black;
     background-color: white;
 }
 
-.dark-theme #numpad{
+.dark-theme #numpad {
     border-color: white;
 }
 
-.dark-theme #startWatch{
-    background-color: white;
-}
-.dark-theme #stopWatch{
+.dark-theme #startWatch {
     background-color: white;
 }
 
-.dark-theme #resetWatch{
+.dark-theme #stopWatch {
+    background-color: white;
+}
+
+.dark-theme #resetWatch {
     background-color: white;
 }
 
 .dark-theme .number-selected {
-    background-color: lightgrey;
+    background-color: Gray;
 }
 
-.dark-theme .time{
+.dark-theme .time {
     color: white;
 }
 
-.dark-theme .diff{
+.dark-theme .diff {
     color: white;
 }
 
@@ -487,16 +515,15 @@ button {
 .dark-theme #rules-text p,
 .dark-theme #rules-text h1,
 .dark-theme #strategy-text h1,
-.dark-theme #strategy-text p{
-        color: white !important;
+.dark-theme #strategy-text p {
+    color: white !important;
 }
 
-
-.light-theme{
+.light-theme {
     background-color: white;
 }
 
-.dark-theme{
+.dark-theme {
     background-color: #1F2937;
 }
 
@@ -509,31 +536,37 @@ button {
     border-radius: 60px;
     color: black;
     cursor: pointer;
-  }
-  
-  .dropdown {
+}
+
+.dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  
-  .dropdown-content a {
+}
+
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  .dropdown:hover .dropbtn {background-color: grey;}
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: grey;
+}
