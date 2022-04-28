@@ -23,7 +23,7 @@
         <div class="theme-wrapper">
             <span class="theme"><strong>Lights</strong></span>
             <div class="checkbox-switch">
-                <input type="checkbox" class="input-checkbox" checked="">
+                <input type="checkbox" class="input-checkbox">
                 <div class="checkbox-animate">
                     <span class="checkbox-off">OFF</span>
                     <span class="checkbox-on">ON</span>
@@ -44,16 +44,17 @@
 
     <!-- GAME MENU -->
     <div class="sudoku-game">
-        <div class="start-game-menu" id="start-menu">
-            <div class="diff" id="game_type">
+        <div class="start-game-menu">
+            <div class="dropdown game_type">
                 <h3>Choose Difficulty:</h3>
-                <label for="easy"><input type="radio" id="easy" class="label" name="diff_level" checked> Easy</label>
-                <label for="medium"><input type="radio" id="medium" class="label" name="diff_level" > Medium</label>
-                <label for="hard"><input type="radio" id="hard" class="label" name="diff_level" > Hard</label>
-            </div>
-
+                <button class="dropbtn">Game Type</button>
+                <div class="dropdown-content">
+                  <a href="easy.html">Easy</a>
+                  <a href="medium.html">Medium</a>
+                  <a href="hard.html">Hard</a>
+                </div>
+              </div>
             <div class="start-menu-item"><button type="button" id="start" onclick="newGame()">New Game</button></div>
-            <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
         </div>
 
         <!-- 9x9 board -->
