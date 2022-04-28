@@ -456,3 +456,45 @@ function removePrev() {
 }
 
 startWatch()
+
+function clearBoard() {
+    if (mode=="easy.html") {
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let current = document.getElementById(r + '-' + c)
+                //console.log("current: " + currentBoard[0][r][c]);
+                //console.log("current: " + current.innerHTML);
+                if(!current.classList.contains("tile-start")){
+                    console.log("current: " + current.innerHTML);
+                    current.innerHTML = "";
+                    }
+                }
+            }
+        }
+    if (mode=="medium.html") {
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let current = document.getElementById(r + '-' + c)
+                //console.log("current: " + currentBoard[0][r][c]);
+                //console.log("current: " + current.innerHTML);
+                if(!current.classList.contains("tile-start")){
+                    console.log("current: " + current.innerHTML);
+                    current.innerHTML = "";
+                    }
+                }
+            }
+         }
+    if (mode=="hard.html") {
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                let current = document.getElementById(r + '-' + c)
+                //console.log("current: " + currentBoard[0][r][c]);
+                //console.log("current: " + current.innerHTML);
+                if(!current.classList.contains("tile-start")){
+                console.log("current: " + current.innerHTML);
+                current.innerHTML = "";
+                }
+            }
+        }
+    }
+}
