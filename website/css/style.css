@@ -275,7 +275,7 @@ input {
 
 button {
     height: 50px;
-    width: 140px;
+    width: 180px;
     font-weight: bold;
     font-size: medium;
     border: solid 3px black;
@@ -362,7 +362,7 @@ button {
     flex-wrap: wrap;
     cursor: pointer;
     /* float: right; */
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .number {
@@ -371,7 +371,7 @@ button {
     border: 3px solid black;
     border-radius: 30px;
     margin: 5px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -495,3 +495,48 @@ button {
     background-color: #1F2937;
 }
 
+.dropbtn {
+    height: 45px;
+    width: 180px;
+    font-weight: bold;
+    font-size: medium;
+    border: solid 3px black;
+    border-radius: 60px;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: grey;}
+
+  #landing-background {
+    background: url(img/SudBackground.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
