@@ -1,0 +1,553 @@
+/*in progress*/
+
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+/* html {
+    background-color: white;
+} */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+    /* Image Location */
+    background-image: url("../img/SudNewPic.png");
+ 
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    /* Font Colour */
+    color:white;
+}
+
+.site-header .content-wrapper {
+    position: relative;
+}
+
+.site-header {
+    height: 65px;
+    display: block;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    z-index: 10;
+    background: whitesmoke;
+    border-bottom: 3px solid black;
+    padding: 20px 0 20px;
+    font-size: 25px;
+    font-family: Helvetica, Verdana, sans-serif;
+}
+
+.content-wrapper {
+    padding: 0 20px;
+    flex: 1 0 auto;
+}
+
+.site-navigation {
+    background-color: transparent;
+    overflow: visible;
+    position: relative;
+    opacity: 1;
+    float: left;
+    pointer-events: auto;
+    text-align: left;
+}
+
+.site-navigation-item {
+    display: flex;
+    position: relative;
+    vertical-align: middle;
+    flex-direction: row;
+    align-items: center;
+}
+
+.site-menu {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-direction: row;
+    align-items: center;
+}
+
+.site-menu li {
+    height: 42px;
+    padding: 0px 15px;
+    position: relative;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.site-menu li:hover {
+    background-color: white;
+}
+
+.theme-wrapper {
+    display: flex;
+    float: right;
+    position: relative;
+    height: 42px;
+}
+
+.theme {
+    padding-right: 15px;
+    position: relative;
+    top: 7px;
+}
+
+
+/*Toggle switch for theme*/
+
+.checkbox-switch {
+    top: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 80px;
+    height: 30px;
+    border-radius: 30px;
+    line-height: 1.2;
+    font-size: 14px;
+}
+
+
+/*The actual checkbox property*/
+
+.checkbox-switch input.input-checkbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+
+/*Light switch from on to off off*/
+
+.checkbox-switch .checkbox-animate {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    background-color: #95a5a6;
+    transition: 0.25s ease-out 0s;
+}
+
+
+/*Ball when lights are off*/
+
+.checkbox-switch .checkbox-animate:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: grey;
+    top: 5px;
+    left: 5px;
+    transition: left 0.3s ease-out 0s;
+    z-index: 10;
+}
+
+
+/*Background when light is on*/
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate {
+    background-color: grey;
+}
+
+
+/*Ball color when on*/
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate:before {
+    left: 55px;
+    background-color: lightgrey;
+}
+
+
+/*ON OFF Font*/
+
+.checkbox-switch .checkbox-off,
+.checkbox-switch .checkbox-on {
+    float: left;
+    color: black;
+    font-weight: 700;
+    padding-top: 6px;
+    transition: all 0.3s ease-out 0s;
+}
+
+.checkbox-switch .checkbox-off {
+    margin-left: 30px;
+    opacity: 1;
+}
+
+.checkbox-switch .checkbox-on {
+    display: none;
+    float: right;
+    margin-right: 35px;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-off {
+    display: none;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked+.checkbox-animate .checkbox-on {
+    display: block;
+    opacity: 1;
+}
+
+.centeredlogo {
+    display: block;
+    width: 60%;
+    margin-left: 10%;
+    margin-top: 4%;
+}
+
+.centeredlogo-landing {
+    display: block;
+    width: 60%;
+    margin-left: 18%;
+    margin-top: 4%;
+}
+
+.unite-header {
+    border-bottom: 10px solid black !important;
+}
+
+.box {
+    height: 156px;
+    width: 156px;
+    border: solid white 2px;
+    background-color: gray;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.main-container {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.cell {
+    height: 50px;
+    width: 50px;
+    border: solid white 1px;
+    text-align: center;
+    background-color: black;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+input {
+    height: 45px;
+    width: 44px;
+    border: none;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: lightgrey;
+    color: black;
+}
+
+button {
+    height: 50px;
+    width: 180px;
+    font-weight: bold;
+    font-size: medium;
+    border: solid 3px black;
+    border-radius: 60px;
+    color: black;
+    cursor: pointer;
+}
+
+.button-controls {
+    height: 35px;
+    width: 80px;
+    font-weight: bold;
+    border: solid 3px black;
+    border-radius: 30px;
+    color: black;
+    cursor: pointer;
+}
+
+.start-game-menu {
+    display: flex;
+    width: 330px;
+    margin-right: 20px;
+    margin-top: 50px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.label {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+
+#landing-page {
+    text-align: center;
+    margin-top: 400px;
+}
+
+#strategy-text {
+    position: absolute;
+    flex-wrap: wrap;
+    right: 45px;
+    top: 75px;
+}
+
+#rules-text {
+    position: absolute;
+    flex-wrap: wrap;
+    left: 10px;
+    top: 75px;
+}
+
+#board {
+    width: 540px;
+    height: 540px;
+    /* margin: 0 auto; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.tile {
+    width: 60px;
+    height: 60px;
+    border: 1px solid gray;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#digits {
+    width: 330px;
+    /* height: 40px; */
+    margin: 0 auto;
+    position: relative;
+    /* right: 130px; */
+    /* top: 90px; */
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    /* float: right; */
+    justify-content: center;
+}
+
+.number {
+    width: 95px;
+    height: 95px;
+    border: 3px solid black;
+    border-radius: 30px;
+    margin: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-selected {
+    background-color: lightgrey;
+}
+
+.tile-start {
+    background-color: gainsboro;
+}
+
+.horizontal-line {
+    border-bottom: 3px solid black;
+}
+
+.vertical-line {
+    border-right: 3px solid black;
+}
+
+.highlight-rows,
+.highlight-cols,
+.highlight-grid {
+    background-color: #bbdefb;
+}
+
+.invalid {
+    color: red;
+}
+
+
+/* .valid {
+    color: blue;
+} */
+
+:root {
+    --primary: black;
+    --dark: #1F2937;
+    --darkdark: #111827;
+    --light: #F3F4F6;
+}
+
+.watch .time {
+    font-size: 2rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
+}
+
+.sudoku-game {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+*,
+ ::after,
+ ::before {
+    box-sizing: border-box;
+}
+
+.additional-menu {
+    display: flex;
+    float: right;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+.dark-theme .number{
+    border-color: black;
+    background-color: white;
+}
+
+.dark-theme #numpad{
+    border-color: white;
+}
+
+.dark-theme #startWatch{
+    background-color: grey;
+}
+.dark-theme #stopWatch{
+    background-color: grey;
+}
+
+.dark-theme #resetWatch{
+    background-color: grey;
+}
+
+.dark-theme .time{
+    color: white;
+}
+
+.dark-theme .diff{
+    color: white;
+}
+
+.dark-theme #rules-text p,
+.dark-theme #rules-text h1,
+.dark-theme #strategy-text h1,
+.dark-theme #strategy-text p{
+        color: white !important;
+}
+
+
+.light-theme{
+    background-color: white;
+}
+
+.dark-theme{
+    background-color: #1F2937;
+}
+
+.dropbtn {
+    height: 45px;
+    width: 180px;
+    font-weight: bold;
+    font-size: medium;
+    border: solid 3px black;
+    border-radius: 60px;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: grey;}
+
+  #landing-background {
+    background: url(img/SudBackground.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
