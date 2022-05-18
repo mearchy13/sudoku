@@ -45,17 +45,18 @@
     <!-- GAME MENU -->
     <div class="sudoku-game">
         <div class="start-game-menu">
-            <div class="dropdown game_type" id = "chooseDifficulty">
+            <div class="dropdown game_type" id="chooseDifficulty">
                 <h3>Choose Difficulty:</h3>
                 <button class="dropbtn">Game Type</button>
                 <div class="dropdown-content">
-                  <a href="easy.html">Easy</a>
-                  <a href="medium.html">Medium</a>
-                  <a href="hard.html">Hard</a>
+                    <a href="easy.html">Easy</a>
+                    <a href="medium.html">Medium</a>
+                    <a href="hard.html">Hard</a>
                 </div>
-              </div>
+            </div>
             <div class="start-menu-item"><button type="button" id="start" onclick="newGame()">New Game</button></div>
-            <div class="start-menu-item"><button type="button" id="start" onclick="clearBoard()">Clear</button></div>
+            <div class="start-menu-item"><button type="button" id="hint">Hint</button></div>
+            <div class="start-menu-item"><button type="button" id="clear" onclick="clearBoard()">Clear</button></div>
         </div>
 
         <!-- 9x9 board -->

@@ -109,20 +109,6 @@ function getCurrentSolution(index) {
     return tempArr;
 }
 
-//console.log("Sol: " + easySolution[0][9]);
-// var temp;
-// temp = result[1].split(',');
-
-// while (temp[0]) {
-//     currentBoard.push(temp.splice(0, 9));
-// }
-// var b = easyBoard[0].split(',');
-// while (b[0]) {
-//     currentBoard.push(b.splice(0, 9));
-// }
-
-// console.log(currentBoard[0][0][8]);
-
 // Event listeners
 startWatch_btn.addEventListener('click', startWatch);
 stopWatch_btn.addEventListener("click", stopWatch);
@@ -147,7 +133,7 @@ function setNumpad() {
 
 function setGame() {
     // Board 9x9
-    if (mode == "easy.html") {
+    if (mode == "easy.html" || mode == "medium.html" || mode == "hard.html") {
         getCurrentBoard();
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
@@ -169,61 +155,7 @@ function setGame() {
                 if (c == 2 || c == 5) {
                     tile.classList.add("vertical-line");
                 }
-                tile.addEventListener("click", selectTileEasy);
-                tile.addEventListener("input", inputTile);
-
-                tile.classList.add("tile");
-                document.getElementById("board").append(tile);
-            }
-        }
-    } else if (mode == "medium.html") {
-        getCurrentBoard();
-        for (let r = 0; r < 9; r++) {
-            for (let c = 0; c < 9; c++) {
-                let tile = document.createElement("div");
-                tile.id = r.toString() + "-" + c.toString();
-                if (currentBoard[0][r][c] != "-") {
-                    tile.innerText = currentBoard[0][r][c];
-                    tile.classList.add("tile-start");
-                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
-
-                } else {
-                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
-                }
-                if (r == 2 || r == 5) {
-                    tile.classList.add("horizontal-line");
-                }
-                if (c == 2 || c == 5) {
-                    tile.classList.add("vertical-line");
-                }
-                tile.addEventListener("click", selectTileMedium);
-                tile.addEventListener("input", inputTile);
-
-                tile.classList.add("tile");
-                document.getElementById("board").append(tile);
-            }
-        }
-    } else if (mode == "hard.html") {
-        getCurrentBoard();
-        for (let r = 0; r < 9; r++) {
-            for (let c = 0; c < 9; c++) {
-                let tile = document.createElement("div");
-                tile.id = r.toString() + "-" + c.toString();
-                if (currentBoard[0][r][c] != "-") {
-                    tile.innerText = currentBoard[0][r][c];
-                    tile.classList.add("tile-start");
-                    tile.setAttribute("contenteditable", "false"); //Make div(s) not editable. I.E the pre-values
-
-                } else {
-                    tile.setAttribute("contenteditable", "true"); //Make div(s) editable. I.E. the empty cells
-                }
-                if (r == 2 || r == 5) {
-                    tile.classList.add("horizontal-line");
-                }
-                if (c == 2 || c == 5) {
-                    tile.classList.add("vertical-line");
-                }
-                tile.addEventListener("click", selectTileHard);
+                tile.addEventListener("click", selectTile);
                 tile.addEventListener("input", inputTile);
 
                 tile.classList.add("tile");
@@ -251,8 +183,16 @@ function selectNumber() {
 
 var prevHighlightRow = 0,
     prevHighlightCol = 0;
+var hintNum = 0;
+if (mode == "easy.html") {
+    hintNum = 5;
+} else if (mode == "medium.html") {
+    hintNum = 4;
+} else {
+    hintNum = 3;
+}
 
-function selectTileEasy() {
+function selectTile() {
     console.log(this);
     let currentCell = this;
     removePrev();
@@ -289,74 +229,24 @@ function selectTileEasy() {
     } else {
         highlightCells(r, c);
     }
-}
 
-function selectTileMedium() {
-    let currentCell = this;
-    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS
-    removePrev()
+    document.getElementById("hint").onclick = function() {
+        console.log(hintNum);
 
-    // "0-0" "0-1" .. "3-1"
-    let coords = this.id.split("-"); //["0", "0"]
-    let r = parseInt(coords[0]);
-    let c = parseInt(coords[1]);
-    prevHighlightRow = r;
-    prevHighlightCol = c;
-
-    if (numSelected) {
-        highlightCells(r, c);
-        if (this.classList.contains("tile-start")) {
-            return;
-        }
-        if (numSelected.id == currentSoluton[0][r][c]) {
-            if (currentCell.classList.contains("invalid"))
-                currentCell.classList.remove("invalid");
-            currentCell.innerHTML = numSelected.id;
-            currentCell.classList.add("valid");
-        } else {
-            if (currentCell.classList.contains("valid")) {
-                currentCell.classList.remove("valid");
+        console.log("hint clicked");
+        //console.log(currentSoluton[0][r][c]);
+        //console.log(currentCell.innerHTML);
+        for (let row = 0; row < 9; row++) {
+            for (let col = 0; col < 9; col++) {
+                let temp = document.getElementById(row + '-' + col);
+                if (hintNum <= 0) {
+                    currentCell.innerHTML = currentSoluton[0][r][c]
+                } else if (currentSoluton[0][row][col] == currentSoluton[0][r][c]) {
+                    temp.innerHTML = currentSoluton[0][r][c];
+                }
             }
-            currentCell.innerHTML = numSelected.id;
-            currentCell.classList.add("invalid");
         }
-
-    } else {
-        highlightCells(r, c);
-    }
-}
-
-function selectTileHard() {
-    let currentCell = this;
-    //REMOVE PREVIOUS HIGHLIGHTED ROW AND COLUMNS (TODO: AND AFFECTED CELL)
-    removePrev()
-
-    // "0-0" "0-1" .. "3-1"
-    let coords = this.id.split("-"); //["0", "0"]
-    let r = parseInt(coords[0]);
-    let c = parseInt(coords[1]);
-    prevHighlightRow = r;
-    prevHighlightCol = c;
-
-    if (numSelected) {
-        highlightCells(r, c);
-        if (this.classList.contains("tile-start")) {
-            return;
-        }
-        if (numSelected.id == currentSoluton[0][r][c]) {
-            if (currentCell.classList.contains("invalid"))
-                currentCell.classList.remove("invalid");
-            currentCell.innerHTML = numSelected.id;
-            currentCell.classList.add("valid");
-        } else {
-            if (currentCell.classList.contains("valid")) {
-                currentCell.classList.remove("valid");
-            }
-            currentCell.innerHTML = numSelected.id;
-            currentCell.classList.add("invalid");
-        }
-    } else {
-        highlightCells(r, c);
+        hintNum--;
     }
 }
 
@@ -404,6 +294,8 @@ function newGame() {
 }
 
 
+startWatch()
+
 function highlightCells(row, col) {
     let r = row;
     let c = col;
@@ -449,8 +341,6 @@ function removePrev() {
         }
     }
 }
-
-startWatch()
 
 function clearBoard() {
     if (mode == "easy.html") {
