@@ -209,8 +209,9 @@ function selectTile() {
         if (this.classList.contains("tile-start")) {
             return;
         }
-        let occRow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        let occCol = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        let occRow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //List number of occurence in row
+        let occCol = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //List number of occurence in col
         currentCell.innerHTML = numSelected.id;
         for (let i = 0; i < 9; i++) {
             let col = document.getElementById(i + '-' + c);
@@ -235,10 +236,12 @@ function selectTile() {
             if (occCol[col.innerHTML] > 1) {
                 col.classList.add("invalid");
                 //occ[row.innerHTML]--;
-            } else if (occCol[col.innerHTML] == 1 && !row.classList.contains("invalid")) {
+            } else if (occCol[col.innerHTML] == 1 && occRow[row.innerHTML] <= 1) {
                 if (col.classList.contains("invalid"))
                     col.classList.remove("invalid");
             }
+
+
 
         }
 
@@ -254,9 +257,6 @@ function selectTile() {
         //     currentCell.innerHTML = numSelected.id;
         //     currentCell.classList.add("invalid");
         // }
-
-
-
 
         //console.log("num selcted " + numSelected.id);
         // let col = document.getElementById(k + '-' + c)
