@@ -209,19 +209,55 @@ function selectTile() {
         if (this.classList.contains("tile-start")) {
             return;
         }
+        let occRow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let occCol = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        currentCell.innerHTML = numSelected.id;
+        for (let i = 0; i < 9; i++) {
+            let col = document.getElementById(i + '-' + c);
+            let row = document.getElementById(r + '-' + i);
+            if (row.innerHTML != "")
+                occRow[row.innerHTML]++;
+            if (col.innerHTML != "")
+                occCol[col.innerHTML]++;
 
-        if (numSelected.id == currentSoluton[0][r][c]) {
-            if (currentCell.classList.contains("invalid"))
-                currentCell.classList.remove("invalid");
-            currentCell.innerHTML = numSelected.id;
-            currentCell.classList.add("valid");
-        } else {
-            if (currentCell.classList.contains("valid")) {
-                currentCell.classList.remove("valid");
-            }
-            currentCell.innerHTML = numSelected.id;
-            currentCell.classList.add("invalid");
         }
+        for (let i = 0; i < 9; i++) {
+            let col = document.getElementById(i + '-' + c);
+            let row = document.getElementById(r + '-' + i);
+            //console.log(occ[row.innerHTML]);
+            if (occRow[row.innerHTML] > 1) {
+                row.classList.add("invalid");
+                //occ[row.innerHTML]--;
+            } else if (occRow[row.innerHTML] == 1) {
+                if (row.classList.contains("invalid"))
+                    row.classList.remove("invalid");
+            }
+            if (occCol[col.innerHTML] > 1) {
+                col.classList.add("invalid");
+                //occ[row.innerHTML]--;
+            } else if (occCol[col.innerHTML] == 1 && !row.classList.contains("invalid")) {
+                if (col.classList.contains("invalid"))
+                    col.classList.remove("invalid");
+            }
+
+        }
+
+        // if (numSelected.id == currentSoluton[0][r][c]) {
+        //     if (currentCell.classList.contains("invalid"))
+        //         currentCell.classList.remove("invalid");
+        //     currentCell.innerHTML = numSelected.id;
+        //     currentCell.classList.add("valid");
+        // } else {
+        //     if (currentCell.classList.contains("valid")) {
+        //         currentCell.classList.remove("valid");
+        //     }
+        //     currentCell.innerHTML = numSelected.id;
+        //     currentCell.classList.add("invalid");
+        // }
+
+
+
+
         //console.log("num selcted " + numSelected.id);
         // let col = document.getElementById(k + '-' + c)
         // let row = document.getElementById(r + '-' + k);
@@ -231,11 +267,6 @@ function selectTile() {
     }
 
     document.getElementById("hint").onclick = function() {
-        console.log(hintNum);
-
-        console.log("hint clicked");
-        //console.log(currentSoluton[0][r][c]);
-        //console.log(currentCell.innerHTML);
         for (let row = 0; row < 9; row++) {
             for (let col = 0; col < 9; col++) {
                 let temp = document.getElementById(row + '-' + col);
@@ -347,10 +378,12 @@ function clearBoard() {
         for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
                 let current = document.getElementById(r + '-' + c)
-                    //console.log("current: " + currentBoard[0][r][c]);
-                    //console.log("current: " + current.innerHTML);
+                if (current.classList.contains("invalid"))
+                    current.classList.remove("invalid");
+                //console.log("current: " + currentBoard[0][r][c]);
+                //console.log("current: " + current.innerHTML);
                 if (!current.classList.contains("tile-start")) {
-                    console.log("current: " + current.innerHTML);
+                    //console.log("current: " + current.innerHTML);
                     current.innerHTML = "";
                 }
             }
