@@ -222,27 +222,31 @@ function selectTile() {
                 occCol[col.innerHTML]++;
 
         }
+        //Check Row First
         for (let i = 0; i < 9; i++) {
             let col = document.getElementById(i + '-' + c);
             let row = document.getElementById(r + '-' + i);
             //console.log(occ[row.innerHTML]);
             if (occRow[row.innerHTML] > 1) {
-                row.classList.add("invalid");
+                row.classList.add("row-invalid");
                 //occ[row.innerHTML]--;
             } else if (occRow[row.innerHTML] == 1) {
-                if (row.classList.contains("invalid"))
-                    row.classList.remove("invalid");
+                if (row.classList.contains("row-invalid"))
+                    row.classList.remove("row-invalid");
             }
+        }
+        //Check Col Second
+        for (let i = 0; i < 9; i++) {
+            let col = document.getElementById(i + '-' + c);
+            let row = document.getElementById(r + '-' + i);
             if (occCol[col.innerHTML] > 1) {
-                col.classList.add("invalid");
+                col.classList.add("col-invalid");
                 //occ[row.innerHTML]--;
-            } else if (occCol[col.innerHTML] == 1 && occRow[row.innerHTML] <= 1) {
-                if (col.classList.contains("invalid"))
-                    col.classList.remove("invalid");
+            } else if (occCol[col.innerHTML] == 1) {
+                //console.log(row.innerHTML + " " + occRow[row.innerHTML]);
+                if (col.classList.contains("col-invalid"))
+                    col.classList.remove("col-invalid");
             }
-
-
-
         }
 
         // if (numSelected.id == currentSoluton[0][r][c]) {

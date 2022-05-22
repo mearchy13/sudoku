@@ -419,7 +419,8 @@ button {
     background-color: Silver;
 }
 
-.invalid {
+.row-invalid,
+.col-invalid {
     color: red;
 }
 
