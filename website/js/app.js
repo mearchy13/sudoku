@@ -212,6 +212,7 @@ function selectTile() {
 
         let occRow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //List number of occurence in row
         let occCol = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //List number of occurence in col
+        let occGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //List number of occurence in 3x3 Grid
         currentCell.innerHTML = numSelected.id;
         for (let i = 0; i < 9; i++) {
             let col = document.getElementById(i + '-' + c);
@@ -222,7 +223,17 @@ function selectTile() {
                 occCol[col.innerHTML]++;
 
         }
-        //Check Row First
+        let r_offset = Math.floor(r / 3) * 3;
+        let c_offset = Math.floor(c / 3) * 3;
+        for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+            for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+                if (document.getElementById(i + '-' + j).innerHTML != "") {
+                    occGrid[document.getElementById(i + '-' + j).innerHTML]++;
+                }
+            }
+        }
+
+        //Check Row
         for (let i = 0; i < 9; i++) {
             let col = document.getElementById(i + '-' + c);
             let row = document.getElementById(r + '-' + i);
@@ -234,18 +245,22 @@ function selectTile() {
                 if (row.classList.contains("row-invalid"))
                     row.classList.remove("row-invalid");
             }
-        }
-        //Check Col Second
-        for (let i = 0; i < 9; i++) {
-            let col = document.getElementById(i + '-' + c);
-            let row = document.getElementById(r + '-' + i);
             if (occCol[col.innerHTML] > 1) {
                 col.classList.add("col-invalid");
-                //occ[row.innerHTML]--;
             } else if (occCol[col.innerHTML] == 1) {
-                //console.log(row.innerHTML + " " + occRow[row.innerHTML]);
                 if (col.classList.contains("col-invalid"))
                     col.classList.remove("col-invalid");
+            }
+        }
+        //check 3x3 grid
+        for (let i = 0 + r_offset; i <= 2 + r_offset; i++) {
+            for (let j = 0 + c_offset; j <= 2 + c_offset; j++) {
+                if (occGrid[document.getElementById(i + '-' + j).innerHTML] > 1) {
+                    document.getElementById(i + '-' + j).classList.add("grid-invalid");
+                } else if (occGrid[document.getElementById(i + '-' + j).innerHTML] == 1) {
+                    if (document.getElementById(i + '-' + j).classList.contains("grid-invalid"))
+                        document.getElementById(i + '-' + j).classList.remove("grid-invalid");
+                }
             }
         }
 

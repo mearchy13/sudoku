@@ -420,7 +420,8 @@ button {
 }
 
 .row-invalid,
-.col-invalid {
+.col-invalid,
+.grid-invalid {
     color: red;
 }
 
