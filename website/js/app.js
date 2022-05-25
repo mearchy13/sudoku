@@ -30,10 +30,6 @@ if (document.querySelector(".game-type")) {
 }
 
 
-
-var numSelected = null;
-var tileSelected = null;
-
 const time_el = document.querySelector('.watch .time');
 const startWatch_btn = document.getElementById('startWatch');
 const stopWatch_btn = document.getElementById("stopWatch");
@@ -172,13 +168,23 @@ function inputTile() {
     //     return false;
     // }
 }
+var numSelected = null;
+//var tileSelected = null;
 
 function selectNumber() {
+    console.log(this);
+    if(this.classList.contains("number-selected")){
+        this.classList.remove("number-selected");
+        numSelected = null;
+        return;
+    }
     if (numSelected != null) {
         numSelected.classList.remove("number-selected");
     }
+   
     numSelected = this;
     numSelected.classList.add("number-selected");
+
 }
 
 var prevHighlightRow = 0,
